@@ -1,0 +1,7 @@
+Utente (email,username,password,desc)
+Recensione (ID#,contenuto,[utente],[opera])
+Autore (ID#,nome,cognome,nazionalita)
+Opera (ID#, titolo,anno_inizio,anno_fine)
+Volume (NUMERO,nPagine,dataUscita,[opera])
+Capitolo (NUMERO_CAPITOLO,titolo,letto,dataUscita,[volume])
+AutoreScriveOpera ([AUTORE],[OPERA])
