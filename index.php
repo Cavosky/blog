@@ -22,7 +22,7 @@
                 <button class="btn btn-outline-success" type="submit">Cerca</button>
                 <div class="text-end">
                     <button type="button" onclick="location.href='login.php'" class="btn btn-outline-light me-2 mb-1 ">Login</button>
-                    <button type="button" class="btn btn-warning">Registrati</button>
+                    <button type="button" onclick="location.href='registrazione.php'" class="btn btn-warning">Registrati</button>
                 </div>
             </form>
             </div>

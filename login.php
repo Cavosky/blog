@@ -17,12 +17,13 @@ include "connect.php";
       );
       $control=$risultati->fetch(PDO::FETCH_OBJ);
       if($control >0){
-        $_SESSION["username"]=$username;
+        $_SESSION["username"]=$email;
         header("location:loggato.php");
       }else{
         $message="<p class='text-danger'>email o password inserita non corretta</p>";
         echo $message;
       }
+      $risultati->free_result();
     }
   }
 ?>
