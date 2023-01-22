@@ -1,3 +1,9 @@
+<?php
+    
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -15,13 +21,14 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle position-sticky z-2 top-0 end-0 w-100">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1">
-                    <img src="provvisoria.jpg" class="rounded float-start border border-warning " width="50" height="50" alt="...">LibreComics
+                    <img src="provvisoria.jpg" class="rounded float-start border border-warning " width="50" height="50" alt="...">
+                    <h1>LibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
                 <input class="form-control m-2" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca">
                 <button class="btn btn-outline-success" type="submit">Cerca</button>
-                <div class="text-end">
-                    <img class="rounded-circle ms-4" width='50' height='50' alt="avatar1" src="provvisoria.jpg" />
+                <div class="text-end">  
+                    <img class="rounded-circle ms-4" width='50' height='50' alt="avatar" src="provvisoria.jpg" />
                 </div>
             </form>
             </div>
