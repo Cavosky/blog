@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 22, 2023 alle 16:04
+-- Creato il: Gen 22, 2023 alle 18:53
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `articolo` (
   `id` int(11) NOT NULL,
   `titolo` varchar(255) NOT NULL,
-  `contenuto` text NOT NULL,
+  `contenuto` mediumtext NOT NULL,
   `img` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -558,15 +558,16 @@ CREATE TABLE `utente` (
   `username` varchar(255) NOT NULL,
   `des` varchar(255) DEFAULT NULL,
   `pw` varchar(255) NOT NULL,
-  `profilo` int(11) DEFAULT NULL
+  `profilo` int(11) DEFAULT NULL,
+  `ruolo` varchar(255) DEFAULT 'utente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`) VALUES
-('lorenzocavagnaro14@gmail.com', 'Cavosky', 'creator', 'stambecco', NULL);
+INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALUES
+('lorenzocavagnaro14@gmail.com', 'Cavosky', 'creator', 'stambecco', NULL, 'admin');
 
 -- --------------------------------------------------------
 

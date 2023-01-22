@@ -1,30 +1,7 @@
 <?php
-include "connect.php";
-  if(isset($_POST["login"])){
-    if(empty($_POST["email"]) || empty($_POST["pw"])){
-      $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
-      echo $message;
-    }else{
-      $email=trim($_POST["email"]);
-      $pw=$_POST["pw"];
-      $query="SELECT * FROM utente where email=? and pw=?";
-      $risultati=$connessione->prepare($query);
-      $risultati->execute( 
-        array(
-            $email,
-            $pw
-        )
-      );
-      $control=$risultati->fetch(PDO::FETCH_OBJ);
-      if($control >0){
-        $_SESSION["username"]=$email;
-        header("location:loggato.php");
-      }else{
-        $message="<p class='text-danger'>email o password inserita non corretta</p>";
-        echo $message;
-      }
-      $risultati->free_result();
-    }
+  include "connect.php";
+  if($_SESSION["ruolo"]=='admin'){
+    
   }
 ?>
 

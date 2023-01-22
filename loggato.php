@@ -1,7 +1,5 @@
 <?php
-    
-
-
+    include "connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,7 @@
     </head>
     <body class="bg-dark text-light z-0">
         <!--navbar-->
-        <nav class="navbar bg-dark navbar-warning border border-warning-subtle position-sticky z-2 top-0 end-0 w-100">
+        <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1">
                     <img src="provvisoria.jpg" class="rounded float-start border border-warning " width="50" height="50" alt="...">
@@ -27,8 +25,9 @@
                 <form class="d-flex" role="search">
                 <input class="form-control m-2" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca">
                 <button class="btn btn-outline-success" type="submit">Cerca</button>
-                <div class="text-end">  
-                    <img class="rounded-circle ms-4" width='50' height='50' alt="avatar" src="provvisoria.jpg" />
+                <div class="text-end"> 
+                    <img class="rounded-circle ms-4" width='50' height='50' alt="avatar" name="icona" src="provvisoria.jpg" />
+                    <label for="icona" class="text-warning t"><?php echo $_SESSION['username']?></label>
                 </div>
             </form>
             </div>

@@ -1,43 +1,6 @@
 <?php
-include "connect.php";
-
-  if(isset($_POST["registration"])){
-    if(empty($_POST["email"]) || empty($_POST["pw"]) || empty($_POST["cpw"])){
-      $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
-      echo $message;
-    }else{
-      $email=trim($_POST["email"]);
-      $username=trim($_POST["username"]);
-      $pw=$_POST["pw"];
-      $cpw=$_POST["cpw"];
-      if(strcmp($pw,$cpw)!=0){
-        $message="<p class='text-danger'>Le password non corrispondono</p>"; 
-        echo $message;
-        }else{
-            $connessione->prepare("SELECT email,username from utente where email=':email' or username=':username'");
-            $risultati=$connessione->execute(array($email,$username));
-            if(!empty($risultati)){
-                foreach($risultati as $data){
-                    if(strcmp($data["email"],$_POST["email"])==0){
-                        $message="<p class='text-danger'>email gia' in uso</p>"; 
-                        break;
-                    }
-                    if(strcmp($data["username"],$_POST["username"])==0){
-                        $message="<p class='text-danger'>username gia' in uso</p>"; 
-                        break;
-                    }
-                }
-            }else{
-                $connessione->query("INSERT INTO utente (email,username,");
-
-            }
-            $risultati->free_result();
-        }
-    }
-  }
+  include "connect.php";
 ?>
-
-
 <!doctype html>
 <html lang="it">
   <head>
