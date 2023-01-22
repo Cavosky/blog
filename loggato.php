@@ -1,5 +1,8 @@
 <?php
     include "connect.php";
+    if(!isset($_SESSION['email'])){
+        header('location:accesso_negato.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +29,26 @@
                 <input class="form-control m-2" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca">
                 <button class="btn btn-outline-success" type="submit">Cerca</button>
                 <div class="text-end"> 
-                    <img class="rounded-circle ms-4" width='50' height='50' alt="avatar" name="icona" src="provvisoria.jpg" />
-                    <label for="icona" class="text-warning t"><?php echo $_SESSION['username']?></label>
+                    <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="provvisoria.jpg" />
+
+                    <button class="btn text-warning " type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                        <?php echo $_SESSION['username']?>
+                    </button>
+
+                    <div class="offcanvas text-bg-dark offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                        <div class="offcanvas-header">
+                            <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
+                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="provvisoria.jpg" />
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="container-fluid position-relative h-100">
+                               <div class="position-absolute t-100  s-0">
+                                     <button type="submit" name="logout" class="btn btn-outline-danger">Logout</button>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
             </div>
@@ -367,7 +388,12 @@
         </div>
         <!--fine grid-->
         <!--scheda pagine-->
-            
+        <?php 
+            if($_SESSION['ruolo']=='admin'){
+                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary'>Aggiungi Articolo</button>";
+            }
+
+        ?>
         <!--fine scheda pagine-->
 
     </body>

@@ -1,3 +1,9 @@
+<?php
+  include 'connect.php';
+  if(!isset($_SESSION['email']) || $_SESSION['ruolo']!='admin'){
+        header('location:accesso_negato.php');
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>

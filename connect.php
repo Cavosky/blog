@@ -31,7 +31,6 @@
             $_SESSION["username"]=$row['username'];
             $_SESSION["ruolo"]=$row['ruolo'];
           }
-          
           header("location:loggato.php");
         }else{
           $message="<p class='text-danger'>email o password inserita non corretta</p>";
@@ -78,7 +77,13 @@
       $connessione->close();
     }
 
-
+    if(isset($_REQUEST['logout'])){
+      unset($_SESSION['email']);
+      unset($_SESSION['username']);
+      unset($_SESSION['ruolo']);
+      session_destroy();
+      header('location:index.php');
+    }
 
 
 ?>
