@@ -22,7 +22,7 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1">
-                    <img src="provvisoria.jpg" class="rounded float-start border border-warning " width="50" height="50" alt="...">
+                    <img src="provvisoria.jpg" class="rounded float-start border border-warning me-2" width="50" height="50" alt="...">
                     <h1>LibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
@@ -61,7 +61,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="" class="img-fluid rounded-start"  alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start"  alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -79,7 +79,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -97,7 +97,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0 ">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -116,7 +116,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -134,7 +134,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -152,62 +152,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -226,7 +171,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -244,7 +189,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -262,62 +207,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body bg-warning text-dark ">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col bg-dark">
-
-                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -336,7 +226,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -354,7 +244,7 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -372,7 +262,117 @@
                     <div class="card mb-3 bg-warning" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body bg-warning text-dark ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col bg-dark">
+
+                    <div class="card mb-3 bg-warning" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="prova.jpg" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body bg-warning text-dark ">
@@ -387,14 +387,45 @@
             </div>
         </div>
         <!--fine grid-->
-        <!--scheda pagine-->
+        
         <?php 
             if($_SESSION['ruolo']=='admin'){
-                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary'>Aggiungi Articolo</button>";
+                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary '>Aggiungi Articolo</button>";
             }
 
         ?>
+        <!--scheda pagine-->
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item active text-2"><a class="page-link" href="#">1</a></li>
+                <li class="page-item " aria-current="page">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
         <!--fine scheda pagine-->
+         <!--footer-->
+        <div class="container">
+            <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">About</a></li>
+            </ul>
+            <p class="text-center text-warning">&copy; 2022 Company, Inc</p>
+            </footer>
+        </div>
+
+        <!--fine footer-->
 
     </body>
 </html>
