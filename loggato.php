@@ -1,8 +1,8 @@
 <?php
     include "connect.php";
-    if(!empty($_SESSION['email'])){
+    /*if(!isset($_SESSION['email'])){
         header('location:accesso_negato.php');
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>

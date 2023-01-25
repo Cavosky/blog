@@ -70,6 +70,9 @@
                   }
               }else{
                   $connessione->query("INSERT INTO utente (email,username,pw) VALUES('$email','$username','$pw')");
+                  $_SESSION["email"]=$email;
+                  $_SESSION["username"]=$username;
+                  $_SESSION["ruolo"]=$ruolo;
                   header("Location:loggato.php");
               }
           }
@@ -77,12 +80,30 @@
       $connessione->close();
     }
 
-    if(isset($_REQUEST['logout'])){
-      unset($_SESSION['email']);
-      unset($_SESSION['username']);
-      unset($_SESSION['ruolo']);
-      session_destroy();
+    if(isset($_REQUEST['logout'])){      
       header('location:index.php');
+    }
+
+    if(isset($_REQUEST['pubblica'])){
+      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+        if(!$connessione){
+          echo "<h3 class='text-danger'>Errore connessione database</h3>";
+        }
+        if(empty($_POST['titolo'] )|| empty($_POST['contenuto'] )){
+          $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
+          echo $message;
+        }else{
+          $titolo=$_POST['titolo'];
+          $contenuto=$_POST['contenuto'];
+          if(empty(($_FILES['copertina']['name']))) {
+              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='provvisoria.jpg'))");           
+          }/*else{
+            $img=$_FILES['copertina'];
+            $connessione->query("INSERT into articolo (")
+          }*/
+          header("location:loggato.php");
+        }
+        $connessione->close();
     }
 
 
