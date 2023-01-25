@@ -96,7 +96,7 @@
           $titolo=$_POST['titolo'];
           $contenuto=$_POST['contenuto'];
           if(empty(($_FILES['copertina']['name']))) {
-              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='provvisoria.jpg'))");           
+              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");           
           }/*else{
             $img=$_FILES['copertina'];
             $connessione->query("INSERT into articolo (")
@@ -106,5 +106,51 @@
         $connessione->close();
     }
 
+    function riempiCard(){
+        $img=0;
+        $connessione= mysqli_connect('localhost','root','','blog');
+        if(!$connessione){
+          echo "<h3 class='text-danger'>Errore connessione database</h3>";
+        }
+        $query="SELECT * from articolo order by id desc";
+        $risultati=$connessione->query($query);
+        if($risultati->num_rows>18){
 
+        }else{
+          $i=0;
+          $j=-2;
+          while($card=$risultati->fetch_assoc()){
+            if($i%3==0 || $i==0){
+              echo "<div class='row mb-3'>";
+            }
+            $query="SELECT path from img where id='$card[img]'";
+            $result=$connessione->query($query);
+            $img = $result->fetch_array()[0];
+            //stampa card
+              echo "
+              <div class='col bg-dark'>
+                <div class='card mb-3 bg-warning' style='max-width: 540px;'>
+                          <div class='row g-0'>
+                              <div class='col-md-4'>
+                                  <img src=\"$img\" class='img-fluid rounded-start ' alt='...'>
+                              </div>
+                              <div class='col-md-8'>
+                                  <div class='card-body bg-warning text-dark '>
+                                      <h5 class='card-title'>\"$card[titolo]\"</h5>
+                                      <p class='card-text'>\"$card[contenuto]\"</p>
+                                      <p class='card-text'><small class='text-muted'>Last updated 3 mins ago</small></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>";   
+              if($j%3==0){
+              echo "</div>";
+            }
+            $i++;
+            $j++;
+        }       
+      }
+        $connessione->close();
+    }
 ?>

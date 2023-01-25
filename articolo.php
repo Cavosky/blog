@@ -1,10 +1,6 @@
 <?php
     include "connect.php";
-    /*if(!isset($_SESSION['email'])){
-        header('location:accesso_negato.php');
-    }*/
 ?>
-
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -26,8 +22,7 @@
                     <h1>LibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
-                <input class="form-control m-2" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca">
-                <button class="btn btn-outline-success" type="submit">Cerca</button>
+
                 <div class="text-end"> 
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="provvisoria.jpg" />
 
@@ -53,38 +48,15 @@
             </form>
             </div>
         </nav>
-        <!--fine navbar-->
-        <!--grid-->
-        <div class="container text-center t-20 mt-5">
-            <?php riempiCard() ?>
+        <div class="container d-flex justify-content-center pt-5">
+            <h1 class="text-white">Titolo</h1>
         </div>
-        <!--fine grid-->
-        
-        <?php 
-            if($_SESSION['ruolo']=='admin'){
-                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary '>Aggiungi Articolo</button>";
-            }
+        <div class="container  justify-content-center pt-5">
+            <p class="text-white">Lorem ipsum dolor sit amet. Et suscipit nihil est nesciunt numquam sit deserunt possimus et iusto aspernatur et facere nisi! Id quis perferendis ea laudantium optio rem distinctio dolore quo enim voluptates. In enim consequatur eos aliquid animi et pariatur esse sed sint cupiditate. Et asperiores autem eos voluptatem officia sed galisum doloremque. </p><p>Ut dolor perspiciatis rem accusantium dolorem et incidunt dolores qui facilis quis. Rem vitae velit ad consectetur architecto et magnam sequi ut rerum ratione ad nihil voluptates sit dolores doloremque. </p><p>Est eligendi aliquid quo quasi nisi id iusto porro qui distinctio saepe et nobis numquam qui esse similique. In accusantium veniam est nesciunt nihil ut autem distinctio qui voluptatem corporis 33 eveniet ratione ad facilis odit et ipsum maiores. Et quae molestias et velit minus qui animi exercitationem aut esse labore? Hic eius ratione quo quos nostrum cum galisum explicabo. </p>
 
-        ?>
-        <!--scheda pagine-->
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item active text-2"><a class="page-link" href="#">1</a></li>
-                <li class="page-item " aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-        <!--fine scheda pagine-->
+        </div>
          <!--footer-->
-            <footer class="py-3 my-4">
+            <footer class="py-3 my-4 fixed-bottom">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>
@@ -96,6 +68,5 @@
             </footer>
 
         <!--fine footer-->
-
     </body>
 </html>
