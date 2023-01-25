@@ -82,7 +82,7 @@
       unset($_SESSION['username']);
       unset($_SESSION['ruolo']);
       session_destroy();
-      header('location: .php');
+      header('location:index.php');
     }
 
 

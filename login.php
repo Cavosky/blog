@@ -28,7 +28,7 @@
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" name="pw" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" name="login" value="invia" class="btn btn-primary">Invia</button>
+        <input type="submit" name="login" value="Logout" class="btn btn-primary">
       </form>
     </div>
   </body>

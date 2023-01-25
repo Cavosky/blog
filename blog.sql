@@ -231,7 +231,7 @@ INSERT INTO `nazionalita` (`nome`, `nazione`) VALUES
 ('CHE', 'Switzerland'),
 ('CHL', 'Chile'),
 ('CHN', 'China'),
-('CIV', 'Côte d\'Ivoire'),
+('CIV', "Côte d'Ivoire"),
 ('CMR', 'Cameroon'),
 ('COD', 'Congo (the Democratic Republic of the)'),
 ('COG', 'Congo (the)'),

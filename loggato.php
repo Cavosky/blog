@@ -1,6 +1,6 @@
 <?php
     include "connect.php";
-    if(!isset($_SESSION['email'])){
+    if(!empty($_SESSION['email'])){
         header('location:accesso_negato.php');
     }
 ?>
@@ -44,7 +44,7 @@
                         <div class="offcanvas-body">
                             <div class="container-fluid position-relative h-100">
                                <div class="position-absolute t-100  s-0">
-                                     <button type="submit" name="logout" class="btn btn-outline-danger">Logout</button>
+                                    <input type="submit" name="logout" value="Logout"class="btn btn-outline-danger">                                   
                                </div>
                             </div>
                         </div>

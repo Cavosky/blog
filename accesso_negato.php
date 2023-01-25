@@ -7,6 +7,6 @@
     <title>Accesso negato</title>
 </head>
 <body>
-    furbetto
+    Accesso negato
 </body>
 </html>
