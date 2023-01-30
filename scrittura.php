@@ -1,11 +1,11 @@
 <?php
   include 'connect.php';
   if(!isset($_SESSION['email']) || $_SESSION['ruolo']!='admin'){
-        header('location:accesso_negato.php');
+        header('location:index.php');
     }
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
   <body class="bg-dark text-light z-0">
     <form method="post" >
         <div class="mb-3">
-        <label for="exampleFormControlInput1"  "class="form-label">Titolo:</label>
+        <label for="exampleFormControlInput1"  class="form-label">Titolo:</label>
         <input type="text" class="form-control" name="titolo" id="exampleFormControlInput1" placeholder="Titolo">
     </div>
     <div class="mb-3">

@@ -26,8 +26,6 @@
                     <h1>LibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
-                <input class="form-control m-2" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca">
-                <button class="btn btn-outline-success" type="submit">Cerca</button>
                 <div class="text-end"> 
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="<?php 
                                 $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
@@ -67,7 +65,7 @@
                                 <div class="container-fluid start-0 position-absolute">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link active text-warning" aria-current="page" href="libreria.php">Libreria</a>
+                                            <a class="nav-link active text-warning" aria-current="page" href="#">Libreria</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link text-warning" href="#">Progressi</a>
@@ -90,16 +88,113 @@
         <!--fine navbar-->
         <!--grid-->
         <div class="container text-center t-20 mt-5">
-            <?php riempiCard() ?>
+            <h1 class="text-light mb-5">Opere</h1>
+            <div class="row my-3">
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="foto opera">
+                        <div class="card-body">
+                            <p class="card-text text-black">Titolo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--fine grid-->
         
-        <?php 
-            if($_SESSION['ruolo']=='admin'){
-                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary fixed-bottom'>Aggiungi Articolo</button>";
-            }
-
-        ?>
+                                
         <!--scheda pagine--
         <nav aria-label="...">
             <ul class="pagination justify-content-center">

@@ -84,6 +84,8 @@
       header('location:index.php');
     }
 
+
+
     if(isset($_REQUEST['pubblica'])){
       $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
         if(!$connessione){
@@ -106,6 +108,8 @@
         $connessione->close();
     }
 
+
+    
     function riempiCard(){
         $img=0;
         $connessione= mysqli_connect('localhost','root','','blog');
@@ -138,7 +142,7 @@
                                   <div class='card-body bg-warning text-dark '>
                                       <h5 class='card-title'>\"$card[titolo]\"</h5>
                                       <p class='card-text'>\"$card[contenuto]\"</p>
-                                      <p class='card-text'><small class='text-muted'>Last updated 3 mins ago</small></p>
+                                      <a class='card-link' onclick=\"document.getElementById('1').submit()\"><small class='text-muted'>Continua a Leggere</small></a>
                                   </div>
                               </div>
                           </div>
