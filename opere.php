@@ -89,7 +89,7 @@
         <!--grid-->
         <div class="container text-center t-20 mt-5">
             <h1 class="text-light mb-5">Opere Seguite</h1>
-            <button type='button'  onclick="location.href='opere.php'" class='btn btn-primary mb-5'>+Aggiungi Opera</button>
+            <button type='button'  onclick="location:opere.php" class='btn btn-primary mb-5'>+Aggiungi Opera</button>
             <div class="row my-3">
                 <div class="col">
                     <div class="card bg-warning" style="width: 18rem;">

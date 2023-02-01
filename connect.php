@@ -70,10 +70,7 @@
                   }
               }else{
                   $connessione->query("INSERT INTO utente (email,username,pw) VALUES('$email','$username','$pw')");
-                  $_SESSION["email"]=$email;
-                  $_SESSION["username"]=$username;
-                  $_SESSION["ruolo"]=$ruolo;
-                  header("Location:loggato.php");
+                  header("Location:login.php");
               }
           }
       }
@@ -132,8 +129,8 @@
             $img = $result->fetch_array()[0];
             //stampa card
               echo "
-              <div class='col bg-dark'>
-                <div class='card mb-3 bg-warning' style='max-width: 540px;'>
+              <div class='col-auto bg-dark'>
+                <div class='card mb-3 bg-warning' style='max-width: 410px;'>
                           <div class='row g-0'>
                               <div class='col-md-4'>
                                   <img src=\"$img\" class='img-fluid rounded-start ' alt='...'>
@@ -142,7 +139,7 @@
                                   <div class='card-body bg-warning text-dark '>
                                       <h5 class='card-title'>\"$card[titolo]\"</h5>
                                       <p class='card-text'>\"$card[contenuto]\"</p>
-                                      <a class='card-link' onclick=\"document.getElementById('1').submit()\"><small class='text-muted'>Continua a Leggere</small></a>
+                                      <a class='card-link'><small class='text-muted'>Continua a Leggere</small></a>
                                   </div>
                               </div>
                           </div>
