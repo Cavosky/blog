@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 22, 2023 alle 18:53
+-- Creato il: Feb 02, 2023 alle 23:17
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -33,6 +33,14 @@ CREATE TABLE `articolo` (
   `contenuto` mediumtext NOT NULL,
   `img` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `articolo`
+--
+
+INSERT INTO `articolo` (`id`, `titolo`, `contenuto`, `img`) VALUES
+(1, 'prova', 'aa', 1),
+(2, 's', 's', 1);
 
 -- --------------------------------------------------------
 
@@ -171,6 +179,15 @@ CREATE TABLE `img` (
   `path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `img`
+--
+
+INSERT INTO `img` (`id`, `path`) VALUES
+(0, 'provvisoria.jpg'),
+(1, 'prova.jpg'),
+(2, 'monster-cover.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -231,7 +248,7 @@ INSERT INTO `nazionalita` (`nome`, `nazione`) VALUES
 ('CHE', 'Switzerland'),
 ('CHL', 'Chile'),
 ('CHN', 'China'),
-('CIV', "Côte d'Ivoire"),
+('CIV', 'Côte d\'Ivoire'),
 ('CMR', 'Cameroon'),
 ('COD', 'Congo (the Democratic Republic of the)'),
 ('COG', 'Congo (the)'),
@@ -447,105 +464,106 @@ CREATE TABLE `opera` (
   `id` int(11) NOT NULL,
   `titolo` varchar(255) NOT NULL,
   `anno_inizio` int(11) NOT NULL,
-  `anno_fine` int(11) DEFAULT NULL
+  `anno_fine` int(11) DEFAULT NULL,
+  `img` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `opera`
 --
 
-INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`) VALUES
-(1, 'Monster', 1995, 2001),
-(2, '20th Century Boys', 1999, 2006),
-(3, 'A Couple of Cuckoos', 2020, NULL),
-(4, 'A Sign of Affection', 2019, NULL),
-(5, 'All You Need Is Kill', 2014, 2014),
-(6, 'Ariadne in the Blue Sky', 2017, NULL),
-(7, 'Arrivare a Te', 2006, 2018),
-(8, 'Arrivare a Te-La Persona del Destino', 2019, 2022),
-(9, 'Asadora!', 2018, NULL),
-(10, 'Black Clover', 2015, NULL),
-(11, 'Bleach', 2001, 2016),
-(12, 'Blue Box', 2021, NULL),
-(13, 'Boruto', 2016, NULL),
-(14, 'Bungo Stray Dogs', 2012, NULL),
-(15, 'Buonanotte,PunPun', 2007, 2013),
-(16, 'Burn the Witch', 2020, NULL),
-(17, 'Call of the Night', 2019, NULL),
-(18, 'Chainsaw Man', 2018, NULL),
-(19, 'Claymore', 2001, 2014),
-(20, 'Come Sopravvivere nell\'era Sengoku', 2017, NULL),
-(21, 'Cosi Carina-Fly me to the moon', 2018, NULL),
-(22, 'Dandadan', 2021, NULL),
-(23, 'Darwin\'s Game', 2012, NULL),
-(24, 'Dead Dead Demon\'s Dededededestruction', 2014, 2022),
-(25, 'Demon Slave', 2019, NULL),
-(26, 'Dorohedoro', 2001, 2018),
-(27, 'Dr. Stone', 2017, 2022),
-(28, 'Fairy Tail', 2006, 2017),
-(29, 'Fire Force', 2015, 2022),
-(30, 'Frieren-oltre la fine del viaggio', 2020, NULL),
-(31, 'Ghost Girl', 2020, NULL),
-(32, 'Gleipnir', 2015, NULL),
-(33, 'Goodbye, Eri', 2022, 2022),
-(34, 'Grand Blue', 2014, NULL),
-(35, 'Haganai-I have few friends', 2010, 2021),
-(36, 'Hana l\'Inacessibile', 2019, NULL),
-(37, 'Heavenly Delusion', 2018, NULL),
-(38, 'I am a Hero', 2009, 2017),
-(39, 'Il cane che guarda le stelle', 2008, 2008),
-(40, 'Insomniacs After School', 2019, NULL),
-(41, 'Jujutsu Kaisen-Sorcery Fight', 2018, NULL),
-(42, 'Kaguya-sama:Love is War', 2015, 2022),
-(43, 'Kaiju No.8', 2020, NULL),
-(44, 'Kamisama Kiss', 2008, 2016),
-(45, 'Kenshin, Samurai Vagabondo', 1994, 1999),
-(46, 'Komi can\'t communicate', 2018, NULL),
-(47, 'Land of the Lustrous', 2012, NULL),
-(48, 'Last Game', 2011, 2016),
-(49, 'Look Back', 2021, 2021),
-(50, 'Love After World Domination', 2019, 2022),
-(51, 'Made in Abyss', 2012, NULL),
-(52, 'Mermaid Prince', 2015, 2016),
-(53, 'Mieruko-chan', 2018, NULL),
-(54, 'Mission:Yozakura Family', 2019, NULL),
-(55, 'Moonlight Invader', 2018, 2020),
-(56, 'Moriarty the Patriot', 2016, NULL),
-(57, 'Mujirushi- il segno dei sogni', 2017, 2018),
-(58, 'Museum', 2013, 2014),
-(59, 'My Charms Are Waisted On Kuroiwa Medaka', 2021, NULL),
-(60, 'My Dress-up Darling- Bisque Doll', 2018, NULL),
-(61, 'Nanaco Robin', 2008, 2009),
-(62, 'Naruto', 1999, 2014),
-(63, 'Non mi stuzzicare,Takagi', 2013, NULL),
-(64, 'Non tormentarmi,Nagatoro', 2017, NULL),
-(65, 'One-Punch Man', 2012, NULL),
-(66, 'Oshi no Ko-My star', 2020, NULL),
-(67, 'Platinum End', 2015, 2021),
-(68, 'Prison School', 2011, 2017),
-(69, 'Sakamoto Days', 2020, NULL),
-(70, 'Sankarea', 2009, 2014),
-(71, 'School Live', 2012, 2019),
-(72, 'Shadow House', 2018, NULL),
-(73, 'Shangri-La Frontier', 2020, NULL),
-(74, 'Soul Eater', 2003, 2013),
-(75, 'Spice And Wolf', 2007, 2017),
-(76, 'Spy X Family', 2019, NULL),
-(77, 'Squalificati- Ranger Reject', 2021, NULL),
-(78, 'Tatsuki Fujimoto Short Stories 17-21', 2014, 2017),
-(79, 'Tatsuki Fujimoto Short Stories 22-26', 2018, 2018),
-(80, 'The Quintessential Quintuplets', 2017, 2020),
-(81, 'Tokyo Ghoul', 2011, 2014),
-(82, 'Tokyo Ghoul:re', 2014, 2018),
-(83, 'Tsukimichi moonlit fantasy', 2015, NULL),
-(84, 'Undead Unluck', 2020, NULL),
-(85, 'Witch Watch', 2021, NULL),
-(86, 'ZOMBIE 100', 2018, NULL),
-(87, 'Fire Punch', 2016, 2018),
-(88, 'Pluto', 2003, 2009),
-(89, 'Yawara!', 1986, 1993),
-(90, 'Dagashi Kashi', 2014, 2018),
-(91, 'Chihayafuru', 2008, 2022);
+INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`) VALUES
+(1, 'Monster', 1995, 2001, 2),
+(2, '20th Century Boys', 1999, 2006, 0),
+(3, 'A Couple of Cuckoos', 2020, NULL, 0),
+(4, 'A Sign of Affection', 2019, NULL, 0),
+(5, 'All You Need Is Kill', 2014, 2014, 0),
+(6, 'Ariadne in the Blue Sky', 2017, NULL, 0),
+(7, 'Arrivare a Te', 2006, 2018, 0),
+(8, 'Arrivare a Te-La Persona del Destino', 2019, 2022, 0),
+(9, 'Asadora!', 2018, NULL, 0),
+(10, 'Black Clover', 2015, NULL, 0),
+(11, 'Bleach', 2001, 2016, 0),
+(12, 'Blue Box', 2021, NULL, 0),
+(13, 'Boruto', 2016, NULL, 0),
+(14, 'Bungo Stray Dogs', 2012, NULL, 0),
+(15, 'Buonanotte,PunPun', 2007, 2013, 0),
+(16, 'Burn the Witch', 2020, NULL, 0),
+(17, 'Call of the Night', 2019, NULL, 0),
+(18, 'Chainsaw Man', 2018, NULL, 0),
+(19, 'Claymore', 2001, 2014, 0),
+(20, 'Come Sopravvivere nell\'era Sengoku', 2017, NULL, 0),
+(21, 'Cosi Carina-Fly me to the moon', 2018, NULL, 0),
+(22, 'Dandadan', 2021, NULL, 0),
+(23, 'Darwin\'s Game', 2012, NULL, 0),
+(24, 'Dead Dead Demon\'s Dededededestruction', 2014, 2022, 0),
+(25, 'Demon Slave', 2019, NULL, 0),
+(26, 'Dorohedoro', 2001, 2018, 0),
+(27, 'Dr. Stone', 2017, 2022, 0),
+(28, 'Fairy Tail', 2006, 2017, 0),
+(29, 'Fire Force', 2015, 2022, 0),
+(30, 'Frieren-oltre la fine del viaggio', 2020, NULL, 0),
+(31, 'Ghost Girl', 2020, NULL, 0),
+(32, 'Gleipnir', 2015, NULL, 0),
+(33, 'Goodbye, Eri', 2022, 2022, 0),
+(34, 'Grand Blue', 2014, NULL, 0),
+(35, 'Haganai-I have few friends', 2010, 2021, 0),
+(36, 'Hana l\'Inacessibile', 2019, NULL, 0),
+(37, 'Heavenly Delusion', 2018, NULL, 0),
+(38, 'I am a Hero', 2009, 2017, 0),
+(39, 'Il cane che guarda le stelle', 2008, 2008, 0),
+(40, 'Insomniacs After School', 2019, NULL, 0),
+(41, 'Jujutsu Kaisen-Sorcery Fight', 2018, NULL, 0),
+(42, 'Kaguya-sama:Love is War', 2015, 2022, 0),
+(43, 'Kaiju No.8', 2020, NULL, 0),
+(44, 'Kamisama Kiss', 2008, 2016, 0),
+(45, 'Kenshin, Samurai Vagabondo', 1994, 1999, 0),
+(46, 'Komi can\'t communicate', 2018, NULL, 0),
+(47, 'Land of the Lustrous', 2012, NULL, 0),
+(48, 'Last Game', 2011, 2016, 0),
+(49, 'Look Back', 2021, 2021, 0),
+(50, 'Love After World Domination', 2019, 2022, 0),
+(51, 'Made in Abyss', 2012, NULL, 0),
+(52, 'Mermaid Prince', 2015, 2016, 0),
+(53, 'Mieruko-chan', 2018, NULL, 0),
+(54, 'Mission:Yozakura Family', 2019, NULL, 0),
+(55, 'Moonlight Invader', 2018, 2020, 0),
+(56, 'Moriarty the Patriot', 2016, NULL, 0),
+(57, 'Mujirushi- il segno dei sogni', 2017, 2018, 0),
+(58, 'Museum', 2013, 2014, 0),
+(59, 'My Charms Are Waisted On Kuroiwa Medaka', 2021, NULL, 0),
+(60, 'My Dress-up Darling- Bisque Doll', 2018, NULL, 0),
+(61, 'Nanaco Robin', 2008, 2009, 0),
+(62, 'Naruto', 1999, 2014, 0),
+(63, 'Non mi stuzzicare,Takagi', 2013, NULL, 0),
+(64, 'Non tormentarmi,Nagatoro', 2017, NULL, 0),
+(65, 'One-Punch Man', 2012, NULL, 0),
+(66, 'Oshi no Ko-My star', 2020, NULL, 0),
+(67, 'Platinum End', 2015, 2021, 0),
+(68, 'Prison School', 2011, 2017, 0),
+(69, 'Sakamoto Days', 2020, NULL, 0),
+(70, 'Sankarea', 2009, 2014, 0),
+(71, 'School Live', 2012, 2019, 0),
+(72, 'Shadow House', 2018, NULL, 0),
+(73, 'Shangri-La Frontier', 2020, NULL, 0),
+(74, 'Soul Eater', 2003, 2013, 0),
+(75, 'Spice And Wolf', 2007, 2017, 0),
+(76, 'Spy X Family', 2019, NULL, 0),
+(77, 'Squalificati- Ranger Reject', 2021, NULL, 0),
+(78, 'Tatsuki Fujimoto Short Stories 17-21', 2014, 2017, 0),
+(79, 'Tatsuki Fujimoto Short Stories 22-26', 2018, 2018, 0),
+(80, 'The Quintessential Quintuplets', 2017, 2020, 0),
+(81, 'Tokyo Ghoul', 2011, 2014, 0),
+(82, 'Tokyo Ghoul:re', 2014, 2018, 0),
+(83, 'Tsukimichi moonlit fantasy', 2015, NULL, 0),
+(84, 'Undead Unluck', 2020, NULL, 0),
+(85, 'Witch Watch', 2021, NULL, 0),
+(86, 'ZOMBIE 100', 2018, NULL, 0),
+(87, 'Fire Punch', 2016, 2018, 0),
+(88, 'Pluto', 2003, 2009, 0),
+(89, 'Yawara!', 1986, 1993, 0),
+(90, 'Dagashi Kashi', 2014, 2018, 0),
+(91, 'Chihayafuru', 2008, 2022, 0);
 
 -- --------------------------------------------------------
 
@@ -567,7 +585,7 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALUES
-('lorenzocavagnaro14@gmail.com', 'Cavosky', 'creator', 'stambecco', NULL, 'admin');
+('lorenzocavagnaro14@gmail.com', 'Cavosky', 'creator', 'stambecco', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -578,6 +596,17 @@ INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALU
 CREATE TABLE `utenteleggecapitolo` (
   `utente` varchar(255) NOT NULL,
   `capitolo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utentesegueopera`
+--
+
+CREATE TABLE `utentesegueopera` (
+  `utente` varchar(255) NOT NULL,
+  `opera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -679,7 +708,8 @@ ALTER TABLE `nazionalita`
 -- Indici per le tabelle `opera`
 --
 ALTER TABLE `opera`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `img` (`img`);
 
 --
 -- Indici per le tabelle `utente`
@@ -695,6 +725,13 @@ ALTER TABLE `utente`
 ALTER TABLE `utenteleggecapitolo`
   ADD PRIMARY KEY (`utente`,`capitolo`),
   ADD KEY `capitolo` (`capitolo`);
+
+--
+-- Indici per le tabelle `utentesegueopera`
+--
+ALTER TABLE `utentesegueopera`
+  ADD PRIMARY KEY (`utente`,`opera`),
+  ADD KEY `opera` (`opera`);
 
 --
 -- Indici per le tabelle `volumecapitolo`
@@ -719,7 +756,7 @@ ALTER TABLE `volumi`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `autore`
@@ -737,7 +774,7 @@ ALTER TABLE `edizione`
 -- AUTO_INCREMENT per la tabella `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `opera`
@@ -775,6 +812,12 @@ ALTER TABLE `edizione`
   ADD CONSTRAINT `edizione_ibfk_1` FOREIGN KEY (`opera`) REFERENCES `opera` (`id`);
 
 --
+-- Limiti per la tabella `opera`
+--
+ALTER TABLE `opera`
+  ADD CONSTRAINT `opera_ibfk_1` FOREIGN KEY (`img`) REFERENCES `img` (`id`);
+
+--
 -- Limiti per la tabella `utente`
 --
 ALTER TABLE `utente`
@@ -786,6 +829,13 @@ ALTER TABLE `utente`
 ALTER TABLE `utenteleggecapitolo`
   ADD CONSTRAINT `utenteleggecapitolo_ibfk_1` FOREIGN KEY (`utente`) REFERENCES `utente` (`email`),
   ADD CONSTRAINT `utenteleggecapitolo_ibfk_2` FOREIGN KEY (`capitolo`) REFERENCES `capitolo` (`numeroCapitolo`);
+
+--
+-- Limiti per la tabella `utentesegueopera`
+--
+ALTER TABLE `utentesegueopera`
+  ADD CONSTRAINT `utentesegueopera_ibfk_1` FOREIGN KEY (`utente`) REFERENCES `utente` (`email`),
+  ADD CONSTRAINT `utentesegueopera_ibfk_2` FOREIGN KEY (`opera`) REFERENCES `opera` (`id`);
 
 --
 -- Limiti per la tabella `volumecapitolo`

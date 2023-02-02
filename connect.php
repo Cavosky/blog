@@ -108,8 +108,12 @@
 
     
     function riempiCard(){
+        $host_db="localhost";
+        $user_db="root";
+        $psw_db=""; 
+        $nome_db="blog";
         $img=0;
-        $connessione= mysqli_connect('localhost','root','','blog');
+        $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
         if(!$connessione){
           echo "<h3 class='text-danger'>Errore connessione database</h3>";
         }
@@ -137,8 +141,8 @@
                               </div>
                               <div class='col-md-8'>
                                   <div class='card-body bg-warning text-dark '>
-                                      <h5 class='card-title'>\"$card[titolo]\"</h5>
-                                      <p class='card-text'>\"$card[contenuto]\"</p>
+                                      <h5 class='card-title'>$card[titolo]</h5>
+                                      <p class='card-text overflow-hidden'>$card[contenuto]</p>
                                       <a class='card-link'><small class='text-muted'>Continua a Leggere</small></a>
                                   </div>
                               </div>
@@ -154,4 +158,87 @@
       }
         $connessione->close();
     }
+    
+    function riempiOpere(){
+      $host_db="localhost";
+      $user_db="root";
+      $psw_db=""; 
+      $nome_db="blog";
+      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+        if(!$connessione){
+          echo "<h3 class='text-danger'>Errore connessione database</h3>";
+        }
+        $query="SELECT * from opera order by titolo asc";
+        $risultati=$connessione->query($query);
+        $i=0;
+        $j=-2;
+        while($opera=$risultati->fetch_assoc()){
+            if($i%3==0 || $i==0){
+              echo "<div class='row my-3'>";
+            }
+            $query="SELECT path from img where id='$opera[img]'";
+            $result=$connessione->query($query);
+            $img = $result->fetch_array()[0];
+            //stampa card
+              echo "
+                  <div class='col'>
+                    <div class='card bg-warning border hover-overlay' style='max-width: 18rem;'>
+                        <img src='media/$img' class='card-img-top' style='max-width: 18rem;max-height:18rem' alt='foto opera'>
+                        <div class='card-body'>
+                            <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
+                        </div>
+                    </div>
+                </div>
+              ";
+              if($j%3==0){
+              echo "</div>";
+            }
+            $i++;
+            $j++;
+        }       
+
+        $connessione->close();
+    }
+
+    function riempiSeguite(){
+      $host_db="localhost";
+      $user_db="root";
+      $psw_db=""; 
+      $nome_db="blog";
+      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+        if(!$connessione){
+          echo "<h3 class='text-danger'>Errore connessione database</h3>";
+        }
+        $query="SELECT opera.titolo,opera.img,opera.id from opera,utentesegueopera as uso where opera.id=uso.opera and uso.utente=(select email from utente where email='$_SESSION[email]') order by titolo asc";
+        $risultati=$connessione->query($query);
+        $i=0;
+        $j=-2;
+        while($opera=$risultati->fetch_assoc()){
+            if($i%3==0 || $i==0){
+              echo "<div class='row my-3'>";
+            }
+            $query="SELECT path from img where id='$opera[img]'";
+            $result=$connessione->query($query);
+            $img = $result->fetch_array()[0];
+            //stampa card
+              echo "
+                  <div class='col'>
+                    <div class='card bg-warning border hover-overlay' style='max-width: 18rem;'>
+                        <img src='media/$img' class='card-img-top' style='max-width: 18rem;max-height:18rem' alt='foto opera'>
+                        <div class='card-body'>
+                            <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
+                        </div>
+                    </div>
+                </div>
+              ";
+              if($j%3==0){
+              echo "</div>";
+            }
+            $i++;
+            $j++;
+        }       
+
+        $connessione->close();
+    }
+    
 ?>
