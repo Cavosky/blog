@@ -133,22 +133,24 @@
             $img = $result->fetch_array()[0];
             //stampa card
               echo "
-              <div class='col-auto bg-dark'>
-                <div class='card mb-3 bg-warning' style='max-width: 410px;'>
-                          <div class='row g-0'>
-                              <div class='col-md-4'>
-                                  <img src=\"$img\" class='img-fluid rounded-start ' alt='...'>
-                              </div>
-                              <div class='col-md-8'>
-                                  <div class='card-body bg-warning text-dark '>
-                                      <h5 class='card-title'>$card[titolo]</h5>
-                                      <p class='card-text overflow-hidden'>$card[contenuto]</p>
-                                      <a class='card-link'><small class='text-muted'>Continua a Leggere</small></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>";   
+              <form name='articolo' id='$i'action='post'>
+                <div class='col-auto bg-dark'>
+                  <div class='card mb-3 bg-warning overflow-hidden' style='max-width: 410px;max-height:200px'>
+                            <div class='row g-0'>
+                                <div class='col-md-4'>
+                                    <img src=\"$img\" class='img-fluid rounded-start ' alt='...'>
+                                </div>
+                                <div class='col-md-8'>
+                                    <div class='card-body bg-warning text-dark '>
+                                        <a class='card-link text-decoration-none' href='articolo.php' onclick='document.getElementById('$i').submit(); return false;'><h5 class='card-title'>$card[titolo]</h5></a>
+                                        <p class='card-text '>$card[contenuto]</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </form>";   
               if($j%3==0){
               echo "</div>";
             }
@@ -240,5 +242,25 @@
 
         $connessione->close();
     }
-    
+    if(isset($_REQUEST['articolo'])){
+      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+        if(!$connessione){
+          echo "<h3 class='text-danger'>Errore connessione database</h3>";
+        }
+        if(empty($_POST['titolo'] )|| empty($_POST['contenuto'] )){
+          $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
+          echo $message;
+        }else{
+          $titolo=$_POST['titolo'];
+          $contenuto=$_POST['contenuto'];
+          if(empty(($_FILES['copertina']['name']))) {
+              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");           
+          }/*else{
+            $img=$_FILES['copertina'];
+            $connessione->query("INSERT into articolo (")
+          }*/
+          header("location:loggato.php");
+        }
+        $connessione->close();
+    }
 ?>

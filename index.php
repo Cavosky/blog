@@ -35,8 +35,8 @@
         <!--fine navbar-->
         <!--grid-->
         <div class="container text-center mt-5">
-            <form action="connect.php" method="get" id="1"></form>
             <?php riempiCard() ?>
+            
         </div>
         <!--fine grid-->
         <!--scheda pagine

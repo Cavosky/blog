@@ -21,7 +21,7 @@
         <!--navbar-->
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100">
             <div class="container-fluid">     
-                <a class="navbar-brand text-warning fs-1">
+                <a class="navbar-brand text-warning fs-1" href="">
                     <img src="provvisoria.jpg" class="rounded float-start border border-warning me-2" width="50" height="50" alt="...">
                     <h1>LibreComics</h1>
                 </a>
@@ -91,6 +91,7 @@
         <!--grid-->
         <div class="container text-center t-20 mt-5">
             <?php riempiCard() ?>
+
         </div>
         <!--fine grid-->
         
