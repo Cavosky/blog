@@ -1,6 +1,6 @@
 <?php
     include "connect.php";
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -17,7 +17,7 @@
         <!--navbar-->
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100" style="height:10vh">
             <div class="container-fluid">     
-                <a class="navbar-brand text-warning fs-1">
+                <a class="navbar-brand text-warning fs-1" href="loggato.php">
                 <img src=" <?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';
@@ -29,15 +29,25 @@
                 <form class="d-flex" role="search">
 
                 <div class="text-end"> 
-                    <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="provvisoria.jpg" />
+                    
                     <?php if(!empty( $_SESSION['username'])){
                         echo"
+                        <img class='rounded-circle mx-3' width='50' height='50' alt='avatar' name='icona' src='
+                        $connessione= connessione();
+                        $query='SELECT path from img,utente where utente.profilo=img.id';
+                        $risultati=$connessione->query($query);
+                        $row=$risultati->fetch_assoc();
+                        echo implode($row);                                
+                        $connessione->close();' />
                     <button class='btn text-warning ' type='button' data-bs-toggle='offcanvas' data-bs-target='#staticBackdrop' aria-controls='staticBackdrop'>
                         
-                                  $_SESSION['username']";
+                                  $_SESSION[username]";
                                  }                                
                             else{
-
+                                echo '<div class="text-end">
+                                <button type="button" onclick="location.href=\'login.php\'" class="btn btn-outline-light mb-1 " style="min-width:5vw">Login</button>
+                                <button type="button" onclick="location.href=\'registrazione.php\'" class="btn btn-warning" style="min-width:5vw">Registrati</button>
+                            </div>';
                             }?>
                     </button>
 
@@ -59,15 +69,11 @@
             </form>
             </div>
         </nav>
-        <div class="container d-flex justify-content-center pt-5">
-            <h1 class="text-white">Titolo</h1>
-        </div>
-        <div class="container  justify-content-center pt-5">
-            <p class="text-white">Lorem ipsum dolor sit amet. Et suscipit nihil est nesciunt numquam sit deserunt possimus et iusto aspernatur et facere nisi! Id quis perferendis ea laudantium optio rem distinctio dolore quo enim voluptates. In enim consequatur eos aliquid animi et pariatur esse sed sint cupiditate. Et asperiores autem eos voluptatem officia sed galisum doloremque. </p><p>Ut dolor perspiciatis rem accusantium dolorem et incidunt dolores qui facilis quis. Rem vitae velit ad consectetur architecto et magnam sequi ut rerum ratione ad nihil voluptates sit dolores doloremque. </p><p>Est eligendi aliquid quo quasi nisi id iusto porro qui distinctio saepe et nobis numquam qui esse similique. In accusantium veniam est nesciunt nihil ut autem distinctio qui voluptatem corporis 33 eveniet ratione ad facilis odit et ipsum maiores. Et quae molestias et velit minus qui animi exercitationem aut esse labore? Hic eius ratione quo quos nostrum cum galisum explicabo. </p>
-
-        </div>
+        <?php
+            riempiArticolo();
+        ?>
          <!--footer-->
-            <footer class="py-3 my-4 fixed-bottom">
+            <footer class="py-3 my-4 ">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>

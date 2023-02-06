@@ -89,7 +89,7 @@
         <div class="container text-center t-20 mt-5">
             <h1 class="text-light mb-5">Opere Seguite</h1>
             <button type='button'  onclick="location.href='opere.php'" class='btn btn-primary mb-5'>+Aggiungi Opera</button>
-            
+            <?php riempiSeguite() ?>
         </div>
         <!--fine grid-->
         

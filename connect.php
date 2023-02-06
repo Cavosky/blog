@@ -201,8 +201,8 @@
             //stampa card
               echo "
                   <div class='col'>
-                    <div class='card bg-warning border hover-overlay' style='max-width: 18rem;'>
-                        <img src='media/$img' class='card-img-top' style='max-width: 18rem;max-height:18rem' alt='foto opera'>
+                    <div class='card bg-warning border hover-overlay' style='max-width: 12vw;'>
+                        <img src='media/$img' class='card-img-top' style='max-width: 12vw;max-height:18rem' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                         </div>
@@ -235,5 +235,21 @@
           header("location:loggato.php");
         }
         $connessione->close();
+    }
+
+    function riempiArticolo(){
+      $connessione=connessione();
+      $query="SELECT * from articolo where id='$_GET[id]'";
+      $result=$connessione->query($query);
+      $art = $result->fetch_array();
+      echo "<div class='container d-flex justify-content-center pt-5'>
+      <h1 class='text-white pb-4'>$art[titolo]</h1>
+      </div>
+      <img alt='prova' class='border border-warning position-absolute m-5 ' style='max-height:30vh;max-width:20vw ' src='prova.jpg' >
+      <div class='container  border justify-content-center pt-5 ' style='min-height:60vh;max-width:37vw'>
+      <p class='text-white '>$art[contenuto]</p>
+
+  </div>";
+      $connessione->close();
     }
 ?>
