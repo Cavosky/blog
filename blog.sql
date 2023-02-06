@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 06, 2023 alle 10:34
+-- Creato il: Feb 06, 2023 alle 14:59
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -612,6 +612,19 @@ CREATE TABLE `utentesegueopera` (
   `utente` varchar(255) NOT NULL,
   `opera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `utentesegueopera`
+--
+
+INSERT INTO `utentesegueopera` (`utente`, `opera`) VALUES
+('lorenzocavagnaro14@gmail.com', 1),
+('lorenzocavagnaro14@gmail.com', 2),
+('lorenzocavagnaro14@gmail.com', 3),
+('lorenzocavagnaro14@gmail.com', 18),
+('lorenzocavagnaro14@gmail.com', 22),
+('lorenzocavagnaro14@gmail.com', 42),
+('lorenzocavagnaro14@gmail.com', 62);
 
 -- --------------------------------------------------------
 
