@@ -1,22 +1,25 @@
 <?php 
   session_start();
-  $host_db="localhost";
-  $user_db="root";
-  $psw_db=""; 
-  $nome_db="blog";
+
+  function connessione(){
+    $host_db="localhost";
+    $user_db="root";
+    $psw_db=""; 
+    $nome_db="blog";
+    $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+    if(!$connessione){
+      echo "<h3 class='text-danger'>Errore connessione database</h3>";
+    }
+    return $connessione;
+  }
+  
 
     /*try{
-        $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+        
         $connessione->close();*/
 
     if(isset($_POST["login"])){
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-      if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+      $connessione=connessione();
       if(empty($_POST["email"]) || empty($_POST["pw"])){// controllo campi vuoti
         $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
         echo $message;
@@ -42,7 +45,7 @@
 
 
     if(isset($_POST["registration"])){
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
+      $connessione=connessione();
       if(empty($_POST["email"]) || empty($_POST["pw"]) || empty($_POST["cpw"])){// controllo campi vuoti
         $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
         echo $message;
@@ -84,10 +87,7 @@
 
 
     if(isset($_REQUEST['pubblica'])){
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+      $connessione=connessione();
         if(empty($_POST['titolo'] )|| empty($_POST['contenuto'] )){
           $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
           echo $message;
@@ -108,15 +108,7 @@
 
     
     function riempiCard(){
-        $host_db="localhost";
-        $user_db="root";
-        $psw_db=""; 
-        $nome_db="blog";
-        $img=0;
-        $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+        $connessione=connessione();
         $query="SELECT * from articolo order by id desc";
         $risultati=$connessione->query($query);
         if($risultati->num_rows>18){
@@ -133,7 +125,7 @@
             $img = $result->fetch_array()[0];
             //stampa card
               echo "
-              <form name='articolo' id='$i'action='post'>
+             
                 <div class='col-auto bg-dark'>
                   <div class='card mb-3 bg-warning overflow-hidden' style='max-width: 410px;max-height:200px'>
                             <div class='row g-0'>
@@ -142,15 +134,13 @@
                                 </div>
                                 <div class='col-md-8'>
                                     <div class='card-body bg-warning text-dark '>
-                                        <a class='card-link text-decoration-none' href='articolo.php' onclick='document.getElementById('$i').submit(); return false;'><h5 class='card-title'>$card[titolo]</h5></a>
-                                        <p class='card-text '>$card[contenuto]</p>
-                                        
+                                        <a class='card-link text-decoration-none' href='articolo.php?id=$card[id]' onclick='document.getElementById('$i').submit(); return false;'><h5 class='card-title'>$card[titolo]</h5></a>
+                                        <p class='card-text '>$card[contenuto]</p>                     
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                  </form>";   
+                    </div>";   
               if($j%3==0){
               echo "</div>";
             }
@@ -162,14 +152,7 @@
     }
     
     function riempiOpere(){
-      $host_db="localhost";
-      $user_db="root";
-      $psw_db=""; 
-      $nome_db="blog";
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+        $connessione=connessione();
         $query="SELECT * from opera order by titolo asc";
         $risultati=$connessione->query($query);
         $i=0;
@@ -203,14 +186,7 @@
     }
 
     function riempiSeguite(){
-      $host_db="localhost";
-      $user_db="root";
-      $psw_db=""; 
-      $nome_db="blog";
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+        $connessione=connessione();
         $query="SELECT opera.titolo,opera.img,opera.id from opera,utentesegueopera as uso where opera.id=uso.opera and uso.utente=(select email from utente where email='$_SESSION[email]') order by titolo asc";
         $risultati=$connessione->query($query);
         $i=0;
@@ -243,10 +219,7 @@
         $connessione->close();
     }
     if(isset($_REQUEST['articolo'])){
-      $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-        if(!$connessione){
-          echo "<h3 class='text-danger'>Errore connessione database</h3>";
-        }
+        $connessione=connessione();
         if(empty($_POST['titolo'] )|| empty($_POST['contenuto'] )){
           $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
           echo $message;

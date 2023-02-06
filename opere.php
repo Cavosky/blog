@@ -22,16 +22,18 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1" href="">
-                    <img src="provvisoria.jpg" class="rounded float-start border border-warning me-2" width="50" height="50" alt="...">
-                    <h1>LibreComics</h1>
+                <img src=" <?php 
+                                $connessione= connessione();
+                                $query='SELECT path from img where id=0';
+                                $risultati=$connessione->query($query);
+                                $row=$risultati->fetch_assoc();
+                                echo implode($row);                                
+                                $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>   
                 </a>
                 <form class="d-flex" role="search">
                 <div class="text-end"> 
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="<?php 
-                                $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-                                if(!$connessione){
-                                  echo "<h3 class='text-danger'>Errore connessione database</h3>";
-                                }
+                                $connessione=connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
                                 $risultati=$connessione->query($query);
                                 $row=$risultati->fetch_assoc();
@@ -48,10 +50,7 @@
                             <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
                             <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="
                             <?php 
-                                $connessione= mysqli_connect($host_db,$user_db,$psw_db,$nome_db);
-                                if(!$connessione){
-                                  echo "<h3 class='text-danger'>Errore connessione database</h3>";
-                                }
+                                $connessione= connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
                                 $risultati=$connessione->query($query);
                                 $row=$risultati->fetch_assoc();

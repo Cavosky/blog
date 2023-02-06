@@ -19,6 +19,13 @@
 
     <button type="button" onclick='location.href="index.php"' class="btn btn-primary t-0 s-0"><i class="fa-solid fa-arrow-left"></i></button>
     <div class="container position-relative w-30 h-40 text-warning">
+    <img src=" <?php 
+                                $connessione= connessione();
+                                $query='SELECT path from img where id=0';
+                                $risultati=$connessione->query($query);
+                                $row=$risultati->fetch_assoc();
+                                echo implode($row);                                
+                                $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
        <form method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1"  class="form-label">Email address</label>
@@ -29,6 +36,7 @@
           <input type="password" name="pw" class="form-control" id="exampleInputPassword1">
         </div>
         <input type="submit" name="login" value="Logout" class="btn btn-primary">
+        <a href="registrazione.php" class="text-decoration-none ms-3">Non hai un account? Registrati</a>
       </form>
     </div>
   </body>
