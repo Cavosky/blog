@@ -17,6 +17,16 @@
 
     <button type="button" onclick='location.href="index.php"' class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i></button>
     <div class="container position-relative w-30 h-40 text-warning">
+      <div class="pb-2">
+      <img src=" <?php 
+                                $connessione= connessione();
+                                $query='SELECT path from img where id=0';
+                                $risultati=$connessione->query($query);
+                                $row=$risultati->fetch_assoc();
+                                echo implode($row);                                
+                                $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
+      </div>
+    
        <form method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1"  class="form-label">Email address</label>
