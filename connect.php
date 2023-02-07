@@ -130,7 +130,7 @@
                   <div class='card mb-3 bg-warning overflow-hidden' style='max-width: 410px;max-height:200px'>
                             <div class='row g-0'>
                                 <div class='col-md-4'>
-                                    <img src=\"$img\" class='img-fluid rounded-start ' alt='...'>
+                                    <img src=\"$img\" class='img-fluid rounded-start stai' alt='...'>
                                 </div>
                                 <div class='col-md-8'>
                                     <div class='card-body bg-warning text-dark '>
@@ -168,7 +168,7 @@
               echo "
                   <div class='col'>
                     <div class='card bg-warning border hover-overlay' style='max-width: 18rem;'>
-                        <img src='media/$img' class='card-img-top' style='max-width: 18rem;max-height:18rem' alt='foto opera'>
+                        <img src='media/$img' class='card-img-top stai' style='max-width: 18rem;max-height:18rem' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                         </div>
@@ -202,7 +202,7 @@
               echo "
                   <div class='col'>
                     <div class='card bg-warning border hover-overlay' style='max-width: 12vw;'>
-                        <img src='media/$img' class='card-img-top' style='max-width: 12vw;max-height:18rem' alt='foto opera'>
+                        <img src='media/$img' class='card-img-top stai' style='max-width: 12vw;max-height:18rem' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                         </div>
@@ -245,7 +245,7 @@
       echo "<div class='container d-flex justify-content-center pt-5'>
       <h1 class='text-white pb-4'>$art[titolo]</h1>
       </div>
-      <img alt='prova' class='border border-warning position-absolute m-5 ' style='max-height:30vh;max-width:20vw ' src='prova.jpg' >
+      <img alt='prova' class='border border-warning position-absolute m-5 stai ' style='max-height:30vh;max-width:20vw ' src='prova.jpg' >
       <div class='container  border justify-content-center pt-5 ' style='min-height:60vh;max-width:37vw'>
       <p class='text-white '>$art[contenuto]</p>
 

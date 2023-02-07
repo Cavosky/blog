@@ -6,3 +6,6 @@
 .text-primary{
     color: #03030b;
 }
+.stai{
+    object-fit:contain;
+}

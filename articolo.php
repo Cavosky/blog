@@ -31,17 +31,17 @@
                 <div class="text-end"> 
                     
                     <?php if(!empty( $_SESSION['username'])){
-                        echo"
-                        <img class='rounded-circle mx-3' width='50' height='50' alt='avatar' name='icona' src='
                         $connessione= connessione();
                         $query='SELECT path from img,utente where utente.profilo=img.id';
-                        $risultati=$connessione->query($query);
+                         $risultati=$connessione->query($query);
                         $row=$risultati->fetch_assoc();
-                        echo implode($row);                                
-                        $connessione->close();' />
-                    <button class='btn text-warning ' type='button' data-bs-toggle='offcanvas' data-bs-target='#staticBackdrop' aria-controls='staticBackdrop'>
+                        $img=implode($row);
+                        echo"
+                        <img class='rounded-circle mx-3' width='50' height='50' alt='avatar' name='icona' src='$img ' />
+                     <button class='btn text-warning ' type='button' data-bs-toggle='offcanvas' data-bs-target='#staticBackdrop' aria-controls='staticBackdrop'>
                         
                                   $_SESSION[username]";
+                                  $connessione->close();
                                  }                                
                             else{
                                 echo '<div class="text-end">
@@ -54,12 +54,25 @@
                     <div class="offcanvas text-bg-dark offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                         <div class="offcanvas-header">
                             <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
-                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="provvisoria.jpg" />
+                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="<?php echo $img?>" />
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <div class="container-fluid position-relative h-100">
-                               <div class="position-absolute t-100  s-0">
+                                <div class="container-fluid start-0 position-absolute">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-warning" aria-current="page" href="libreria.php">Libreria</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-warning" href="#">Progressi</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-warning" href="#">Link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                               <div class="position-absolute top-50  end-0">
                                     <input type="submit" name="logout" value="Logout"class="btn btn-outline-danger">                                   
                                </div>
                             </div>

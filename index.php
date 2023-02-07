@@ -29,8 +29,8 @@
                                 $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
-                <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca" style="max-height:6vh">
-                <button class="btn btn-outline-success" type="submit" style="max-height:12vh">Cerca</button>
+                <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca" style="height:5vh">
+                <button class="btn btn-outline-success" type="submit" style="height:8vh">Cerca</button>
                 <div class="text-end">
                     <button type="button" onclick="location.href='login.php'" class="btn btn-outline-light mb-1 " style="min-width:5vw">Login</button>
                     <button type="button" onclick="location.href='registrazione.php'" class="btn btn-warning" style="min-width:5vw">Registrati</button>

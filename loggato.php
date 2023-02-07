@@ -31,8 +31,8 @@
                                 $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
                 </a>
                 <form class="d-flex" role="search">
-                <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca" style="max-height:6vh">
-                <button class="btn btn-outline-success" type="submit" style="max-height:12vh">Cerca</button>
+                <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" aria-label="Cerca" style="height:5vh">
+                <button class="btn btn-outline-success" type="submit" style="height:8vh">Cerca</button>
                 <div class="text-end"> 
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="<?php 
                                 $connessione= connessione();
