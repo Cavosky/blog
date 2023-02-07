@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 06, 2023 alle 14:59
--- Versione del server: 10.4.24-MariaDB
--- Versione PHP: 8.1.6
+-- Creato il: Feb 07, 2023 alle 18:44
+-- Versione del server: 10.4.25-MariaDB
+-- Versione PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -190,7 +190,9 @@ INSERT INTO `img` (`id`, `path`) VALUES
 (0, 'logo.png'),
 (1, 'default.png'),
 (2, 'monster-cover.jpg'),
-(3, 'prova.jpg');
+(3, 'prova.jpg'),
+(6, 'chainsawman-cover.jpg'),
+(7, 'ilcanecheguardalestelle-cover.jpg');
 
 -- --------------------------------------------------------
 
@@ -494,7 +496,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`) VALUES
 (15, 'Buonanotte,PunPun', 2007, 2013, 0),
 (16, 'Burn the Witch', 2020, NULL, 0),
 (17, 'Call of the Night', 2019, NULL, 0),
-(18, 'Chainsaw Man', 2018, NULL, 0),
+(18, 'Chainsaw Man', 2018, NULL, 6),
 (19, 'Claymore', 2001, 2014, 0),
 (20, 'Come Sopravvivere nell\'era Sengoku', 2017, NULL, 0),
 (21, 'Cosi Carina-Fly me to the moon', 2018, NULL, 0),
@@ -515,7 +517,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`) VALUES
 (36, 'Hana l\'Inacessibile', 2019, NULL, 0),
 (37, 'Heavenly Delusion', 2018, NULL, 0),
 (38, 'I am a Hero', 2009, 2017, 0),
-(39, 'Il cane che guarda le stelle', 2008, 2008, 0),
+(39, 'Il cane che guarda le stelle', 2008, 2008, 7),
 (40, 'Insomniacs After School', 2019, NULL, 0),
 (41, 'Jujutsu Kaisen-Sorcery Fight', 2018, NULL, 0),
 (42, 'Kaguya-sama:Love is War', 2015, 2022, 0),
@@ -791,7 +793,7 @@ ALTER TABLE `edizione`
 -- AUTO_INCREMENT per la tabella `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `opera`
