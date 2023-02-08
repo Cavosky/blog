@@ -1,5 +1,4 @@
 <?php
-//128 caratteri per card
     include "connect.php";
     session_destroy();
 ?>
@@ -19,30 +18,14 @@
         <!--navbar-->
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100 " style="max-height:10vh">
             <div class="container-fluid">     
-                <a class="navbar-brand text-warning fs-1">
-                    <img src=" <?php 
-                                $connessione= connessione();
-                                $query='SELECT path from img where id=0';
-                                $risultati=$connessione->query($query);
-                                $row=$risultati->fetch_assoc();
-                                echo implode($row);                                
-                                $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
-                </a>
-                <form class="d-flex" role="search" method="post">
-                    <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" id="inputRicerca" aria-label="Cerca" style="height:5vh">
-                    <button class="btn btn-outline-success" type="submit" name="ricerca"  style="height:8vh">Cerca</button>
-                    <div class="text-end">
-                        <button type="button" onclick="location.href='login.php'" class="btn btn-outline-light mb-1 " style="min-width:5vw">Login</button>
-                        <button type="button" onclick="location.href='registrazione.php'" class="btn btn-warning" style="min-width:5vw">Registrati</button>
-                    </div>
-                </form>
+                
+                
+
             </div>
         </nav>
         <!--fine navbar-->
         <!--grid-->
         <div class="container text-center mt-5">
-            <?php 
-            riempiCard() ?>
             
         </div>
         <!--fine grid-->

@@ -35,7 +35,7 @@
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" name="pw" class="form-control" id="exampleInputPassword1">
         </div>
-        <input type="submit" name="login" value="Logout" class="btn btn-primary">
+        <input type="submit" name="login" value="Login" class="btn btn-primary">
         <a href="registrazione.php" class="text-decoration-none ms-3">Non hai un account? Registrati</a>
       </form>
     </div>
