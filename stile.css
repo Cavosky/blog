@@ -1,6 +1,7 @@
 .card:hover{
     opacity: 70%;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .text-primary{

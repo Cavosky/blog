@@ -75,7 +75,6 @@
                   $prot=$connessione->prepare("INSERT INTO utente (email,username,pw) VALUES(?,?,?)");
                   $prot->bind_param("sss",$email,$username,$pw);
                   $prot->execute();
-                  $connessione->query("INSERT INTO utente (email,username,pw) VALUES('$email','$username','$pw')");
                   header("Location:login.php");
               }
           }
