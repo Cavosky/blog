@@ -202,7 +202,7 @@
             //stampa card
               echo "
                   <div class='col'>
-                    <div class='card bg-warning border hover-overlay' style='max-width: 12vw;'>
+                    <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
                         <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
