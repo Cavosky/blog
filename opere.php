@@ -19,9 +19,9 @@
     </head>
     <body class="bg-dark text-light z-0">
         <!--navbar-->
-        <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100">
+        <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100" style="min-height:10vh;max-height:10vh">
             <div class="container-fluid">     
-                <a class="navbar-brand text-warning fs-1" href="">
+                <a class="navbar-brand text-warning fs-1" href="loggato.php">
                 <img src=" <?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';

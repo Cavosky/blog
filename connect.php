@@ -72,6 +72,9 @@
                       }
                   }
               }else{
+                  $prot=$connessione->prepare("INSERT INTO utente (email,username,pw) VALUES(?,?,?)");
+                  $prot->bind_param("sss",$email,$username,$pw);
+                  $prot->execute();
                   $connessione->query("INSERT INTO utente (email,username,pw) VALUES('$email','$username','$pw')");
                   header("Location:login.php");
               }
@@ -244,7 +247,7 @@
       echo "<div class='container d-flex justify-content-center pt-5'>
       <h1 class='text-white pb-4 '>$art[titolo]</h1>
       </div>
-      <img alt='prova' class='border border-warning position-absolute m-5 stai ' style='max-width: 100% ;height:auto' src='prova.jpg' >
+      <img alt='prova' class='border border-warning position-absolute m-5  ' style='max-width: 20vw ;max-height:35vh' src='prova.jpg' >
       <div class='container  border justify-content-center pt-5 ' style='min-height:60vh;max-width:37vw'>
       <p class='text-white '>$art[contenuto]</p>
 
