@@ -13,21 +13,50 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-dark text-light z-0">
-        <!--navbar-->
-        <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100 " style="max-height:10vh">
-            <div class="container-fluid">     
-                
-                
-
+    <body class="bg-warning text-light z-0">
+        <div class="container bg-dark z-1 mt-5 position-relative" style="width:60vw;height:93vh">
+            <div class="position-absolute ">
+            <img src=" media/<?php 
+                            $connessione= connessione();
+                            $query="SELECT path from img,opera where opera.id=$_GET[id] and img.id=opera.img";
+                            $risultati=$connessione->query($query);
+                            $row=$risultati->fetch_assoc();
+                            echo implode($row);                                
+                            $connessione->close();?>" class='img-fluid' style='width: 13vw ;height:40vh' alt="...">
+                <h1 class="text-warning">
+                    <?php
+                        $connessione=connessione();
+                        $query="SELECT titolo from opera where id=$_GET[id]";
+                        $risultati=$connessione->query($query);
+                        $row=$risultati->fetch_assoc();
+                        echo implode($row);                                
+                        $connessione->close();
+                    ?>
+                </h1>                
             </div>
-        </nav>
-        <!--fine navbar-->
-        <!--grid-->
-        <div class="container text-center mt-5">
-            
+            <div class="position-absolute end-50">
+                <h3>Trama</h3>
+            <p class="text-light">
+                    <?php
+                            $connessione=connessione();
+                            $query="SELECT trama from opera where id=$_GET[id]";
+                            $risultati=$connessione->query($query);
+                            $row=$risultati->fetch_assoc();
+                            echo implode($row);                                
+                            $connessione->close();
+                        ?>
+                </p>
+            </div>
+            <div class="position-absolute top-50 end-0 pe-5">
+                <label for="edizioni">Edizioni:</label>
+            <select class="form-select" name="edizioni" aria-label="Default select example">
+                <option selected>Scegliere Edizione</option>
+                <?php
+                    riempiEdizioni();
+                ?>
+            </select>
+            </div>
         </div>
-        <!--fine grid-->
         <!--scheda pagine
         <nav aria-label="..." >
             <ul class="pagination justify-content-center">
@@ -46,16 +75,6 @@
         </nav>
         <fine scheda pagine-->
          <!--footer-->
-            <footer class="py-3 my-4 fixed-bottom">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="loggato.php" class="nav-link px-2 text-warning">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">About</a></li>
-            </ul>
-            <p class="text-center text-warning">&copy; 2022 LibreComics, Inc</p>
-            </footer>
 
         <!--fine footer-->
     </body>
