@@ -264,10 +264,10 @@
 
   function riempiEdizioni(){
     $connessione=connessione();
-    $query="SELECT edizione.id,opera.nome,edizione.nome from opera,edizione where opera.id=$_GET[id] and opera.id=edizione.opera ";
+    $query="SELECT edizione.id as ided,opera.nome as opna,edizione.nome as edna from opera,edizione where opera.id=$_GET[id] and opera.id=edizione.opera ";
     $risultati=$connessione->query($query);
     while($row=$risultati->fetch_assoc()){
-      echo "<option value='$row[edizione.id]'>$row[opera.nome] $row[edizione.nome]</option>";
+      echo "<option value='$row[ided]'>$row[opna] $row[edna]</option>";
     }
     $connessione->close();
   }
