@@ -92,14 +92,12 @@
             <?php riempiCard() ?>
 
         </div>
-        <!--fine grid-->
-        
+        <!--fine grid-->        
         <?php 
             if($_SESSION['ruolo']=='admin'){
-                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary fixed-bottom'>Aggiungi Articolo</button>";
+                echo "<button type='button'  onclick='location.href=\"scrittura.php\"' class='btn btn-primary fixed-bottom'>Gestione</button>";
             }
-
-        ?>
+        ?>        
         <!--scheda pagine--
         <nav aria-label="...">
             <ul class="pagination justify-content-center">

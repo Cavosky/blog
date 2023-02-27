@@ -14,9 +14,7 @@
   }
   
 
-    /*try{
-        
-        $connessione->close();*/
+   
 
     if(isset($_POST["login"])){
       $connessione=connessione();
@@ -26,8 +24,10 @@
       }else{
         $email=trim($_POST["email"]);
         $pw=$_POST["pw"];
-        $query="SELECT * FROM utente where email='$email' and pw='$pw'";
-        $risultati=$connessione->query($query);
+        $prot=$connessione->prepare("SELECT * FROM utente where email=? and pw=?");
+        $prot->bind_param("ss",$email,$pw);
+        $prot->execute();
+        $risultati=$prot->get_result();
         if($risultati->num_rows >0){
           while($row=$risultati->fetch_assoc()){
             $_SESSION["email"]=$row['email'];
@@ -97,7 +97,10 @@
           $titolo=$_POST['titolo'];
           $contenuto=$_POST['contenuto'];
           if(empty(($_FILES['copertina']['name']))) {
-              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");           
+              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");          
+              $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");
+              $prot->bind_param("sss",$titolo,$contenuto,$pw);
+              $prot->execute(); 
           }/*else{
             $img=$_FILES['copertina'];
             $connessione->query("INSERT into articolo (")
@@ -168,7 +171,7 @@
             //stampa card
               echo "
                   <div class='col'>
-                    <div class='card bg-warning border hover-overlay' style='max-width: 18rem;'>
+                    <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 18rem;'>
                         <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
@@ -264,11 +267,11 @@
 
   function riempiEdizioni(){
     $connessione=connessione();
-    $query="SELECT edizione.id as ided,opera.nome as opna,edizione.nome as edna from opera,edizione where opera.id=$_GET[id] and opera.id=edizione.opera ";
+    $query="SELECT edizione.id as ided,opera.titolo as opna,edizione.nome as edna from opera,edizione where opera.id=$_GET[id] and opera.id=edizione.opera ";
     $risultati=$connessione->query($query);
     while($row=$risultati->fetch_assoc()){
       echo "<option value='$row[ided]'>$row[opna] $row[edna]</option>";
     }
     $connessione->close();
   }
-?>
+  ?>
