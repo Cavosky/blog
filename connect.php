@@ -274,4 +274,19 @@
     }
     $connessione->close();
   }
+
+  function commentiArticolo(){
+    $connessione=connessione();
+    $query="SELECT * from commentiArticolo where articolo=$_GET[id]";
+    $risultati=$connessione->query($query);    
+    while($row=$risultati->fetch_assoc()){      
+      $result=$connessione->query("SELECT username from utente where email=$row[utente]");
+      $utente=$result->fetch_array();
+      echo "<div class='p-2'>
+        <h5>$utente=$result->fetch_array()[username]</h5>
+        <p>$row[contenuto]</p>
+      </div>";
+    }
+    $connessione->close();
+  }
   ?>

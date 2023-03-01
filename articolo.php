@@ -85,6 +85,11 @@
         <?php
             riempiArticolo();
         ?>
+        <div class="d-flex flex-column align-items-center my-3">
+        <?php
+            commentiArticolo();
+        ?>
+        </div>
          <!--footer-->
             <footer class="py-3 my-4 ">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
