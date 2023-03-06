@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 01, 2023 alle 12:13
+-- Creato il: Mar 06, 2023 alle 14:06
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.0.25
 
@@ -180,7 +180,7 @@ CREATE TABLE `commentiarticolo` (
 --
 
 INSERT INTO `commentiarticolo` (`id`, `utente`, `articolo`, `contenuto`) VALUES
-(1, 'lorenzocavagnaro14@gmail.com', 5, 'briga merda briga briga merda');
+(2, 'lorenzocavagnaro14@gmail.com', 5, 'briga merda');
 
 -- --------------------------------------------------------
 
@@ -607,6 +607,24 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `ruolo`
+--
+
+CREATE TABLE `ruolo` (
+  `nome` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `ruolo`
+--
+
+INSERT INTO `ruolo` (`nome`) VALUES
+('admin'),
+('utente');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `utente`
 --
 
@@ -615,7 +633,7 @@ CREATE TABLE `utente` (
   `username` varchar(255) NOT NULL,
   `des` varchar(255) DEFAULT NULL,
   `pw` varchar(255) NOT NULL,
-  `profilo` int(11) DEFAULT NULL,
+  `profilo` int(11) DEFAULT 1,
   `ruolo` varchar(255) DEFAULT 'utente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -624,8 +642,7 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALUES
-('lorenzocavagnaro14@gmail.com', 'Cavosky', 'creator', 'stambecco', 1, 'admin'),
-('yol@gmail.com', 'io', NULL, 'io', NULL, 'utente');
+('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -648,19 +665,6 @@ CREATE TABLE `utentesegueopera` (
   `utente` varchar(255) NOT NULL,
   `opera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `utentesegueopera`
---
-
-INSERT INTO `utentesegueopera` (`utente`, `opera`) VALUES
-('lorenzocavagnaro14@gmail.com', 1),
-('lorenzocavagnaro14@gmail.com', 2),
-('lorenzocavagnaro14@gmail.com', 3),
-('lorenzocavagnaro14@gmail.com', 18),
-('lorenzocavagnaro14@gmail.com', 22),
-('lorenzocavagnaro14@gmail.com', 42),
-('lorenzocavagnaro14@gmail.com', 62);
 
 -- --------------------------------------------------------
 
@@ -781,12 +785,19 @@ ALTER TABLE `opera`
   ADD KEY `img` (`img`);
 
 --
+-- Indici per le tabelle `ruolo`
+--
+ALTER TABLE `ruolo`
+  ADD PRIMARY KEY (`nome`);
+
+--
 -- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`email`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `profilo` (`profilo`);
+  ADD KEY `profilo` (`profilo`),
+  ADD KEY `ruolo` (`ruolo`);
 
 --
 -- Indici per le tabelle `utenteleggecapitolo`
@@ -838,7 +849,7 @@ ALTER TABLE `autore`
 -- AUTO_INCREMENT per la tabella `commentiarticolo`
 --
 ALTER TABLE `commentiarticolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `edizione`
@@ -911,7 +922,8 @@ ALTER TABLE `opera`
 -- Limiti per la tabella `utente`
 --
 ALTER TABLE `utente`
-  ADD CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`profilo`) REFERENCES `img` (`id`);
+  ADD CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`profilo`) REFERENCES `img` (`id`),
+  ADD CONSTRAINT `utente_ibfk_2` FOREIGN KEY (`ruolo`) REFERENCES `ruolo` (`nome`);
 
 --
 -- Limiti per la tabella `utenteleggecapitolo`
