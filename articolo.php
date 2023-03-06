@@ -85,10 +85,53 @@
         <?php
             riempiArticolo();
         ?>
+        <?php
+            if(!empty($_SESSION['email'])){
+                $connessione=connessione();
+                $query="SELECT path from img,utente where id=profilo and email='$_SESSION[email]'";
+                $risultati=$connessione->query($query);
+                while($row=$risultati->fetch_assoc()){
+                    echo "<section style='background-color: #292b2c;'>
+                <div class='container my-5 py-5 text-dark'>
+                  <div class='row d-flex justify-content-center'>
+                    <div class='col-md-10 col-lg-8 col-xl-6'>
+                      <div class='card'>
+                        <div class='card-body p-4'>
+                          <div class='d-flex flex-start w-100'>
+                            <img class='rounded-circle shadow-1-strong me-3'
+                              src='$row[path]' alt='avatar' width='65'
+                              height='65' />
+                            <div class='w-100'>
+                              <h5>Commenta</h5>
+                              <div class='form-outline'>
+                                <textarea class='form-control' id='textAreaExample' rows='4'></textarea>
+                                <label class='form-label' for='textAreaExample'>What is your view?</label>
+                              </div>
+                              <div class='d-flex justify-content-between mt-3'>
+                                <button type='button' class='btn btn-success'>Cancella</button>
+                                <button type='button' class='btn btn-danger'>
+                                  Send <i class='fas fa-long-arrow-alt-right ms-1'></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>";
+                  }                
+            };
+
+        ?>
         <div class="d-flex flex-column align-items-center my-3">
+            
         <?php
             commentiArticolo();
+            
         ?>
+        
         </div>
          <!--footer-->
             <footer class="py-3 my-4 ">
@@ -101,7 +144,7 @@
             </ul>
             <p class="text-center text-warning">&copy; 2022 Company, Inc</p>
             </footer>
-
+            
         <!--fine footer-->
     </body>
 </html>

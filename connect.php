@@ -24,17 +24,19 @@
       }else{
         $email=trim($_POST["email"]);
         $pw=$_POST["pw"];
-        $prot=$connessione->prepare("SELECT * FROM utente where email=? and pw=?");
-        $prot->bind_param("ss",$email,$pw);
+        $prot=$connessione->prepare("SELECT * FROM utente where email=?");
+        $prot->bind_param("s",$email);
         $prot->execute();
         $risultati=$prot->get_result();
         if($risultati->num_rows >0){
-          while($row=$risultati->fetch_assoc()){
-            $_SESSION["email"]=$row['email'];
-            $_SESSION["username"]=$row['username'];
-            $_SESSION["ruolo"]=$row['ruolo'];
-          }
-          header("location:loggato.php");
+          while($row=$risultati->fetch_assoc()){            
+            if(password_verify($pw,$row['pw'])){
+              $_SESSION["email"]=$row['email'];
+              $_SESSION["username"]=$row['username'];
+              $_SESSION["ruolo"]=$row['ruolo'];
+              header("location:loggato.php");
+            }
+          }          
         }else{
           $message="<p class='text-danger'>email o password inserita non corretta</p>";
           echo $message;
@@ -52,7 +54,7 @@
       }else{
         $email=trim($_POST["email"]);
         $username=trim($_POST["username"]);
-        $pw=$_POST["pw"];
+        $pw=$_POST['pw'];
         $cpw=$_POST["cpw"];
         if(strcmp($pw,$cpw)!=0){// controllo corrispondenza password
           $message="<p class='text-danger'>Le password non corrispondono</p>"; 
@@ -72,6 +74,7 @@
                       }
                   }
               }else{
+                  $pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
                   $prot=$connessione->prepare("INSERT INTO utente (email,username,pw) VALUES(?,?,?)");
                   $prot->bind_param("sss",$email,$username,$pw);
                   $prot->execute();
@@ -279,11 +282,12 @@
     $connessione=connessione();
     $query="SELECT * from commentiArticolo where articolo=$_GET[id]";
     $risultati=$connessione->query($query);    
-    while($row=$risultati->fetch_assoc()){      
-      $result=$connessione->query("SELECT username from utente where email=$row[utente]");
-      $utente=$result->fetch_array();
+    while($row=$risultati->fetch_assoc()){
+      $query="SELECT username from utente where email='$row[utente]'";
+      $result=$connessione->query($query);
+      $utente=$result->fetch_array()[0];
       echo "<div class='p-2'>
-        <h5>$utente=$result->fetch_array()[username]</h5>
+        <h5>$utente</h5>
         <p>$row[contenuto]</p>
       </div>";
     }
