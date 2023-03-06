@@ -48,6 +48,25 @@
                 </p>
             </div>
             <div class="position-absolute top-50 end-0 pe-5">
+                <div class="form-check form-switch">
+                    <?php
+                        if(!empty($_SESSION['email'])){
+                            $connessione=connessione();
+                            $query="SELECT * from utente,utentesegueopera where opera='$_GET[id]' and utente='$_SESSION[email]' ";
+                            $risultati=$connessione->query($query);
+                            $row=$risultati->fetch_assoc();
+                            if($risultati->num_rows>0){
+                                echo "<input class='form-check-input' type='checkbox' id='segui' checked>
+                                <label class='form-check-label' for='segui'>Segui</label>";
+                            }else{
+                                echo "<input class='form-check-input' type='checkbox' id='segui'>
+                                <label class='form-check-label' for='segui'>Segui</label>";
+                            }                            
+                            $connessione->close();
+                        }
+                    ?>
+                    
+                </div>
                 <label for="edizioni">Edizioni:</label>
                 <select class="form-select" name="edizioni" aria-label="Default select example" style="width:15vw">
                     <?php
@@ -67,12 +86,12 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="d-flex flex-row">
                 <?php
                     ?>
                 </div>
-            </div>
-            
+            </div>            
         </div>
         
         <!--scheda pagine
