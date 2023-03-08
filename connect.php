@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <?php 
   session_start();
 
@@ -124,9 +125,6 @@
         $connessione=connessione();
         $query="SELECT * from articolo order by id desc";
         $risultati=$connessione->query($query);
-        if($risultati->num_rows>18){
-
-        }else{
           $i=0;
           $j=-2;
           while($card=$risultati->fetch_assoc()){
@@ -158,8 +156,7 @@
               echo "</div>";
             }
             $i++;
-            $j++;
-        }       
+            $j++;      
       }
         $connessione->close();
     }
@@ -230,6 +227,10 @@
 
         $connessione->close();
     }
+    if(isset($_REQUEST['action'])){
+        riempiCard();
+    }
+
     if(isset($_REQUEST['articolo'])){
         $connessione=connessione();
         if(empty($_POST['titolo'] )|| empty($_POST['contenuto'] )){
@@ -265,12 +266,51 @@
       $connessione->close();
     }
 
-    
+    function riempiCardSelect($input){
+        $connessione=connessione();        
+        $query="SELECT * FROM articolo where titolo LIKE '{$input}%'";
+        $risultati=$connessione->query($query);
+          $i=0;
+          $j=-2;
+          if($risultati->num_rows >0){
+            while($card=$risultati->fetch_assoc()){
+              if($i%3==0 || $i==0){
+                echo "<div class='row mb-3'>";
+              }
+              $query="SELECT path from img where id='$card[img]'";
+              $result=$connessione->query($query);
+              $img = $result->fetch_array()[0];
+              //stampa card
+                echo "              
+                  <div class='col-auto bg-dark'>
+                    <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
+                              <div class='row g-0'>
+                                  <div class='col-md-4'>
+                                      <img src=\"$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
+                                  </div>
+                                  <div class='col-md-8'>
+                                      <div class='card-body bg-warning text-dark '>
+                                          <h5 class='card-title '>$card[titolo]</h5>
+                                          <p class='card-text '>$card[contenuto]</p>                     
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>";   
+                if($j%3==0){
+                echo "</div>";
+              }
+              $i++;
+              $j++;      
+          }
+        }else{
+        echo "<h6 class='text-danger'>Nessun articolo trovato</h6>";
+        } 
+        $connessione->close();
+    }
 
-    if(isset($_REQUEST['ricerca'])){
-      $connessione=connessione();
-      
-      $connessione->close();
+    if(isset($_POST['ricerca'])){
+      riempiCardSelect($_POST['ricerca']);
   }
 
   function riempiEdizioni(){
