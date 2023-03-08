@@ -45,8 +45,8 @@
                                  }                                
                             else{
                                 echo '<div class="text-end">
-                                <button type="button" onclick="location.href=\'login.php\'" class="btn btn-outline-light mb-1 " style="min-width:5vw">Login</button>
-                                <button type="button" onclick="location.href=\'registrazione.php\'" class="btn btn-warning" style="min-width:5vw">Registrati</button>
+                                <button type="button" onclick="location.href=\'login.php\'" class="btn btn-outline-light " style="min-width:5vw;">Login</button>
+                                <button type="button" onclick="location.href=\'registrazione.php\'" class="btn btn-warning" style="min-width:5vw;">Registrati</button>
                             </div>';
                             }?>
                     </button>
@@ -105,7 +105,7 @@
                               <h5>Commenta</h5>
                               <form method='post'>
                               <div class='form-outline'>
-                                <textarea class='form-control' id='textAreaExample' maxlenght='16777215' rows='4' name='contenuto'></textarea>
+                                <textarea class='form-control' id='textAreaExample' maxlenght='16777215' rows='4' name='contenuto' required></textarea>
                                 <label class='form-label' for='textAreaExample'>What is your view?</label>
                               </div>
                               <div class='d-flex justify-content-between mt-3'>

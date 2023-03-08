@@ -69,10 +69,12 @@
               foreach($risultati as $data){
                   if(strcmp($data["email"],$_POST["email"])==0){
                     $message="<p class='text-danger'>email gia' in uso</p>"; 
+                    echo $message;
                     break;
                   }
                   if(strcmp($data["username"],$_POST["username"])==0){
                     $message="<p class='text-danger'>username gia' in uso</p>"; 
+                    echo $message;
                     break;
                   }
               }
@@ -286,13 +288,37 @@
     $query="SELECT * from commentiArticolo where articolo=$_GET[id]";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
-      $query="SELECT username from utente where email='$row[utente]'";
+      $query="SELECT username,path from utente,img where email='$row[utente]' and id=profilo";
       $result=$connessione->query($query);
-      $utente=$result->fetch_array()[0];
-      echo "<div class='p-2'>
-        <h5>$utente</h5>
-        <p>$row[contenuto]</p>
-      </div>";
+      $arr=$result->fetch_assoc();
+      $utente=$arr['username'];
+      echo "<div class='card mb-3'>
+      <div class='card-body'>
+        <div class='d-flex flex-start'>
+          <img class='rounded-circle shadow-1-strong me-3'
+            src='$arr[path]' alt='avatar' width='40'
+            height='40' />
+          <div class='w-100'>
+            <div class='d-flex justify-content-between align-items-center mb-3'>
+              <h6 class='text-primary fw-bold mb-0'>
+                $utente
+                <span class='text-dark ms-2'>$row[contenuto]</span>
+              </h6>
+              <p class='mb-0'>2 days ago</p>
+            </div>
+            <div class='d-flex justify-content-between align-items-center'>
+              <p class='small mb-0' style='color: #aaa;'>
+                <a href='#!' class='link-grey'>Reply</a> 
+              </p>
+              <div class='d-flex flex-row'>
+                <i class='fas fa-star text-warning me-2'></i>
+                <i class='far fa-check-circle' style='color: #aaa;'></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>";
     }
     $connessione->close();
   }
