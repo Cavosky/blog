@@ -60,33 +60,28 @@
           $message="<p class='text-danger'>Le password non corrispondono</p>"; 
           echo $message;
           }else{// controllo univocita' email e username
-            try{
-              $query="SELECT email,username from utente where email=? or username=?";
-              $prot=$connessione->prepare($query);
-              $prot->bind_param("ss",$email,$username);
-              $prot->execute();
-              $risultati=$prot->get_result();
-              if($risultati->num_rows>0){
-                foreach($risultati as $data){
-                    if(strcmp($data["email"],$_POST["email"])==0){
-                      $message="<p class='text-danger'>email gia' in uso</p>"; 
-                      break;
-                    }
-                    if(strcmp($data["username"],$_POST["username"])==0){
-                      $message="<p class='text-danger'>username gia' in uso</p>"; 
-                      break;
-                    }
-                }
-              }else{
-                $pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
-                $prot=$connessione->prepare("INSERT INTO utente (email,username,pw) VALUES(?,?,?)");
-                $prot->bind_param("sss",$email,$username,$pw);
-                $prot->execute();
-                header("Location:login.php");
+            $query="SELECT email,username from utente where email=? or username=?";
+            $prot=$connessione->prepare($query);
+            $prot->bind_param("ss",$email,$username);
+            $prot->execute();
+            $risultati=$prot->get_result();
+            if($risultati->num_rows>0){
+              foreach($risultati as $data){
+                  if(strcmp($data["email"],$_POST["email"])==0){
+                    $message="<p class='text-danger'>email gia' in uso</p>"; 
+                    break;
+                  }
+                  if(strcmp($data["username"],$_POST["username"])==0){
+                    $message="<p class='text-danger'>username gia' in uso</p>"; 
+                    break;
+                  }
               }
-            }catch(Exception $e){
-              $message="<p class='text-danger'>Errore</p>"; 
-              echo $message;
+            }else{
+              $pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
+              $prot=$connessione->prepare("INSERT INTO utente (email,username,pw) VALUES(?,?,?)");
+              $prot->bind_param("sss",$email,$username,$pw);
+              $prot->execute();
+              header("Location:login.php");
             }
           }
       }
@@ -301,4 +296,14 @@
     }
     $connessione->close();
   }
+
+  if(isset($_REQUEST['inviacommentoarticolo'])){
+    $connessione=connessione();
+    $query="INSERT INTO commentiarticolo (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
+    $prot=$connessione->prepare($query);
+    $prot->bind_param("s",$_POST['contenuto']);
+    $prot->execute();
+    header("location.href:articolo.php?$_GET[id]#sezioneCommenti");
+    $connessione->close();
+}
   ?>

@@ -91,7 +91,7 @@
                 $query="SELECT path from img,utente where id=profilo and email='$_SESSION[email]'";
                 $risultati=$connessione->query($query);
                 while($row=$risultati->fetch_assoc()){
-                    echo "<section style='background-color: #292b2c;'>
+                    echo "<section id='sezioneCommenti'>
                 <div class='container my-5 py-5 text-dark'>
                   <div class='row d-flex justify-content-center'>
                     <div class='col-md-10 col-lg-8 col-xl-6'>
@@ -103,16 +103,18 @@
                               height='65' />
                             <div class='w-100'>
                               <h5>Commenta</h5>
+                              <form method='post'>
                               <div class='form-outline'>
-                                <textarea class='form-control' id='textAreaExample' rows='4'></textarea>
+                                <textarea class='form-control' id='textAreaExample' maxlenght='16777215' rows='4' name='contenuto'></textarea>
                                 <label class='form-label' for='textAreaExample'>What is your view?</label>
                               </div>
                               <div class='d-flex justify-content-between mt-3'>
-                                <button type='button' class='btn btn-success'>Cancella</button>
-                                <button type='button' class='btn btn-danger'>
+                                <button type='button' class='btn btn-danger'>Cancella</button>
+                                <button type='submit' class='btn btn-success' name='inviacommentoarticolo'>
                                   Send <i class='fas fa-long-arrow-alt-right ms-1'></i>
                                 </button>
                               </div>
+                              </form>
                             </div>
                           </div>
                         </div>
