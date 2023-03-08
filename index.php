@@ -29,7 +29,7 @@
                                 $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>
                 </a>
                 <form class="d-flex" role="search" method="post">
-                    <input class="form-control m-3" type="search" placeholder="Naviga tra Articoli" id="inputRicerca" aria-label="Cerca" style="height:5vh">                   
+                    <input class="form-control m-3" type="text" placeholder="Naviga tra Articoli" id="inputRicerca" aria-label="Cerca" style="height:5vh">                   
                     <div class="text-end">
                         <button type="button" onclick="location.href='login.php'" class="btn btn-outline-light mb-1 " style="min-width:5vw">Login</button>
                         <button type="button" onclick="location.href='registrazione.php'" class="btn btn-warning" style="min-width:5vw">Registrati</button>
@@ -39,34 +39,36 @@
         </nav>
         <!--fine navbar-->
         <!--grid-->
-        <div class="container text-center mt-5" id="articoli">            
-        <?php riempiCard() ?>
-        <script type="text/javascript">
-            $(document).ready(function(){                 
-                $("#inputRicerca").keyup(function(){
-                    var input=$(this).val();
-                    if(input != ""){
-                        $.ajax({
-                            url:"connect.php",
-                            method:"POST",
-                            data:{ricerca:input},
+        <div class="container text-center mt-5" >
+            <div id="articoli">        
+                <?php riempiCard() ?>
+                <script type="text/javascript">
+                    $(document).ready(function(){                 
+                        $("#inputRicerca").keyup(function(){
+                            var input=$(this).val();
+                            if(input != ""){
+                                $.ajax({
+                                    url:"connect.php",
+                                    method:"POST",
+                                    data:{ricerca:input},
 
-                            success:function(data){
-                                $("#articoli").html(data);
+                                    success:function(data){
+                                        $("#articoli").html(data);
+                                    }
+                                });
+                            }else{
+                                $.ajax({ url: 'connect.php',
+                                    data: {action: ''},
+                                    type: 'post',
+                                    success: function(output) {
+                                                $("#articoli").html(output)
+                                            }
+                                    });                       
                             }
                         });
-                    }else{
-                        $.ajax({ url: 'connect.php',
-                            data: {action: ''},
-                            type: 'post',
-                            success: function(output) {
-                                        $("#articoli").html(output)
-                                    }
-                            });                       
-                    }
-                });
-            });
-        </script>
+                    });
+                </script>
+            </div>  
          </div>
         <!--fine grid-->
         <!--scheda pagine

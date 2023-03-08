@@ -14,13 +14,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="stile.css">
         <title>LibreComics</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </head>
     <body class="bg-dark text-light z-0">
         <!--navbar-->
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100" style="min-height:10vh;max-height:10vh">
-            <div class="container-fluid">     
+            <div class="container-fluid">                
                 <a class="navbar-brand text-warning fs-1" href="loggato.php">
                 <img src=" <?php 
                                 $connessione= connessione();
@@ -31,7 +32,10 @@
                                 $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>   
                 </a>
                 <form class="d-flex" role="search">
-                <div class="text-end"> 
+                    <input class="form-control mx-3 mt-3" type="text" placeholder="Naviga tra Opere" id="inputRicerca" aria-label="Cerca" style="height:5vh">
+                </form>
+                <div class="text-end">
+                    
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="<?php 
                                 $connessione=connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
@@ -86,11 +90,39 @@
         </nav>
         <!--fine navbar-->
         <!--grid-->
-        <div class="container text-center t-20 mt-5">
+        <div class="container text-center t-20 mt-5 w-100 p-0" >
             <h1 class="text-light mb-5">Opere</h1>
-            <?php
-                riempiOpere();
-            ?>
+                <div id="opere">
+                    <?php
+                        riempiOpere();
+                    ?>
+                    <script type="text/javascript">
+                    $(document).ready(function(){                 
+                        $("#inputRicerca").keyup(function(){
+                            var input=$(this).val();
+                            if(input != ""){
+                                $.ajax({
+                                    url:"connect.php",
+                                    method:"POST",
+                                    data:{opere:input},
+
+                                    success:function(data){
+                                        $("#opere").html(data);
+                                    }
+                                });
+                            }else{
+                                $.ajax({ url: 'connect.php',
+                                    data: {opereTutte: ''},
+                                    type: 'post',
+                                    success: function(output) {
+                                                $("#opere").html(output)
+                                            }
+                                    });                       
+                            }
+                        });
+                    });
+                </script>
+            </div>
         </div>
         <!--fine grid-->
         
@@ -113,7 +145,7 @@
         </nav>
         !--fine scheda pagine-->
          <!--footer-->
-            <footer class="py-3 my-4  ">
+            <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="loggato.php" class="nav-link px-2 text-warning">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>

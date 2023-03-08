@@ -168,7 +168,7 @@
         $j=-2;
         while($opera=$risultati->fetch_assoc()){
             if($i%3==0 || $i==0){
-              echo "<div class='row my-3'>";
+              echo "<div class='row my-3 align-items-center w-100'>";
             }
             $query="SELECT path from img where id='$opera[img]'";
             $result=$connessione->query($query);
@@ -176,7 +176,7 @@
             //stampa card
               echo "
                   <div class='col'>
-                    <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 18rem;'>
+                    <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
                         <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
@@ -192,6 +192,50 @@
         }       
 
         $connessione->close();
+    }
+
+      function riempiOpereSelected($input){
+        $connessione=connessione();
+        $query="SELECT * from opera where titolo like '%{$input}%'order by titolo asc";
+        $risultati=$connessione->query($query);
+        $i=0;
+        $j=-2;
+        if($risultati->num_rows >0){
+          while($opera=$risultati->fetch_assoc()){
+              if($i%3==0 || $i==0){
+                echo "<div class='row my-3 align-items-center'>";
+              }
+              $query="SELECT path from img where id='$opera[img]'";
+              $result=$connessione->query($query);
+              $img = $result->fetch_array()[0];
+              //stampa card
+                echo "
+                    <div class='col'>
+                      <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
+                          <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
+                          <div class='card-body'>
+                              <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
+                          </div>
+                      </div>
+                  </div>
+                ";
+                if($j%3==0){
+                echo "</div>";
+              }
+              $i++;
+              $j++;
+          }
+        }else{
+          echo "<h6 class='text-danger'>Nessun articolo trovato</h6>";
+        }
+        $connessione->close();
+    }
+
+    if(isset($_POST['opere'])){
+        riempiOpereSelected($_POST['opere']);
+    }
+    if(isset($_POST['opereTutte'])){
+        riempiOpere();
     }
 
     function riempiSeguite(){
@@ -268,7 +312,7 @@
 
     function riempiCardSelect($input){
         $connessione=connessione();        
-        $query="SELECT * FROM articolo where titolo LIKE '{$input}%'";
+        $query="SELECT * FROM articolo where titolo LIKE '{$input}%' or contenuto LIKE '%{$input}%'";
         $risultati=$connessione->query($query);
           $i=0;
           $j=-2;
