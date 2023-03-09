@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 06, 2023 alle 14:06
--- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.0.25
+-- Creato il: Mar 09, 2023 alle 11:13
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `articolo` (
   `titolo` varchar(255) NOT NULL,
   `contenuto` mediumtext NOT NULL,
   `img` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `articolo`
@@ -56,7 +56,7 @@ CREATE TABLE `autore` (
   `nome` varchar(255) NOT NULL,
   `cognome` varchar(255) NOT NULL,
   `nazionalita` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `autore`
@@ -90,7 +90,7 @@ CREATE TABLE `autorescriveopera` (
   `opera` int(11) NOT NULL,
   `disegni` tinyint(1) DEFAULT 1,
   `storia` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `autorescriveopera`
@@ -137,7 +137,7 @@ INSERT INTO `autorescriveopera` (`autore`, `opera`, `disegni`, `storia`) VALUES
 CREATE TABLE `capitolo` (
   `numeroCapitolo` int(11) NOT NULL,
   `titolo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `capitolo`
@@ -160,7 +160,7 @@ CREATE TABLE `commenti` (
   `utente` varchar(255) NOT NULL,
   `opera` int(11) NOT NULL,
   `testo` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -172,15 +172,10 @@ CREATE TABLE `commentiarticolo` (
   `id` int(11) NOT NULL,
   `utente` varchar(255) NOT NULL,
   `articolo` int(11) NOT NULL,
-  `contenuto` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `commentiarticolo`
---
-
-INSERT INTO `commentiarticolo` (`id`, `utente`, `articolo`, `contenuto`) VALUES
-(2, 'lorenzocavagnaro14@gmail.com', 5, 'briga merda');
+  `contenuto` mediumtext NOT NULL,
+  `risponde` int(11) DEFAULT NULL,
+  `pubblicazione` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,7 +187,7 @@ CREATE TABLE `edizione` (
   `id` int(11) NOT NULL,
   `opera` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `edizione`
@@ -212,7 +207,7 @@ INSERT INTO `edizione` (`id`, `opera`, `nome`) VALUES
 CREATE TABLE `img` (
   `id` int(11) NOT NULL,
   `path` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `img`
@@ -235,7 +230,7 @@ INSERT INTO `img` (`id`, `path`) VALUES
 CREATE TABLE `nazionalita` (
   `nome` varchar(255) NOT NULL,
   `nazione` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `nazionalita`
@@ -505,7 +500,7 @@ CREATE TABLE `opera` (
   `anno_fine` int(11) DEFAULT NULL,
   `img` int(11) NOT NULL DEFAULT 1,
   `trama` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `opera`
@@ -612,7 +607,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 
 CREATE TABLE `ruolo` (
   `nome` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `ruolo`
@@ -635,7 +630,7 @@ CREATE TABLE `utente` (
   `pw` varchar(255) NOT NULL,
   `profilo` int(11) DEFAULT 1,
   `ruolo` varchar(255) DEFAULT 'utente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -653,7 +648,7 @@ INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALU
 CREATE TABLE `utenteleggecapitolo` (
   `utente` varchar(255) NOT NULL,
   `capitolo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -664,7 +659,7 @@ CREATE TABLE `utenteleggecapitolo` (
 CREATE TABLE `utentesegueopera` (
   `utente` varchar(255) NOT NULL,
   `opera` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -676,7 +671,7 @@ CREATE TABLE `volumecapitolo` (
   `edizione` int(11) NOT NULL,
   `volume` int(11) NOT NULL,
   `capitolo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `volumecapitolo`
@@ -702,7 +697,7 @@ CREATE TABLE `volumi` (
   `edizione` int(11) NOT NULL,
   `prezzo` float NOT NULL,
   `copertina` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `volumi`
@@ -756,7 +751,8 @@ ALTER TABLE `commenti`
 ALTER TABLE `commentiarticolo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `utente` (`utente`),
-  ADD KEY `articolo` (`articolo`);
+  ADD KEY `articolo` (`articolo`),
+  ADD KEY `risponde` (`risponde`);
 
 --
 -- Indici per le tabelle `edizione`
@@ -849,7 +845,7 @@ ALTER TABLE `autore`
 -- AUTO_INCREMENT per la tabella `commentiarticolo`
 --
 ALTER TABLE `commentiarticolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT per la tabella `edizione`
@@ -904,7 +900,8 @@ ALTER TABLE `commenti`
 --
 ALTER TABLE `commentiarticolo`
   ADD CONSTRAINT `commentiarticolo_ibfk_1` FOREIGN KEY (`utente`) REFERENCES `utente` (`email`),
-  ADD CONSTRAINT `commentiarticolo_ibfk_2` FOREIGN KEY (`articolo`) REFERENCES `articolo` (`id`);
+  ADD CONSTRAINT `commentiarticolo_ibfk_2` FOREIGN KEY (`articolo`) REFERENCES `articolo` (`id`),
+  ADD CONSTRAINT `commentiarticolo_ibfk_3` FOREIGN KEY (`risponde`) REFERENCES `commentiarticolo` (`id`);
 
 --
 -- Limiti per la tabella `edizione`
