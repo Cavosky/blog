@@ -112,7 +112,7 @@
         </nav>
         !--fine scheda pagine-->
          <!--footer-->
-            <footer class="py-3 my-4  z-0">
+            <footer class="py-3 my-3 z-0">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="loggato.php" class="nav-link px-2 text-warning">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>

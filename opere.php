@@ -32,7 +32,7 @@
                                 $connessione->close();?>" class="rounded float-start border border-warning me-2" width="50" height="50" alt="..."><h1>ibreComics</h1>   
                 </a>
                 <form class="d-flex" role="search">
-                    <input class="form-control mx-3 mt-3" type="text" placeholder="Naviga tra Opere" id="inputRicerca" aria-label="Cerca" style="height:5vh">
+                    <input class="form-control px-5 mt-3" type="text" placeholder="Naviga tra Opere" id="inputRicerca" aria-label="Cerca" style="height:5vh">
                 </form>
                 <div class="text-end">
                     
@@ -90,7 +90,7 @@
         </nav>
         <!--fine navbar-->
         <!--grid-->
-        <div class="container text-center t-20 mt-5 w-100 p-0" >
+        <div class="container text-center d-flex flex-column align-items-center t-20 mt-5 w-100 p-0" >
             <h1 class="text-light mb-5">Opere</h1>
                 <div id="opere">
                     <?php

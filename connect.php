@@ -107,8 +107,8 @@
           $contenuto=$_POST['contenuto'];
           if(empty(($_FILES['copertina']['name']))) {
               $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");          
-              $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");
-              $prot->bind_param("sss",$titolo,$contenuto,$pw);
+              $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
+              $prot->bind_param("ss",$titolo,$contenuto);
               $prot->execute(); 
           }/*else{
             $img=$_FILES['copertina'];
@@ -168,7 +168,7 @@
         $j=-2;
         while($opera=$risultati->fetch_assoc()){
             if($i%3==0 || $i==0){
-              echo "<div class='row my-3 align-items-center w-100'>";
+              echo "<div class='row my-3 gx-5 align-items-center w-100'>";
             }
             $query="SELECT path from img where id='$opera[img]'";
             $result=$connessione->query($query);
@@ -300,7 +300,7 @@
       $result=$connessione->query($query);
       $art = $result->fetch_array();
       echo "<div class='container d-flex justify-content-center pt-5'>
-      <h1 class='text-white pb-4 '>$art[titolo]</h1>
+      <h1 class='text-white text-center  pb-4 '>$art[titolo]</h1>
       </div>
       <img alt='prova' class='border border-warning position-absolute m-5  ' style='max-width: 20vw ;max-height:35vh' src='prova.jpg' >
       <div class='container  border justify-content-center pt-5 ' style='min-height:60vh;max-width:37vw'>
