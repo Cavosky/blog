@@ -105,8 +105,7 @@
         }else{
           $titolo=$_POST['titolo'];
           $contenuto=$_POST['contenuto'];
-          if(empty(($_FILES['copertina']['name']))) {
-              $connessione->query("INSERT into articolo (titolo,contenuto,img) values ('$titolo','$contenuto',(select id from img where path='prova.jpg'))");          
+          if(empty(($_FILES['copertina']['name']))) {      
               $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
               $prot->bind_param("ss",$titolo,$contenuto);
               $prot->execute(); 
@@ -141,7 +140,7 @@
                   <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
                             <div class='row g-0'>
                                 <div class='col-md-4'>
-                                    <img src=\"$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
+                                    <img src=\"media/$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
                                 </div>
                                 <div class='col-md-8'>
                                     <div class='card-body bg-warning text-dark '>
@@ -296,14 +295,14 @@
 
     function riempiArticolo(){
       $connessione=connessione();
-      $query="SELECT * from articolo where id='$_GET[id]'";
+      $query="SELECT * from articolo,img where articolo.id='$_GET[id]' and articolo.img=img.id";
       $result=$connessione->query($query);
       $art = $result->fetch_array();
       echo "<div class='container d-flex justify-content-center pt-5'>
       <h1 class='text-white text-center  pb-4 '>$art[titolo]</h1>
       </div>
-      <img alt='prova' class='border border-warning position-absolute m-5  ' style='max-width: 20vw ;max-height:35vh' src='prova.jpg' >
-      <div class='container  border justify-content-center pt-5 ' style='min-height:60vh;max-width:37vw'>
+      <img alt='prova' class='border border-warning position-absolute m-5  ' style='max-width: 20vw ;max-height:35vh' src='media/$art[path]' >
+      <div class='container  border justify-content-center text-center pt-5 ' style='min-height:60vh;max-width:37vw'>
       <p class='text-white '>$art[contenuto]</p>
 
     </div>";
@@ -330,7 +329,7 @@
                     <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
                               <div class='row g-0'>
                                   <div class='col-md-4'>
-                                      <img src=\"$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
+                                      <img src=\"media/$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
                                   </div>
                                   <div class='col-md-8'>
                                       <div class='card-body bg-warning text-dark '>
