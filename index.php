@@ -20,7 +20,7 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100 " style="max-height:10vh">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1 pb-3">
-                    <img src=" <?php 
+                    <img src="media/<?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';
                                 $risultati=$connessione->query($query);
