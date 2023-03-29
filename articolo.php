@@ -18,7 +18,7 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100" style="height:10vh">
             <div class="container-fluid">     
                 <a class="navbar-brand text-warning fs-1" href="loggato.php">
-                <img src=" <?php 
+                <img src="media/<?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';
                                 $risultati=$connessione->query($query);
@@ -37,7 +37,7 @@
                         $row=$risultati->fetch_assoc();
                         $img=implode($row);
                         echo"
-                        <img class='rounded-circle mx-3' width='50' height='50' alt='avatar' name='icona' src='$img ' />
+                        <img class='rounded-circle mx-3' width='50' height='50' alt='avatar' name='icona' src='media/$img ' />
                      <button class='btn text-warning ' type='button' data-bs-toggle='offcanvas' data-bs-target='#staticBackdrop' aria-controls='staticBackdrop'>
                         
                                   $_SESSION[username]";
@@ -99,7 +99,7 @@
                         <div class='card-body p-4'>
                           <div class='d-flex flex-start w-100'>
                             <img class='rounded-circle shadow-1-strong me-3'
-                              src='$row[path]' alt='avatar' width='65'
+                              src='media/$row[path]' alt='avatar' width='65'
                               height='65' />
                             <div class='w-100'>
                               <h5>Commenta</h5>

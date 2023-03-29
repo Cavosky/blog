@@ -379,7 +379,7 @@
       <div class='card-body'>
         <div class='d-flex flex-start'>
           <img class='rounded-circle shadow-1-strong me-3'
-            src='$arr[path]' alt='avatar' width='40'
+            src='media/$arr[path]' alt='avatar' width='40'
             height='40' />
           <div class='w-100'>
             <div class='d-flex justify-content-between align-items-center mb-3'>

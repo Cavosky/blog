@@ -23,7 +23,7 @@
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100" style="min-height:10vh;max-height:10vh">
             <div class="container-fluid">                
                 <a class="navbar-brand text-warning fs-1" href="loggato.php">
-                <img src=" <?php 
+                <img src="media/<?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';
                                 $risultati=$connessione->query($query);
@@ -36,7 +36,7 @@
                 </form>
                 <div class="text-end">
                     
-                    <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="<?php 
+                    <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="media/<?php 
                                 $connessione=connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
                                 $risultati=$connessione->query($query);
@@ -52,8 +52,7 @@
                     <div class="offcanvas text-bg-dark offcanvas-end " data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                         <div class="offcanvas-header">
                             <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
-                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="
-                            <?php 
+                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="media/<?php 
                                 $connessione= connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
                                 $risultati=$connessione->query($query);
