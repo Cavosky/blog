@@ -175,13 +175,13 @@
             //stampa card
               echo "
                   <div class='col'>
-                    <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
-                        <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
-                        <div class='card-body'>
-                            <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
-                        </div>
-                    </div>
-                </div>
+                      <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
+                          <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
+                          <div class='card-body'>
+                              <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
+                          </div>
+                      </div>
+                  </div>
               ";
               if($j%3==0){
               echo "</div>";
@@ -195,8 +195,12 @@
 
       function riempiOpereSelected($input){
         $connessione=connessione();
-        $query="SELECT * from opera where titolo like '%{$input}%'order by titolo asc";
-        $risultati=$connessione->query($query);
+        $param="%{$input}%";    
+        $query="SELECT * FROM opera where titolo LIKE ? or trama LIKE ?";
+        $prot=$connessione->prepare($query);
+        $prot->bind_param("ss",$param,$param);        
+        $prot->execute();
+        $risultati=$prot->get_result();
         $i=0;
         $j=-2;
         if($risultati->num_rows >0){
@@ -310,9 +314,13 @@
     }
 
     function riempiCardSelect($input){
-        $connessione=connessione();        
-        $query="SELECT * FROM articolo where titolo LIKE '{$input}%' or contenuto LIKE '%{$input}%'";
-        $risultati=$connessione->query($query);
+        $connessione=connessione();
+        $param="%{$input}%";    
+        $query="SELECT * FROM articolo where titolo LIKE ? or contenuto LIKE ?";
+        $prot=$connessione->prepare($query);
+        $prot->bind_param("ss",$param,$param);        
+        $prot->execute();
+        $risultati=$prot->get_result();
           $i=0;
           $j=-2;
           if($risultati->num_rows >0){

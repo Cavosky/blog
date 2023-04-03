@@ -106,7 +106,6 @@
                               <form method='post'>
                               <div class='form-outline'>
                                 <textarea class='form-control' id='textAreaExample' maxlenght='16777215' rows='4' name='contenuto' required></textarea>
-                                <label class='form-label' for='textAreaExample'>What is your view?</label>
                               </div>
                               <div class='d-flex justify-content-between mt-3'>
                                 <button type='button' class='btn btn-danger'>Cancella</button>

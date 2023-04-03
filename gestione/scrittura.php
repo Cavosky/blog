@@ -1,7 +1,7 @@
 <?php
-  include 'connect.php';
+  include '../connect.php';
   if(!isset($_SESSION['email']) || $_SESSION['ruolo']!='admin'){
-        header('location:index.php');
+        header('location:../index.php');
     }
 ?>
 <!doctype html>

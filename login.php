@@ -19,7 +19,7 @@
 
     <button type="button" onclick='location.href="index.php"' class="btn btn-primary t-0 s-0"><i class="fa-solid fa-arrow-left"></i></button>
     <div class="container position-relative w-30 h-40 text-warning">
-    <img src=" <?php 
+    <img src="media/<?php 
                                 $connessione= connessione();
                                 $query='SELECT path from img where id=0';
                                 $risultati=$connessione->query($query);
