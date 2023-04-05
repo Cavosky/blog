@@ -113,7 +113,7 @@
             $img=$_FILES['copertina'];
             $connessione->query("INSERT into articolo (")
           }*/
-          header("location:loggato.php");
+          header("location:../loggato.php");
         }
         $connessione->close();
     }
@@ -376,14 +376,15 @@
 
   function commentiArticolo(){
     $connessione=connessione();
-    $query="SELECT * from commentiArticolo where articolo=$_GET[id]";
+    $query="SELECT * from commentiArticoli where articolo=$_GET[id]";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
       $query="SELECT username,path from utente,img where email='$row[utente]' and id=profilo";
       $result=$connessione->query($query);
       $arr=$result->fetch_assoc();
       $utente=$arr['username'];
-      echo "<div class='card mb-3'>
+      //$data=date_diff(getdate(),$row['pubblicazione']);
+      echo "<div class='card mb-3' style='width:30vw'>
       <div class='card-body'>
         <div class='d-flex flex-start'>
           <img class='rounded-circle shadow-1-strong me-3'
@@ -395,7 +396,7 @@
                 $utente
                 <span class='text-dark ms-2'>$row[contenuto]</span>
               </h6>
-              <p class='mb-0'>2 days ago</p>
+              <p class='mb-0 text-dark'></p>
             </div>
             <div class='d-flex justify-content-between align-items-center'>
               <p class='small mb-0' style='color: #aaa;'>
@@ -416,11 +417,18 @@
 
   if(isset($_REQUEST['inviacommentoarticolo'])){
     $connessione=connessione();
-    $query="INSERT INTO commentiarticolo (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
+    $query="INSERT INTO commentiarticoli (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
     $prot=$connessione->prepare($query);
     $prot->bind_param("s",$_POST['contenuto']);
     $prot->execute();
     header("location.href:articolo.php?$_GET[id]#sezioneCommenti");
     $connessione->close();
-}
+  }
+
+  if(isset($_REQUEST['eliminaArticolo'])){
+    $connessione=connessione();
+    $query="DELETE from articolo where id=$_POST[seleziona]";
+    $connessione->query($query);
+    $connessione->close();
+  }
   ?>
