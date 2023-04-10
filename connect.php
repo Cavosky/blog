@@ -431,4 +431,13 @@
     $connessione->query($query);
     $connessione->close();
   }
+  if(isset($_REQUEST['modificheArticolo'])){
+    $connessione=connessione();
+    $cambio=$_POST['modificaArticolo'];
+    $query="UPDATE  articolo SET titolo=? where id=$_POST[seleziona]";
+    $prot=$connessione->prepare($query);
+    $prot->bind_param("s",$cambio);
+    $prot->execute();
+    $connessione->close();
+  }
   ?>

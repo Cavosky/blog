@@ -23,14 +23,16 @@
         $risultati=$connessione->query($query);        
         while($row=$risultati->fetch_assoc()){
           echo "
-            <input type='radio' name='seleziona' value='$row[id]'>
-            <input class='w-50' name='modificheArticolo' value=\"$row[titolo]\" id='$row[id]'> <br>";
+            <input type='radio' name='seleziona' value='$row[id]' required >
+            <input class='w-50' name='modificaArticolo' value=\"$row[titolo]\" id='$row[id]'> <br>";
         }                   
         $connessione->close();
     ?>
     <button type="submit" name="modificheArticolo">Invia</button>
-    <button type="submit" name="eliminaArticolo">Elimina</button>
-    <button onclick='location.href="scrittura.php"'>Aggiungi Articolo</button>
+    <button type="submit" name="eliminaArticolo">Elimina</button><br>
+    <a href="scrittura.php">Aggiungi Articolo</button><br>
+    <a href="gestione.php">torna alla gestione</button><br>
+    <a href="../loggato.php">torna alla home</button>
     </form>
   </body>
 </html>
