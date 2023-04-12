@@ -419,7 +419,7 @@
     $connessione=connessione();
     $query="INSERT INTO commentiarticoli (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
     $prot=$connessione->prepare($query);
-    $prot->bind_param("s",$_POST['contenuto']);
+    $prot->bind_param("s",strip_tags($_POST['contenuto']));
     $prot->execute();
     header("location.href:articolo.php?$_GET[id]#sezioneCommenti");
     $connessione->close();
@@ -435,6 +435,21 @@
     $connessione=connessione();
     $cambio=$_POST['modificaArticolo'];
     $query="UPDATE  articolo SET titolo=? where id=$_POST[seleziona]";
+    $prot=$connessione->prepare($query);
+    $prot->bind_param("s",$cambio);
+    $prot->execute();
+    $connessione->close();
+  }
+  if(isset($_REQUEST['eliminaUtente'])){
+    $connessione=connessione();
+    $query="DELETE from utente where email='$_POST[email]'";
+    $connessione->query($query);
+    $connessione->close();
+  }
+  if(isset($_REQUEST['modificheUtente'])){
+    $connessione=connessione();
+    $cambio=$_POST['modificaUtente'];
+    $query="UPDATE  utente SET username=? where email='$_POST[email]'";
     $prot=$connessione->prepare($query);
     $prot->bind_param("s",$cambio);
     $prot->execute();

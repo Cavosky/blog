@@ -16,6 +16,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+      function passaggioNome(id){
+        document.getElementById('mod').value=document.getElementById(id).innerHTML;
+      }
+    </script>
     <form method="post">
     <?php
         $connessione= connessione();
@@ -23,11 +28,12 @@
         $risultati=$connessione->query($query);        
         while($row=$risultati->fetch_assoc()){
           echo "
-            <input type='radio' name='seleziona' value='$row[id]' required >
-            <input class='w-50' name='modificaArticolo' value=\"$row[titolo]\" id='$row[id]'> <br>";
+            <input type='radio' name='seleziona' onclick='passaggioNome(\"$row[id]\")' value='$row[id]' required >
+            <p class='w-50' id='$row[id]'>$row[titolo]</p>";
         }                   
         $connessione->close();
     ?>
+    <input name="modificaArticolo" id="mod">
     <button type="submit" name="modificheArticolo">Invia</button>
     <button type="submit" name="eliminaArticolo">Elimina</button><br>
     <a href="scrittura.php">Aggiungi Articolo</button><br>
