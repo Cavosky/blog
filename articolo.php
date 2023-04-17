@@ -54,7 +54,7 @@
                     <div class="offcanvas text-bg-dark offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                         <div class="offcanvas-header">
                             <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
-                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="<?php echo $img?>" />
+                            <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="media/<?php echo $img?>" />
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">

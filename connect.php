@@ -376,41 +376,99 @@
 
   function commentiArticolo(){
     $connessione=connessione();
-    $query="SELECT * from commentiArticoli where articolo=$_GET[id]";
+    $query="SELECT * from commentiArticoli where articolo=$_GET[id] order by pubblicazione desc";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
-      $query="SELECT username,path from utente,img where email='$row[utente]' and id=profilo";
+      $query="SELECT email,username,path from utente,img where email='$row[utente]' and id=profilo";
       $result=$connessione->query($query);
       $arr=$result->fetch_assoc();
       $utente=$arr['username'];
-      //$data=date_diff(getdate(),$row['pubblicazione']);
-      echo "<div class='card mb-3' style='width:30vw'>
-      <div class='card-body'>
-        <div class='d-flex flex-start'>
-          <img class='rounded-circle shadow-1-strong me-3'
-            src='media/$arr[path]' alt='avatar' width='40'
-            height='40' />
-          <div class='w-100'>
-            <div class='d-flex justify-content-between align-items-center mb-3'>
-              <h6 class='text-primary fw-bold mb-0'>
-                $utente
-                <span class='text-dark ms-2'>$row[contenuto]</span>
-              </h6>
-              <p class='mb-0 text-dark'></p>
-            </div>
-            <div class='d-flex justify-content-between align-items-center'>
-              <p class='small mb-0' style='color: #aaa;'>
-                <a href='#!' class='link-grey'>Reply</a> 
-              </p>
-              <div class='d-flex flex-row'>
-                <i class='fas fa-star text-warning me-2'></i>
-                <i class='far fa-check-circle' style='color: #aaa;'></i>
+      if(isset($_SESSION['email'])){
+        if($arr['email']==$_SESSION['email'] || $_SESSION['ruolo']=='admin')
+          echo "<div class='card mb-3' style='width:30vw'>
+          <div class='card-body'>
+            <div class='d-flex flex-start'>
+              <img class='rounded-circle shadow-1-strong me-3'
+                src='media/$arr[path]' alt='avatar' width='40'
+                height='40' />
+              <div class='w-100'>
+                <div class='d-flex justify-content-between align-items-center mb-3'>
+                  <h6 class='text-primary fw-bold mb-0'>
+                    $utente
+                    <span class='text-dark ms-2'>$row[contenuto]</span>
+                  </h6>
+                  <p class='mb-0 text-dark'></p>
+                </div>
+                <div class='d-flex justify-content-between align-items-center'>
+                  <p class='small mb-0' style='color: #aaa;'>
+                    <a href='#!' class='link-grey'>Rispondi</a>
+                    <a href='#!' class='link-danger'>Elimina</a> 
+                  </p>
+                  <div class='d-flex flex-row'>
+                    <i class='fas fa-star text-warning me-2'>$row[pubblicazione]</i>
+                    <i class='far fa-check-circle' style='color: #aaa;'></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>";
+        </div>";
+        else
+          echo "<div class='card mb-3' style='width:30vw'>
+          <div class='card-body'>
+            <div class='d-flex flex-start'>
+              <img class='rounded-circle shadow-1-strong me-3'
+                src='media/$arr[path]' alt='avatar' width='40'
+                height='40' />
+              <div class='w-100'>
+                <div class='d-flex justify-content-between align-items-center mb-3'>
+                  <h6 class='text-primary fw-bold mb-0'>
+                    $utente
+                    <span class='text-dark ms-2'>$row[contenuto]</span>
+                  </h6>
+                  <p class='mb-0 text-dark'></p>
+                </div>
+                <div class='d-flex justify-content-between align-items-center'>
+                  <p class='small mb-0' style='color: #aaa;'>
+                    <a href='#!' class='link-grey'>Rispondi</a>
+                  </p>
+                  <div class='d-flex flex-row'>
+                    <i class='fas fa-star text-warning me-2'>$row[pubblicazione]</i>
+                    <i class='far fa-check-circle' style='color: #aaa;'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";    
+      }else
+        echo "<div class='card mb-3' style='width:30vw'>
+          <div class='card-body'>
+            <div class='d-flex flex-start'>
+              <img class='rounded-circle shadow-1-strong me-3'
+                src='media/$arr[path]' alt='avatar' width='40'
+                height='40' />
+              <div class='w-100'>
+                <div class='d-flex justify-content-between align-items-center mb-3'>
+                  <h6 class='text-primary fw-bold mb-0'>
+                    $utente
+                    <span class='text-dark ms-2'>$row[contenuto]</span>
+                  </h6>
+                  <p class='mb-0 text-dark'></p>
+                </div>
+                <div class='d-flex justify-content-between align-items-center'>
+                  <p class='small mb-0' style='color: #aaa;'>
+                    <a href='#!' class='link-grey'>Rispondi</a>
+                  </p>
+                  <div class='d-flex flex-row'>
+                    <i class='fas fa-star text-warning me-2'>$row[pubblicazione]</i>
+                    <i class='far fa-check-circle' style='color: #aaa;'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";    
     }
     $connessione->close();
   }
@@ -419,9 +477,9 @@
     $connessione=connessione();
     $query="INSERT INTO commentiarticoli (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
     $prot=$connessione->prepare($query);
-    $prot->bind_param("s",strip_tags($_POST['contenuto']));
+    $contenuto=strip_tags($_POST['contenuto']);
+    $prot->bind_param("s",$contenuto);
     $prot->execute();
-    header("location.href:articolo.php?$_GET[id]#sezioneCommenti");
     $connessione->close();
   }
 
@@ -454,5 +512,27 @@
     $prot->bind_param("s",$cambio);
     $prot->execute();
     $connessione->close();
+  }
+  function smettiSegui(){
+    $connessione=connessione();    
+    $query="DELETE FROM  utentesegueopera where utente='$_SESSION[email]'";  
+    $connessione->query($query);  
+   
+    $connessione->close();
+  }
+  if(isset($_REQUEST['smettiSegui'])){
+    smettiSegui();
+    echo "fatto";
+  }
+  function segui(){
+    $connessione=connessione();    
+    $query="INSERT INTO utentesegueopera(utente,opera) VALUES ('$_SESSION[email]','$_GET[id]')";
+    $connessione->query($query);
+    
+    $connessione->close();
+  }
+  if(isset($_REQUEST['segui'])){
+    segui();
+    echo "funzionato";
   }
   ?>

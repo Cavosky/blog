@@ -33,7 +33,7 @@
         }                   
         $connessione->close();
     ?>
-    <input name="modificaArticolo" id="mod">
+    <input name="modificaArticolo" class="w-100 h-50" id="mod">
     <button type="submit" name="modificheArticolo">Invia</button>
     <button type="submit" name="eliminaArticolo">Elimina</button><br>
     <a href="scrittura.php">Aggiungi Articolo</button><br>

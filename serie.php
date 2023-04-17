@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="stile.css">
         <title>LibreComics</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </head>
@@ -49,23 +50,49 @@
             </div>
             <div class="position-absolute top-50 end-0 pe-5">
                 <div class="form-check form-switch">
-                    <?php
-                        if(!empty($_SESSION['email'])){
-                            $connessione=connessione();
-                            $query="SELECT * from utente,utentesegueopera where opera='$_GET[id]' and utente='$_SESSION[email]' ";
-                            $risultati=$connessione->query($query);
-                            $row=$risultati->fetch_assoc();
-                            if($risultati->num_rows>0){
-                                echo "<input class='form-check-input' type='checkbox' id='segui' checked>
-                                <label class='form-check-label' for='segui'>Segui</label>";
-                            }else{
-                                echo "<input class='form-check-input' type='checkbox' id='segui'>
-                                <label class='form-check-label' for='segui'>Segui</label>";
-                            }                            
-                            $connessione->close();
-                        }
-                    ?>
-                    
+                    <form method="post">
+                        <?php
+                            if(!empty($_SESSION['email'])){
+                                $connessione=connessione();
+                                $query="SELECT * from utente,utentesegueopera where opera='$_GET[id]' and utente='$_SESSION[email]' ";
+                                $risultati=$connessione->query($query);
+                                $row=$risultati->fetch_assoc();
+                                if($risultati->num_rows>0){
+                                    echo "<input class='form-check-input' type='checkbox' id='segui' checked>
+                                    <label class='form-check-label' for='segui'>Segui</label>";
+                                }else{
+                                    echo "<input class='form-check-input' type='checkbox' id='segui'>
+                                    <label class='form-check-label' for='segui'>Segui</label>";
+                                }                            
+                                $connessione->close();
+                            }
+                        ?>
+                        <script>
+                            $(document).ready(()=>{
+                                $("#segui").click(()=>{
+                                    alert("click");
+                                    if(!$("#segui").is(':checked')){
+                                        $.ajax({
+                                            url:"connect.php",
+                                            method:"POST",
+                                            data:{smettiSegui:''},
+
+                                            success:()=>alert("smesso")
+                                        });
+                                    };
+                                    if($("#segui").is(':checked')){
+                                        $.ajax({
+                                            url:"connect.php",
+                                            method:"POST",
+                                            data:{segui:''},
+
+                                            success:()=>alert("inserito")
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </form>
                 </div>
                 <label for="edizioni">Edizioni:</label>
                 <select class="form-select" name="edizioni" aria-label="Default select example" style="width:15vw">
@@ -93,26 +120,5 @@
                 </div>
             </div>            
         </div>
-        
-        <!--scheda pagine
-        <nav aria-label="..." >
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item " aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-        <fine scheda pagine-->
-         <!--footer-->
-
-        <!--fine footer-->
     </body>
 </html>
