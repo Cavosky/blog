@@ -71,23 +71,6 @@
             </div>  
          </div>
         <!--fine grid-->
-        <!--scheda pagine
-        <nav aria-label="..." >
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item " aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-        <fine scheda pagine-->
          <!--footer-->
             <footer class="py-3 my-4 fixed-bottom">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">

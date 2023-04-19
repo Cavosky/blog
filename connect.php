@@ -196,7 +196,7 @@
       function riempiOpereSelected($input){
         $connessione=connessione();
         $param="%{$input}%";    
-        $query="SELECT * FROM opera where titolo LIKE ? or trama LIKE ?";
+        $query="SELECT * FROM opera where titolo LIKE ? or trama LIKE ? order by titolo asc";
         $prot=$connessione->prepare($query);
         $prot->bind_param("ss",$param,$param);        
         $prot->execute();
@@ -316,7 +316,7 @@
     function riempiCardSelect($input){
         $connessione=connessione();
         $param="%{$input}%";    
-        $query="SELECT * FROM articolo where titolo LIKE ? or contenuto LIKE ?";
+        $query="SELECT * FROM articolo where titolo LIKE ? or contenuto LIKE ? order by id desc";
         $prot=$connessione->prepare($query);
         $prot->bind_param("ss",$param,$param);        
         $prot->execute();
@@ -513,26 +513,39 @@
     $prot->execute();
     $connessione->close();
   }
-  function smettiSegui(){
+  function smettiSegui($id){
     $connessione=connessione();    
-    $query="DELETE FROM  utentesegueopera where utente='$_SESSION[email]'";  
+    $query="DELETE FROM  utentesegueopera where utente='$_SESSION[email]' AND opera=$id";  
     $connessione->query($query);  
    
     $connessione->close();
   }
   if(isset($_REQUEST['smettiSegui'])){
-    smettiSegui();
-    echo "fatto";
+    smettiSegui($_REQUEST['smettiSegui']);
   }
-  function segui(){
+  function segui($id){
     $connessione=connessione();    
-    $query="INSERT INTO utentesegueopera(utente,opera) VALUES ('$_SESSION[email]','$_GET[id]')";
-    $connessione->query($query);
-    
+    $query="INSERT INTO utentesegueopera(utente,opera) VALUES ('$_SESSION[email]',$id)";
+    $connessione->query($query);    
     $connessione->close();
   }
   if(isset($_REQUEST['segui'])){
-    segui();
-    echo "funzionato";
+    segui($_REQUEST['segui']);
+  }
+  function mettiInput(){
+    echo "<input style='display:none' id='id' value='$_GET[id]'>";
+  }
+
+  if(isset($_REQUEST['commentiUtente'])){
+    $connessione=connessione();    
+    $query="SELECT commenti.contenuto as contenuto,commentiarticoli.contenuto as contenutoart FROM commenti,commentiarticoli where commenti.utente='$_REQUEST[commentiUtente]' AND commentiarticoli.utente='$_REQUEST[commentiUtente]'";
+    $risultati=$connessione->query($query);
+    while($commento=$risultati->fetch_assoc()){
+      if($commento['contenuto']!=null)
+      echo "<div class='row my-3'>$commento[contento]</div>";
+      if($commento['contenutoart']!=null)
+      echo "<div class='row my-3'>$commento[contenutoart]</div>";     
+    }
+    $connessione->close();
   }
   ?>

@@ -15,6 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </head>
     <body class="bg-warning text-light z-0">
+        <?php mettiInput();?>
         <div class="container bg-dark z-1 mt-5 position-relative" style="width:60vw;height:93vh">
             <div class="position-absolute ">
             <img src=" media/<?php 
@@ -70,23 +71,18 @@
                         <script>
                             $(document).ready(()=>{
                                 $("#segui").click(()=>{
-                                    alert("click");
                                     if(!$("#segui").is(':checked')){
                                         $.ajax({
                                             url:"connect.php",
                                             method:"POST",
-                                            data:{smettiSegui:''},
-
-                                            success:()=>alert("smesso")
+                                            data:{smettiSegui:document.getElementById('id').value}
                                         });
                                     };
                                     if($("#segui").is(':checked')){
                                         $.ajax({
                                             url:"connect.php",
                                             method:"POST",
-                                            data:{segui:''},
-
-                                            success:()=>alert("inserito")
+                                            data:{segui:document.getElementById('id').value}
                                         });
                                     }
                                 });
@@ -115,8 +111,7 @@
                 </div>
                 
                 <div class="d-flex flex-row">
-                <?php
-                    ?>
+                
                 </div>
             </div>            
         </div>
