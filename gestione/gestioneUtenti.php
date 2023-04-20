@@ -25,11 +25,13 @@
       <?php
           $connessione= connessione();
           $query='SELECT * from utente';
-          $risultati=$connessione->query($query);        
+          $risultati=$connessione->query($query);
+          $id=0;        
           while($row=$risultati->fetch_assoc()){
             echo "
-              <input type='radio' id='seleziona' onclick='passaggioNome(\"$row[email]\")' name='email' value='$row[email]' required >
+              <input type='radio' id='$id' onclick='passaggioNome(\"$row[email]\")' name='email' value='$row[email]' required >
               <p class='w-50' id='$row[email]'>$row[username]</p>";
+              $id++;
           }                   
           $connessione->close();
       ?>
@@ -47,6 +49,7 @@
     <script>
        $(document).ready(()=>{
         $(":radio").click(()=>{
+          console.log($(":radio"));
           $.ajax({
               url:"../connect.php",
               method:"POST",
