@@ -22,22 +22,22 @@
       }
     </script>
     <form method="post">
-    <?php
-        $connessione= connessione();
-        $query='SELECT * from utente';
-        $risultati=$connessione->query($query);        
-        while($row=$risultati->fetch_assoc()){
-          echo "
-            <input type='radio' id='seleziona' onclick='passaggioNome(\"$row[email]\")' name='email' value='$row[email]' required >
-            <p class='w-50' id='$row[email]'>$row[username]</p>";
-        }                   
-        $connessione->close();
-    ?>
-    <input name="modificaUtente" id="mod">
-    <button type="submit" name="modificheUtente">Invia</button>
-    <button type="submit" name="eliminaUtente">Elimina</button><br>
-    <a href="gestione.php">torna alla gestione</a><br>
-    <a href="../loggato.php">torna alla home</a>
+      <?php
+          $connessione= connessione();
+          $query='SELECT * from utente';
+          $risultati=$connessione->query($query);        
+          while($row=$risultati->fetch_assoc()){
+            echo "
+              <input type='radio' id='seleziona' onclick='passaggioNome(\"$row[email]\")' name='email' value='$row[email]' required >
+              <p class='w-50' id='$row[email]'>$row[username]</p>";
+          }                   
+          $connessione->close();
+      ?>
+      <input name="modificaUtente" id="mod">
+      <button type="submit" name="modificheUtente">Invia</button>
+      <button type="submit" name="eliminaUtente">Elimina</button><br>
+      <a href="gestione.php">torna alla gestione</a><br>
+      <a href="../loggato.php">torna alla home</a>
     </form>
     <hr>
     <h1 class="text-center text-decoration-none">Commenti:</h1>
@@ -46,14 +46,14 @@
     </div>
     <script>
        $(document).ready(()=>{
-        $("#seleziona").click(()=>{
+        $(":radio").click(()=>{
           $.ajax({
               url:"../connect.php",
               method:"POST",
-              data:{commentiUtente:document.getElementById('id').value},
+              data:{commentiUtente:document.getElementById('seleziona').value},
 
               success: (output)=> {
-                        $("#commenti").html(output)
+                        $("#commenti").html(output);
                     }
             });
           });

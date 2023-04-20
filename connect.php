@@ -536,16 +536,20 @@
     echo "<input style='display:none' id='id' value='$_GET[id]'>";
   }
 
-  if(isset($_REQUEST['commentiUtente'])){
+  function commentiUtente($id){
     $connessione=connessione();    
-    $query="SELECT commenti.contenuto as contenuto,commentiarticoli.contenuto as contenutoart FROM commenti,commentiarticoli where commenti.utente='$_REQUEST[commentiUtente]' AND commentiarticoli.utente='$_REQUEST[commentiUtente]'";
+    $query="SELECT commenti.testo as contenuto,commentiarticolo.contenuto as contenutoart FROM commenti,commentiarticolo where commenti.utente='$id' AND commentiarticolo.utente='$id'";
     $risultati=$connessione->query($query);
     while($commento=$risultati->fetch_assoc()){
-      if($commento['contenuto']!=null)
-      echo "<div class='row my-3'>$commento[contento]</div>";
-      if($commento['contenutoart']!=null)
-      echo "<div class='row my-3'>$commento[contenutoart]</div>";     
+      if(!is_null($commento['contenuto']))
+        echo "<div class='row my-3'>$commento[contento]</div>";
+      if(!is_null($commento['contenutoart']))
+        echo "<div class='row my-3'>$commento[contenutoart]</div>";     
     }
     $connessione->close();
+  }
+
+  if(isset($_REQUEST['commentiUtente'])){
+    commentiUtente($_REQUEST['commentiUtente']);
   }
   ?>
