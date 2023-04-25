@@ -1,6 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <?php 
   session_start();
+  define('KB', 1024);
+  define('MB', 1048576);
+  define('GB', 1073741824);
+  define('TB', 1099511627776);
 
   function connessione(){
     $host_db="localhost";
@@ -105,14 +109,31 @@
         }else{
           $titolo=$_POST['titolo'];
           $contenuto=trim($_POST['contenuto'],'"');
-          if(empty(($_FILES['copertina']['name']))) {      
+          if(empty(($_FILES['file']))){
               $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
               $prot->bind_param("ss",$titolo,$contenuto);
               $prot->execute(); 
-          }/*else{
-            $img=$_FILES['copertina'];
-            $connessione->query("INSERT into articolo (")
-          }*/
+          }else{
+            $tmp=explode('/',$_FILES['file']['type']);
+            $fileExt=strtolower(end($tmp));
+            if($_FILES['file']['error'] === 0){
+              if($_FILES['file']['size'] < 10*MB){
+                $fileNewName=uniqid('img-',true).".".$fileExt;
+                $filePath='../media/'.$fileNewName;
+                move_uploaded_file($_FILES['file']['tmp_name'],$filePath);
+                $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
+                $prot->bind_param("s",$fileNewName);
+                $prot->execute();
+                $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path=?))");
+                $prot->bind_param("sss",$titolo,$contenuto,$fileNewName);
+                $prot->execute();
+              }else{
+                echo "Errore! File troppo pesante";
+              }
+            }else{
+              echo "Errore durante l'upload del file";
+            }            
+          }
           header("location:../loggato.php");
         }
         $connessione->close();
