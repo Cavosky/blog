@@ -76,7 +76,7 @@
                                     </ul>
                                 </div>
                                <div class="position-absolute top-50  end-0">
-                                    <input type="submit" name="logout" value="Logout"class="btn btn-outline-danger">                                   
+                                    <input type="submit" name="logout" value="Logout" class="btn btn-outline-danger">                                   
                                </div>
                             </div>
                         </div>

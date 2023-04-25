@@ -104,7 +104,7 @@
           echo $message;
         }else{
           $titolo=$_POST['titolo'];
-          $contenuto=$_POST['contenuto'];
+          $contenuto=trim($_POST['contenuto'],'"');
           if(empty(($_FILES['copertina']['name']))) {      
               $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
               $prot->bind_param("ss",$titolo,$contenuto);
@@ -134,6 +134,7 @@
             $result=$connessione->query($query);
             $img = $result->fetch_array()[0];
             //stampa card
+            $contenuto=strip_tags($card['contenuto']);
               echo "
              
                 <div class='col-auto bg-dark'>
@@ -145,7 +146,7 @@
                                 <div class='col-md-8'>
                                     <div class='card-body bg-warning text-dark '>
                                         <h5 class='card-title '>$card[titolo]</h5>
-                                        <p class='card-text '>$card[contenuto]</p>                     
+                                        <p class='card-text '>$contenuto</p>                     
                                     </div>
                                 </div>
                             </div>
@@ -332,6 +333,7 @@
               $result=$connessione->query($query);
               $img = $result->fetch_array()[0];
               //stampa card
+              $contenuto=strip_tags($card['contenuto']);
                 echo "              
                   <div class='col-auto bg-dark'>
                     <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
@@ -342,7 +344,7 @@
                                   <div class='col-md-8'>
                                       <div class='card-body bg-warning text-dark '>
                                           <h5 class='card-title '>$card[titolo]</h5>
-                                          <p class='card-text '>$card[contenuto]</p>                     
+                                          <p class='card-text '>$contenuto</p>                     
                                       </div>
                                   </div>
                               </div>
@@ -376,7 +378,7 @@
 
   function commentiArticolo(){
     $connessione=connessione();
-    $query="SELECT * from commentiArticoli where articolo=$_GET[id] order by pubblicazione desc";
+    $query="SELECT * from commentiArticolo where articolo=$_GET[id] order by pubblicazione desc";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
       $query="SELECT email,username,path from utente,img where email='$row[utente]' and id=profilo";
@@ -475,7 +477,7 @@
 
   if(isset($_REQUEST['inviacommentoarticolo'])){
     $connessione=connessione();
-    $query="INSERT INTO commentiarticoli (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
+    $query="INSERT INTO commentiarticolo (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
     $prot=$connessione->prepare($query);
     $contenuto=strip_tags($_POST['contenuto']);
     $prot->bind_param("s",$contenuto);
@@ -492,9 +494,10 @@
   if(isset($_REQUEST['modificheArticolo'])){
     $connessione=connessione();
     $cambio=$_POST['modificaArticolo'];
-    $query="UPDATE  articolo SET titolo=? where id=$_POST[seleziona]";
+    $testo=$_POST['modificaContenuto'];
+    $query="UPDATE  articolo SET titolo=?,contenuto=? where id=$_POST[seleziona]";
     $prot=$connessione->prepare($query);
-    $prot->bind_param("s",$cambio);
+    $prot->bind_param("ss",$cambio,$testo);
     $prot->execute();
     $connessione->close();
   }
@@ -536,20 +539,45 @@
     echo "<input style='display:none' id='id' value='$_GET[id]'>";
   }
 
-  function commentiUtente($id){
+  if(isset($_REQUEST['commentiUtente'])){
     $connessione=connessione();    
-    $query="SELECT commenti.testo as contenuto,commentiarticolo.contenuto as contenutoart FROM commenti,commentiarticolo where commenti.utente='$id' AND commentiarticolo.utente='$id'";
+    $query="SELECT * FROM commentiarticolo where commentiarticolo.utente='$_REQUEST[commentiUtente]'";
     $risultati=$connessione->query($query);
+    $commento=$risultati->fetch_assoc();
+    $i=0;
     while($commento=$risultati->fetch_assoc()){
-      if(!is_null($commento['contenuto']))
+      /*if(!is_null($commento['contenuto']))
         echo "<div class='row my-3'>$commento[contento]</div>";
-      if(!is_null($commento['contenutoart']))
-        echo "<div class='row my-3'>$commento[contenutoart]</div>";     
+      if(!is_null($commento['contenutoart']))*/
+        echo "<div class='card mb-3 bg-light' style='width:30vw'>
+          <div class='card-body'>
+            <div class='d-flex flex-start'>
+              <div class='w-100'>
+                <div class='d-flex justify-content-between align-items-center mb-3'>
+                  <h6 class='text-primary fw-bold mb-0'>
+                    <span class='text-dark ms-2'>$commento[contenuto]</span>
+                  </h6>
+                  <p class='mb-0 text-dark'></p>
+                </div>
+                <div class='d-flex justify-content-between align-items-center'>
+                  <p class='small mb-0' style='color: #aaa;'>
+                  <button value='$commento[id]' id='".$i."a' onclick='commento(\"".$i."a\")' class='btn btn-outline-danger'>Elimina</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>"; 
+        $i++;    
     }
     $connessione->close();
   }
 
-  if(isset($_REQUEST['commentiUtente'])){
-    commentiUtente($_REQUEST['commentiUtente']);
+  if(isset($_REQUEST['eliminaCommento'])){
+    echo "<script>alert($_REQUEST[eliminaCommento]</script>";
+    $connessione=connessione();    
+    $query="DELETE FROM commentoarticolo WHERE id=$_REQUEST[eliminaCommento]";
+    $connessione->query($query);    
+    $connessione->close();
   }
-  ?>
+?>

@@ -19,6 +19,10 @@
     <script>
       function passaggioNome(email){
         document.getElementById('mod').value=document.getElementById(email).innerHTML;
+        document.getElementById('inv').value=email;
+      }
+      function commento(id){
+         document.getElementById('com').value=document.getElementById(id).value;
       }
     </script>
     <form method="post">
@@ -36,6 +40,8 @@
           $connessione->close();
       ?>
       <input name="modificaUtente" id="mod">
+      <input style="display:none" id="inv">
+      <input style="display:none" id="com">
       <button type="submit" name="modificheUtente">Invia</button>
       <button type="submit" name="eliminaUtente">Elimina</button><br>
       <a href="gestione.php">torna alla gestione</a><br>
@@ -43,17 +49,16 @@
     </form>
     <hr>
     <h1 class="text-center text-decoration-none">Commenti:</h1>
-    <div id="commenti" class="d-flex">
+    <div id="commenti" class="d-flex flex-column align-items-center">
 
     </div>
     <script>
        $(document).ready(()=>{
         $(":radio").click(()=>{
-          console.log($(":radio"));
           $.ajax({
               url:"../connect.php",
               method:"POST",
-              data:{commentiUtente:document.getElementById('seleziona').value},
+              data:{commentiUtente:document.getElementById('inv').value},
 
               success: (output)=> {
                         $("#commenti").html(output);
@@ -61,6 +66,18 @@
             });
           });
         });
+
+        $(document).ready(()=>{
+          $("button.btn").click(()=>{
+            alert('entrato');
+            $.ajax({
+                  url:"../connect.php",
+                  method:"POST",
+                  data:{eliminaCommento:document.getElementById('com').value}
+            });
+          });      
+        });
+
     </script>
   </body>
 </html>

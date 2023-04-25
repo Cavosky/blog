@@ -19,6 +19,7 @@
     <script>
       function passaggioNome(id){
         document.getElementById('mod').value=document.getElementById(id).innerHTML;
+        document.getElementById('modcontenuto').value=document.getElementById(id+'c').value;
       }
     </script>
     <form method="post">
@@ -29,11 +30,13 @@
         while($row=$risultati->fetch_assoc()){
           echo "
             <input type='radio' name='seleziona' onclick='passaggioNome(\"$row[id]\")' value='$row[id]' required >
+            <input style='display:none' id='$row[id]c' value=\"$row[contenuto]\" required >
             <p class='w-50' id='$row[id]'>$row[titolo]</p>";
         }                   
         $connessione->close();
     ?>
-    <input name="modificaArticolo" class="w-100 h-50" id="mod">
+    <input name="modificaArticolo" class="w-100" id="mod"><br>
+    <textarea name="modificaContenuto" class='w-100' id="modcontenuto" cols="30" rows="10"></textarea>
     <button type="submit" name="modificheArticolo">Invia</button>
     <button type="submit" name="eliminaArticolo">Elimina</button><br>
     <a href="scrittura.php">Aggiungi Articolo</button><br>
