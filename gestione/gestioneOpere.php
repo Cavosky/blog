@@ -19,33 +19,33 @@
     <script>
       function passaggioNome(id){
         document.getElementById('mod').value=document.getElementById(id).innerHTML;
-        document.getElementById('modcontenuto').value=document.getElementById(id+'c').value;
+        document.getElementById('modtrama').value=document.getElementById(id+'c').value;
       }
     </script>
     <form method="post" enctype="multipart/form-data">
     <?php
         $connessione= connessione();
-        $query='SELECT * from articolo';
+        $query='SELECT * from opera order by titolo asc';
         $risultati=$connessione->query($query);        
         while($row=$risultati->fetch_assoc()){
           echo "
             <input type='radio' name='seleziona' onclick='passaggioNome(\"$row[id]\")' value='$row[id]' required >
-            <input style='display:none' id='$row[id]c' value=\"$row[contenuto]\" required >
+            <input style='display:none' id='$row[id]c' value=\"$row[trama]\" required >
             <p class='w-50' id='$row[id]'>$row[titolo]</p>";
         }                   
         $connessione->close();
     ?>
-    <div class="sticky-bottom bg-light text-dark">    
-      <label for="modificaArticolo">Titolo:</label>
-      <input name="modificaArticolo" class="w-100" id="mod"><br>
-      <label for="modificaContenuto">Contenuto:</label>
-      <textarea name="modificaContenuto" class='w-100' id="modcontenuto" cols="30" rows="10"></textarea>
-      <input name="modificaCopertina" type="file" class="w-100" id="mod"><br>
-      <button type="submit" name="modificheArticolo">Invia</button>
-      <button type="submit" name="eliminaArticolo">Elimina</button><br>
-      <a href="scrittura.php">Aggiungi Articolo</button><br>
-      <a href="gestione.php">torna alla gestione</button><br>
-      <a href="../loggato.php">torna alla home</button>
+    <div class="sticky-bottom bg-light text-dark" >
+        <label for="modificaTitolo">Titolo:</label>
+        <input name="modificaTitolo" class="w-100" id="mod"><br>
+        <label for="modificaTrama">Trama:</label>
+        <textarea name="modificaTrama" class='w-100' id="modtrama" cols="30" rows="10"></textarea>
+        <input name="modificaCoperta" type="file" class="w-100" id="mod"><br>
+        <button type="submit" name="modificheOpera">Invia</button>
+        <button type="submit" name="eliminaOpera">Elimina</button><br>
+        <a href="scrittura.php">Aggiungi Opera</button><br>
+        <a href="gestione.php">torna alla gestione</button><br>
+        <a href="../loggato.php">torna alla home</button>
     </div>
     </form>
   </body>

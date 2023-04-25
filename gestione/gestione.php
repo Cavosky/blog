@@ -33,6 +33,16 @@
           <a href="gestioneUtenti.php" class="card-link">Vai</a>
         </div>
       </div>
+
+       <div class="card bg-warning text-dark text-center" style="width: 18rem;height:15vh">
+        <div class="card-body">
+          <h5 class="card-title">Gestione Opere</h5>
+          <p class="card-text">Visualizzazione e crud opere</p>
+          <a href="gestioneOpere.php" class="card-link">Vai</a>
+        </div>
+      </div>
+
+
     </div>    
   </body>
 </html>

@@ -515,11 +515,33 @@
   if(isset($_REQUEST['modificheArticolo'])){
     $connessione=connessione();
     $cambio=$_POST['modificaArticolo'];
-    $testo=$_POST['modificaContenuto'];
-    $query="UPDATE  articolo SET titolo=?,contenuto=? where id=$_POST[seleziona]";
-    $prot=$connessione->prepare($query);
-    $prot->bind_param("ss",$cambio,$testo);
-    $prot->execute();
+    $testo=$_POST['modificaContenuto'];    
+    if(empty(($_FILES['modificaCopertina']))){
+      $query="UPDATE  articolo SET titolo=?,contenuto=? where id=$_POST[seleziona]";
+      $prot=$connessione->prepare($query);
+      $prot->bind_param("ss",$cambio,$testo);
+      $prot->execute();
+    }else{
+      $tmp=explode('/',$_FILES['modificaCopertina']['type']);
+      $fileExt=strtolower(end($tmp));
+      if($_FILES['modificaCopertina']['error'] === 0){
+        if($_FILES['modificaCopertina']['size'] < 10*MB){
+          $fileNewName=uniqid('img-',true).".".$fileExt;
+          $filePath='../media/'.$fileNewName;
+          move_uploaded_file($_FILES['modificaCopertina']['tmp_name'],$filePath);
+          $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
+          $prot->bind_param("s",$fileNewName);
+          $prot->execute();
+          $prot=$connessione->prepare("UPDATE  articolo SET titolo=?,contenuto=?,img=(SELECT id FROM img where path=?) where id=$_POST[seleziona]");
+          $prot->bind_param("sss",$cambio,$testo,$fileNewName);
+          $prot->execute();
+        }else{
+          echo "Errore! File troppo pesante";
+        }
+      }else{
+        echo "Errore durante l'upload del file";
+      }
+    }            
     $connessione->close();
   }
   if(isset($_REQUEST['eliminaUtente'])){
@@ -599,6 +621,13 @@
     $connessione=connessione();    
     $query="DELETE FROM commentoarticolo WHERE id=$_REQUEST[eliminaCommento]";
     $connessione->query($query);    
+    $connessione->close();
+  }
+
+  if(isset($_REQUEST['eliminaOpera'])){
+    $connessione=connessione();
+    $query="DELETE from articolo where id=$_POST[seleziona]";
+    $connessione->query($query);
     $connessione->close();
   }
 ?>
