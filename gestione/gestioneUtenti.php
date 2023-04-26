@@ -62,22 +62,17 @@
 
               success: (output)=> {
                         $("#commenti").html(output);
+                        $("button").click(()=>{
+                        $.ajax({
+                              url:"../connect.php",
+                              method:"POST",
+                              data:{eliminaCommento:document.getElementById('com').value}
+                        });
+                      });      
                     }
             });
           });
         });
-
-        $(document).ready(()=>{
-          $("button.btn").click(()=>{
-            alert('entrato');
-            $.ajax({
-                  url:"../connect.php",
-                  method:"POST",
-                  data:{eliminaCommento:document.getElementById('com').value}
-            });
-          });      
-        });
-
     </script>
   </body>
 </html>

@@ -108,7 +108,7 @@
           echo $message;
         }else{
           $titolo=$_POST['titolo'];
-          $contenuto=trim($_POST['contenuto'],'"');
+          $contenuto=str_replace('"',"'",$_POST['modificaContenuto']);
           if(empty(($_FILES['file']))){
               $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
               $prot->bind_param("ss",$titolo,$contenuto);
@@ -515,7 +515,7 @@
   if(isset($_REQUEST['modificheArticolo'])){
     $connessione=connessione();
     $cambio=$_POST['modificaArticolo'];
-    $testo=$_POST['modificaContenuto'];    
+    $testo=str_replace('"',"'",$_POST['modificaContenuto']);    
     if(($_FILES['modificaCopertina']['error']===4)){      
       $query="UPDATE  articolo SET titolo=?,contenuto=? where id=$_POST[seleziona]";
       $prot=$connessione->prepare($query);
@@ -589,9 +589,6 @@
     $commento=$risultati->fetch_assoc();
     $i=0;
     while($commento=$risultati->fetch_assoc()){
-      /*if(!is_null($commento['contenuto']))
-        echo "<div class='row my-3'>$commento[contento]</div>";
-      if(!is_null($commento['contenutoart']))*/
         echo "<div class='card mb-3 bg-light' style='width:30vw'>
           <div class='card-body'>
             <div class='d-flex flex-start'>
@@ -602,10 +599,8 @@
                   </h6>
                   <p class='mb-0 text-dark'></p>
                 </div>
-                <div class='d-flex justify-content-between align-items-center'>
-                  <p class='small mb-0' style='color: #aaa;'>
-                  <button value='$commento[id]' id='".$i."a' onclick='commento(\"".$i."a\")' class='btn btn-outline-danger'>Elimina</button>
-                  </p>
+                <div class='d-flex justify-content-between align-items-center'>                 
+                  <button value='$commento[id]' id='".$i."a' onclick='commento(\"".$i."a\")' >Elimina</button>                 
                 </div>
               </div>
             </div>
@@ -626,8 +621,41 @@
 
   if(isset($_REQUEST['eliminaOpera'])){
     $connessione=connessione();
-    $query="DELETE from articolo where id=$_POST[seleziona]";
+    $query="DELETE from opera where id=$_POST[seleziona]";
     $connessione->query($query);
+    $connessione->close();
+  }
+
+  if(isset($_REQUEST['modificheOpera'])){
+    $connessione=connessione();
+    $cambio=$_POST['modificaTitolo'];
+    $testo=str_replace('"',"'",$_POST['modificaTrama']);    
+    if(($_FILES['modificaCoperta']['error']===4)){      
+      $query="UPDATE  opera SET titolo=?,trama=? where id=$_POST[seleziona]";
+      $prot=$connessione->prepare($query);
+      $prot->bind_param("ss",$cambio,$testo);
+      $prot->execute();
+    }else{
+      $tmp=explode('/',$_FILES['modificaCoperta']['type']);
+      $fileExt=strtolower(end($tmp));
+      if($_FILES['modificaCoperta']['error'] === 0){
+        if($_FILES['modificaCoperta']['size'] < 10*MB){
+          $fileNewName=uniqid('img-',true).".".$fileExt;
+          $filePath='../media/'.$fileNewName;
+          move_uploaded_file($_FILES['modificaCoperta']['tmp_name'],$filePath);
+          $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
+          $prot->bind_param("s",$fileNewName);
+          $prot->execute();
+          $prot=$connessione->prepare("UPDATE  opera SET titolo=?,trama=?,img=(SELECT id FROM img where path=?) where id=$_POST[seleziona]");
+          $prot->bind_param("sss",$cambio,$testo,$fileNewName);
+          $prot->execute();
+        }else{
+          echo "Errore! File troppo pesante";
+        }
+      }else{
+        echo "Errore durante l'upload del file";
+      }
+    }            
     $connessione->close();
   }
 ?>
