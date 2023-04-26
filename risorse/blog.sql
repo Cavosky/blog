@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 27, 2023 alle 10:52
+-- Creato il: Apr 26, 2023 alle 08:04
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -165,25 +165,30 @@ CREATE TABLE `commenti` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `commentiarticolo`
+-- Struttura della tabella `commentiarticoli`
 --
 
-CREATE TABLE `commentiarticolo` (
+CREATE TABLE `commentiarticoli` (
   `id` int(11) NOT NULL,
   `utente` varchar(255) NOT NULL,
   `articolo` int(11) NOT NULL,
   `contenuto` mediumtext NOT NULL,
   `risponde` int(11) DEFAULT NULL,
-  `pubblicazione` datetime NOT NULL DEFAULT current_timestamp()
+  `pubblicazione` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `commentiarticolo`
+-- Dump dei dati per la tabella `commentiarticoli`
 --
 
-INSERT INTO `commentiarticolo` (`id`, `utente`, `articolo`, `contenuto`, `risponde`, `pubblicazione`) VALUES
-(20, 'lorenzocavagnaro14@gmail.com', 11, 'prova\r\n', NULL, '2023-03-15 12:01:06'),
-(21, 'lorenzocavagnaro14@gmail.com', 23, 'Pochita supremacy🛐', NULL, '2023-03-27 10:00:57');
+INSERT INTO `commentiarticoli` (`id`, `utente`, `articolo`, `contenuto`, `risponde`, `pubblicazione`) VALUES
+(13, 'lorenzocavagnaro14@gmail.com', 26, 'prova\r\n', NULL, '2023-04-17'),
+(14, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
+(15, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
+(16, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
+(17, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
+(18, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
+(19, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17');
 
 -- --------------------------------------------------------
 
@@ -646,8 +651,10 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALUES
+('a@a', 'a', NULL, '$2y$10$NXE.lhbk8X3ARnQzlY29de/shire9VehIUra4uzghiRqXlKNXcTpO', 1, 'utente'),
+('giordanino@gmail.com', 'ciao', NULL, '$2y$10$564L21yrEYiiAuRU/VUuIuVWxhNitpR0OW0QFtrFykrFkLPCk7jLO', 1, 'utente'),
 ('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 1, 'admin'),
-('sg@sg.it', 'SG', NULL, '$2y$10$G1xBm0wrSH1R2/MICT.M3OSvs99Qwjirtoowx0Azej7WCEAPjixHC', 1, 'utente');
+('semec@gmail.com', 'rapace', NULL, '$2y$10$LU2nfvJSJDQg2Xe746pXd..WAwVH2xASuMYW.jmgBnG14Hq6D6rGC', 1, 'utente');
 
 -- --------------------------------------------------------
 
@@ -756,12 +763,12 @@ ALTER TABLE `commenti`
   ADD KEY `opera` (`opera`);
 
 --
--- Indici per le tabelle `commentiarticolo`
+-- Indici per le tabelle `commentiarticoli`
 --
-ALTER TABLE `commentiarticolo`
+ALTER TABLE `commentiarticoli`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `utente` (`utente`),
   ADD KEY `articolo` (`articolo`),
+  ADD KEY `utente` (`utente`),
   ADD KEY `risponde` (`risponde`);
 
 --
@@ -843,7 +850,7 @@ ALTER TABLE `volumi`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT per la tabella `autore`
@@ -852,10 +859,10 @@ ALTER TABLE `autore`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT per la tabella `commentiarticolo`
+-- AUTO_INCREMENT per la tabella `commentiarticoli`
 --
-ALTER TABLE `commentiarticolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `commentiarticoli`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT per la tabella `edizione`
@@ -906,12 +913,12 @@ ALTER TABLE `commenti`
   ADD CONSTRAINT `commenti_ibfk_2` FOREIGN KEY (`opera`) REFERENCES `opera` (`id`);
 
 --
--- Limiti per la tabella `commentiarticolo`
+-- Limiti per la tabella `commentiarticoli`
 --
-ALTER TABLE `commentiarticolo`
-  ADD CONSTRAINT `commentiarticolo_ibfk_1` FOREIGN KEY (`utente`) REFERENCES `utente` (`email`),
-  ADD CONSTRAINT `commentiarticolo_ibfk_2` FOREIGN KEY (`articolo`) REFERENCES `articolo` (`id`),
-  ADD CONSTRAINT `commentiarticolo_ibfk_3` FOREIGN KEY (`risponde`) REFERENCES `commentiarticolo` (`id`);
+ALTER TABLE `commentiarticoli`
+  ADD CONSTRAINT `commentiarticoli_ibfk_1` FOREIGN KEY (`articolo`) REFERENCES `articolo` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `commentiarticoli_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`email`) ON DELETE CASCADE,
+  ADD CONSTRAINT `commentiarticoli_ibfk_3` FOREIGN KEY (`risponde`) REFERENCES `commentiarticoli` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `edizione`

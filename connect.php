@@ -584,7 +584,7 @@
 
   if(isset($_REQUEST['commentiUtente'])){
     $connessione=connessione();    
-    $query="SELECT * FROM commentiarticolo where commentiarticolo.utente='$_REQUEST[commentiUtente]'";
+    $query="SELECT * FROM commentiarticoli where commentiarticoli.utente='$_REQUEST[commentiUtente]'";
     $risultati=$connessione->query($query);
     $commento=$risultati->fetch_assoc();
     $i=0;
