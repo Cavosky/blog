@@ -41,7 +41,7 @@
           <a href="gestioneOpere.php" class="card-link">Vai</a>
         </div>
       </div>
-
+      <a href="../loggato.php">torna alla home</button>
 
     </div>    
   </body>

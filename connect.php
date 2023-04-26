@@ -399,7 +399,7 @@
 
   function commentiArticolo(){
     $connessione=connessione();
-    $query="SELECT * from commentiArticolo where articolo=$_GET[id] order by pubblicazione desc";
+    $query="SELECT * from commentiArticoli where articolo=$_GET[id] order by pubblicazione desc";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
       $query="SELECT email,username,path from utente,img where email='$row[utente]' and id=profilo";
@@ -516,7 +516,7 @@
     $connessione=connessione();
     $cambio=$_POST['modificaArticolo'];
     $testo=$_POST['modificaContenuto'];    
-    if(empty(($_FILES['modificaCopertina']))){
+    if(($_FILES['modificaCopertina']['error']===4)){      
       $query="UPDATE  articolo SET titolo=?,contenuto=? where id=$_POST[seleziona]";
       $prot=$connessione->prepare($query);
       $prot->bind_param("ss",$cambio,$testo);
