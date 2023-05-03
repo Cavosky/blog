@@ -614,7 +614,7 @@
   if(isset($_REQUEST['eliminaCommento'])){
     echo "<script>alert($_REQUEST[eliminaCommento]</script>";
     $connessione=connessione();    
-    $query="DELETE FROM commentoarticolo WHERE id=$_REQUEST[eliminaCommento]";
+    $query="DELETE FROM commentiarticoli WHERE id=$_REQUEST[eliminaCommento]";
     $connessione->query($query);    
     $connessione->close();
   }

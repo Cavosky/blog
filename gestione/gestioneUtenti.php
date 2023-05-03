@@ -52,27 +52,6 @@
     <div id="commenti" class="d-flex flex-column align-items-center">
 
     </div>
-    <script>
-       $(document).ready(()=>{
-        $(":radio").click(()=>{
-          $.ajax({
-              url:"../connect.php",
-              method:"POST",
-              data:{commentiUtente:document.getElementById('inv').value},
-
-              success: (output)=> {
-                        $("#commenti").html(output);
-                        $("button").click(()=>{
-                        $.ajax({
-                              url:"../connect.php",
-                              method:"POST",
-                              data:{eliminaCommento:document.getElementById('com').value}
-                        });
-                      });      
-                    }
-            });
-          });
-        });
-    </script>
+    <script src="./gestioneUtenti.js" defer></script>
   </body>
 </html>
