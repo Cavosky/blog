@@ -1,6 +1,5 @@
 $(document).ready(()=>{
-    $(":radio").click(()=>{
-      
+    $(":radio").click((event)=>{
     $.ajax({
         url:"../connect.php",
         method:"POST",
@@ -8,44 +7,37 @@ $(document).ready(()=>{
 
         success: (output)=> {
                 $("#commenti").html(output);
-                $("button").click(()=>{
+                $(".btn").click(()=>{
                     $.ajax({
                           url:"../connect.php",
                           method:"POST",
-                          data:{eliminaCommento:document.getElementById('com').value}
+                          data:{eliminaCommento:document.getElementById('com').value},
+
+                            success: ()=> {     
+                                $.ajax({
+                                    url: "../connect.php",
+                                    method: "POST",
+                                    data: { commentiUtenteReload: document.getElementById('inv').value },
+
+                                        success:(res)=>{
+                                            $("#commenti").html(res);
+                                        }
+                                    
+                                })                      
+                            }
+                          
                     });
                 });
             }
         });
     });
 });
-/*
-document.querySelectorAll("input[type=\"radio\"]").forEach( el => {
-    el.addEventListener("click", () => {
-        fetch("../connect.php", {method: "POST", body: {commentiUtente: document.getElementById("inv").value}})
-            .then( res => {console.log({res}); return res} )
-            .then( res => res.text() )
-            .then( text => {
-                console.log({text})
-                document.getElementById("commenti").innerHTML = text
-            } )
-            .finally( () => {
-                Array.from(
-                    document.getElementById("commenti")
-                        .getElementsByTagName("button")
-                ).forEach( el => el.addEventListener( () => fetch(
-                    "../connect.php",
-                    {
-                        method: "POST",
-                        body: {eliminaCommento: document.getElementById("com").value}
-                    }
-                )))
 
-            })
-    })
-})
 
-console.log({
-    el: document.querySelectorAll("input[type=\"radio\"]")
-})
-*/
+function passaggioNome(email) {
+    document.getElementById('mod').value = document.getElementById(email).innerHTML;
+    document.getElementById('inv').value = email;
+}
+function commento(id) {
+    document.getElementById('com').value = document.getElementById(id).value;
+}

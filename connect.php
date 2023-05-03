@@ -108,8 +108,8 @@
           echo $message;
         }else{
           $titolo=$_POST['titolo'];
-          $contenuto=str_replace('"',"'",$_POST['modificaContenuto']);
-          if(empty(($_FILES['file']))){
+          $contenuto=str_replace('"',"'",$_POST['contenuto']);
+          if(($_FILES['file']['error']===4)){
               $prot=$connessione->prepare("INSERT into articolo (titolo,contenuto,img) values (?,?,(select id from img where path='prova.jpg'))");
               $prot->bind_param("ss",$titolo,$contenuto);
               $prot->execute(); 
@@ -498,7 +498,7 @@
 
   if(isset($_REQUEST['inviacommentoarticolo'])){
     $connessione=connessione();
-    $query="INSERT INTO commentiarticolo (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
+    $query="INSERT INTO commentiarticoli (utente,articolo,contenuto) values ('$_SESSION[email]','$_GET[id]',?)";
     $prot=$connessione->prepare($query);
     $contenuto=strip_tags($_POST['contenuto']);
     $prot->bind_param("s",$contenuto);
@@ -586,7 +586,6 @@
     $connessione=connessione();    
     $query="SELECT * FROM commentiarticoli where commentiarticoli.utente='$_REQUEST[commentiUtente]'";
     $risultati=$connessione->query($query);
-    $commento=$risultati->fetch_assoc();
     $i=0;
     while($commento=$risultati->fetch_assoc()){
         echo "<div class='card mb-3 bg-light' style='width:30vw'>
@@ -600,7 +599,7 @@
                   <p class='mb-0 text-dark'></p>
                 </div>
                 <div class='d-flex justify-content-between align-items-center'>                 
-                  <button value='$commento[id]' id='".$i."a' onclick='commento(\"".$i."a\")' >Elimina</button>                 
+                  <button value='$commento[id]' class='btn btn-danger' id='".$i."a' onclick='commento(\"".$i."a\")' >Elimina</button>                 
                 </div>
               </div>
             </div>
@@ -611,8 +610,41 @@
     $connessione->close();
   }
 
+  if(isset($_REQUEST['commentiUtenteReload'])){
+    $connessione=connessione();    
+    $query="SELECT * FROM commentiarticoli where commentiarticoli.utente='$_REQUEST[commentiUtenteReload]'";
+    $risultati=$connessione->query($query);
+    $i=0;
+    if(is_null($_REQUEST['commentiUtenteReload'])){
+      echo "";
+    }
+    else{
+      while($commento=$risultati->fetch_assoc()){
+        echo "<div class='card mb-3 bg-light' style='width:30vw'>
+          <div class='card-body'>
+            <div class='d-flex flex-start'>
+              <div class='w-100'>
+                <div class='d-flex justify-content-between align-items-center mb-3'>
+                  <h6 class='text-primary fw-bold mb-0'>
+                    <span class='text-dark ms-2'>$commento[contenuto]</span>
+                  </h6>
+                  <p class='mb-0 text-dark'></p>
+                </div>
+                <div class='d-flex justify-content-between align-items-center'>                 
+                  <button value='$commento[id]' class='btn btn-danger' id='".$i."a' onclick='commento(\"".$i."a\")' >Elimina</button>                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>"; 
+        $i++;    
+      }
+    }
+    
+    $connessione->close();
+  }
+
   if(isset($_REQUEST['eliminaCommento'])){
-    echo "<script>alert($_REQUEST[eliminaCommento]</script>";
     $connessione=connessione();    
     $query="DELETE FROM commentiarticoli WHERE id=$_REQUEST[eliminaCommento]";
     $connessione->query($query);    
@@ -658,4 +690,42 @@
     }            
     $connessione->close();
   }
+
+  if(isset($_REQUEST['aggiungiOpera'])){
+      $connessione=connessione();
+        if(empty($_POST['titolo'] )|| empty($_POST['trama'] )){
+          $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
+          echo $message;
+        }else{
+          $titolo=$_POST['titolo'];
+          $contenuto=str_replace('"',"'",$_POST['trama']);
+          if(($_FILES['file']['error']===4)){
+              $prot=$connessione->prepare("INSERT into opera (titolo,trama,img) values (?,?,(select id from img where path='logo.png'))");
+              $prot->bind_param("ss",$titolo,$contenuto);
+              $prot->execute(); 
+          }else{
+            $tmp=explode('/',$_FILES['file']['type']);
+            $fileExt=strtolower(end($tmp));
+            if($_FILES['file']['error'] === 0){
+              if($_FILES['file']['size'] < 10*MB){
+                $fileNewName=uniqid('img-',true).".".$fileExt;
+                $filePath='../media/'.$fileNewName;
+                move_uploaded_file($_FILES['file']['tmp_name'],$filePath);
+                $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
+                $prot->bind_param("s",$fileNewName);
+                $prot->execute();
+                $prot=$connessione->prepare("INSERT into opera (titolo,trama,img) values (?,?,(select id from img where path=?))");
+                $prot->bind_param("sss",$titolo,$contenuto,$fileNewName);
+                $prot->execute();
+              }else{
+                echo "Errore! File troppo pesante";
+              }
+            }else{
+              echo "Errore durante l'upload del file";
+            }            
+          }
+          header("location:../opere.php");
+        }
+        $connessione->close();
+    }
 ?>

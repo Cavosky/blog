@@ -43,7 +43,7 @@
         <input name="modificaCoperta" type="file" class="w-100" id="mod"><br>
         <button type="submit" name="modificheOpera">Invia</button>
         <button type="submit" name="eliminaOpera">Elimina</button><br>
-        <a href="scrittura.php">Aggiungi Opera</button><br>
+        <a href="aggiungiOpera.php">Aggiungi Opera</button><br>
         <a href="gestione.php">torna alla gestione</button><br>
         <a href="../loggato.php">torna alla home</button>
     </div>
