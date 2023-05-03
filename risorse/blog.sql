@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 26, 2023 alle 08:04
+-- Creato il: Mag 03, 2023 alle 12:34
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -39,11 +39,11 @@ CREATE TABLE `articolo` (
 --
 
 INSERT INTO `articolo` (`id`, `titolo`, `contenuto`, `img`) VALUES
-(11, 'Il potere dei fumetti: come la narrazione visiva influenza la cultura popolare', 'I fumetti hanno una lunga e ricca storia di intrattenimento e narrazione visiva che ha influenzato la cultura popolare in modi sorprendenti. Da Superman e Spider-Man a Batman e Wonder Woman, i personaggi dei fumetti sono diventati icone culturali e hanno ispirato innumerevoli film, programmi televisivi e altri media.\r\nMa il potere dei fumetti non si limita ai personaggi famosi. I fumetti sono stati utilizzati per esplorare questioni sociali e politiche, creando storie che hanno sfidato le norme sociali e portando avanti il discorso su temi come la diversità, l uguaglianza e i diritti umani. Ad esempio, la serie Maus di Art Spiegelman racconta la storia di un sopravvissuto all Olocausto e della sua famiglia attraverso i personaggi di topi e gatti, mentre la serie Y: The Last Man di Brian K. Vaughan immagina un mondo in cui tutti gli uomini sono morti, lasciando le donne ad affrontare le conseguenze.\r\nI fumetti sono anche stati utilizzati per introdurre nuove generazioni alla letteratura classica, attraverso adattamenti visivi di classici come I viaggi di Gulliver di Jonathan Swift e La Divina Commedia di Dante Alighieri. I fumetti possono anche essere utilizzati per insegnare agli studenti concetti scientifici complessi, come la fisica e la biologia, attraverso storie coinvolgenti e ben illustrate.\r\nOltre a tutto ciò, i fumetti sono un importante forma di arte visiva, che ha ispirato artisti di ogni genere. I disegni dei fumetti sono stati utilizzati in moda, design e grafica pubblicitaria. Il formato dei fumetti ha anche influenzato la produzione di film e televisione, con il montaggio delle scene che spesso richiama il ritmo di una pagina di fumetti.\r\nIn definitiva, i fumetti rappresentano una forma di intrattenimento e di narrazione visiva che ha influenzato la cultura popolare in molti modi diversi. La loro influenza si estende ben oltre il mondo dei fumetti, raggiungendo ogni aspetto della cultura popolare.', 3),
-(23, 'Chainsaw Man: un\'avventura folle e sanguinolenta', 'Chainsaw Man è un manga scritto e disegnato da Tatsuki Fujimoto, che ha debuttato nel 2018 sulla rivista Weekly Shonen Jump. La serie segue le vicende di Denji, un giovane che si trasforma in un essere mezzo umano e mezzo motosega dopo aver sconfitto un demone.\r\n\r\nLa trama di Chainsaw Man è folle e sanguinolenta, piena di azione frenetica, colpi di scena e personaggi bizzarri. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura dell\'essere umano e sulla sua relazione con la morte e la sofferenza.\r\n\r\nDenji, il protagonista della serie, è un personaggio complesso che si trova spesso in conflitto tra la sua umanità e la sua natura di demone. Mentre combatte per sopravvivere in un mondo popolato da demoni, impara lentamente a comprendere il significato della vita e della morte.\r\n\r\nL\'arte di Fujimoto è straordinaria, con disegni dettagliati e pieni di azione che catturano perfettamente lo spirito della serie. Chainsaw Man è uno dei manga più interessanti degli ultimi anni, che sicuramente soddisferà i fan degli shonen manga più tradizionali, ma che allo stesso tempo offre una visione fresca e originale del genere.', 6),
-(24, '20th Century Boys: un\'epica storia di amicizia e salvezza', '20th Century Boys è un manga scritto e disegnato da Naoki Urasawa, che ha debuttato nel 1999 sulla rivista Big Comic Spirits. La serie segue la vita di Kenji Endo e dei suoi amici d\'infanzia, che devono affrontare una cospirazione globale che minaccia la distruzione del mondo.\r\n\r\nLa trama di 20th Century Boys è complessa e intrigante, piena di colpi di scena e suspense. Urasawa è un maestro nel creare personaggi realistici e convincenti, che affrontano problemi reali e difficili, ma che riescono a trovare la forza e il coraggio per superarli.\r\n\r\nLa storia si svolge in due periodi differenti, il presente e il futuro, in cui i protagonisti devono unire le forze per sconfiggere il misterioso \"Amico\", l\'architetto della cospirazione che minaccia la sopravvivenza dell\'umanità.\r\n\r\n20th Century Boys è un\'epica storia di amicizia, lealtà e salvezza, che esplora profondamente i temi della giustizia, dell\'identità e del potere. La serie è stata acclamata dalla critica e dai fan di tutto il mondo per la sua trama avvincente, la caratterizzazione dei personaggi e l\'arte dettagliata di Urasawa.\r\n\r\nIn conclusione, 20th Century Boys è un manga che merita di essere letto da tutti gli appassionati del genere, ma anche da coloro che vogliono esplorare storie complesse e coinvolgenti che affrontano temi universali e profondi.', 3),
-(25, 'Berserk: un\'opera oscura e brutale che esplora la natura umana', 'Berserk è un manga scritto e disegnato da Kentaro Miura, che ha debuttato nel 1989 sulla rivista Young Animal. La serie segue la vita di Guts, un mercenario solitario che cerca vendetta contro il suo ex-compagno d\'armi, Griffith.\r\n\r\nLa trama di Berserk è oscura e brutale, piena di violenza e di scene disturbanti. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura umana e sulla sua capacità di affrontare la sofferenza e il dolore.\r\n\r\nGuts è un personaggio complesso, che lotta contro i suoi demoni interiori e cerca di trovare un senso nella vita, nonostante il suo passato tragico e doloroso. La sua relazione con Griffith è altrettanto complessa, poiché i due personaggi hanno legami profondi e complicati che li legano indissolubilmente.\r\n\r\nL\'arte di Miura è straordinaria, con disegni dettagliati e intensi che catturano perfettamente lo spirito della serie. Berserk è un\'opera che esplora la natura umana in modo crudo e sincero, mostrando le sue debolezze e le sue forze, senza mai nascondere la brutalità della realtà.\r\n\r\nIn conclusione, Berserk è un manga che merita di essere letto da coloro che cercano storie profonde e coinvolgenti, che non hanno paura di affrontare temi difficili e complessi. Nonostante la sua natura oscura e brutale, Berserk è un\'opera che lascia un segno indelebile nella mente del lettore, grazie alla sua profondità e alla sua intensità.', 3),
-(26, 'Topolino: un\'icona del fumetto per tutte le età', 'Topolino è un personaggio iconico del fumetto, creato nel 1928 da Walt Disney e Ub Iwerks. Il personaggio è diventato famoso in tutto il mondo, grazie alla sua personalità divertente e amichevole, ma anche grazie alla sua capacità di affrontare problemi reali e di insegnare importanti lezioni di vita.\r\n\r\nLa serie di Topolino segue le avventure del topo antropomorfo e dei suoi amici, tra cui Minni, Paperino e Pippo. Le storie spaziano dal comico al drammatico, dal fantasy al realistico, offrendo ai lettori di tutte le età una vasta gamma di emozioni e di esperienze.\r\n\r\nLa personalità di Topolino è uno dei suoi punti di forza. Il personaggio è intelligente, coraggioso e gentile, ma anche capace di essere sarcastico e ironico quando la situazione lo richiede. La sua capacità di adattarsi alle situazioni e di trovare soluzioni creative ai problemi è una fonte d\'ispirazione per i lettori di tutte le età.\r\n\r\nL\'arte del fumetto di Topolino è altrettanto importante. I disegni sono dettagliati e vivaci, con colori brillanti e una cura particolare per i dettagli. La serie è stata in grado di evolversi nel tempo, passando dalla tecnica del bianco e nero a quella a colori, senza mai perdere il suo fascino e la sua autenticità.\r\n\r\nIn conclusione, Topolino è un\'icona del fumetto che merita di essere letta da tutti, indipendentemente dall\'età. La serie offre una vasta gamma di storie coinvolgenti e divertenti, ma anche importanti lezioni di vita e di valori. Topolino è un personaggio che ha saputo conquistare il cuore dei lettori di tutto il mondo, grazie alla sua personalità unica e al suo fascino senza tempo.', 8);
+(11, 'Il potere dei fumetti: come la narrazione visiva influenza la cultura popolare', 'I fumetti hanno una lunga e ricca storia di intrattenimento e narrazione visiva che ha influenzato la cultura popolare in modi sorprendenti. Da Superman e Spider-Man a Batman e Wonder Woman, i personaggi dei fumetti sono diventati icone culturali e hanno ispirato innumerevoli film, programmi televisivi e altri media.Ma il potere dei fumetti non si limita ai personaggi famosi. I fumetti sono stati utilizzati per esplorare questioni sociali e politiche, creando storie che hanno sfidato le norme sociali e portando avanti il discorso su temi come la diversità, l uguaglianza e i diritti umani. Ad esempio, la serie Maus di Art Spiegelman racconta la storia di un sopravvissuto all Olocausto e della sua famiglia attraverso i personaggi di topi e gatti, mentre la serie Y: The Last Man di Brian K. Vaughan immagina un mondo in cui tutti gli uomini sono morti, lasciando le donne ad affrontare le conseguenze.I fumetti sono anche stati utilizzati per introdurre nuove generazioni alla letteratura classica, attraverso adattamenti visivi di classici come I viaggi di Gulliver di Jonathan Swift e La Divina Commedia di Dante Alighieri. I fumetti possono anche essere utilizzati per insegnare agli studenti concetti scientifici complessi, come la fisica e la biologia, attraverso storie coinvolgenti e ben illustrate.Oltre a tutto ciò, i fumetti sono un importante forma di arte visiva, che ha ispirato artisti di ogni genere. I disegni dei fumetti sono stati utilizzati in moda, design e grafica pubblicitaria. Il formato dei fumetti ha anche influenzato la produzione di film e televisione, con il montaggio delle scene che spesso richiama il ritmo di una pagina di fumetti.In definitiva, i fumetti rappresentano una forma di intrattenimento e di narrazione visiva che ha influenzato la cultura popolare in molti modi diversi. La loro influenza si estende ben oltre il mondo dei fumetti, raggiungendo ogni aspetto della cultura popolare.', 3),
+(23, 'Chainsaw Man: un\'avventura folle e sanguinolenta', '<a href=\'serie.php?id=23\'>Chainsaw Man</a>è un manga scritto e disegnato da Tatsuki Fujimoto, che ha debuttato nel 2018 sulla rivista Weekly Shonen Jump. La serie segue le vicende di Denji, un giovane che si trasforma in un essere mezzo umano e mezzo motosega dopo aver sconfitto un demone.La trama di Chainsaw Man è folle e sanguinolenta, piena di azione frenetica, colpi di scena e personaggi bizzarri. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura dell\'essere umano e sulla sua relazione con la morte e la sofferenza.Denji, il protagonista della serie, è un personaggio complesso che si trova spesso in conflitto tra la sua umanità e la sua natura di demone. Mentre combatte per sopravvivere in un mondo popolato da demoni, impara lentamente a comprendere il significato della vita e della morte.L\'arte di Fujimoto è straordinaria, con disegni dettagliati e pieni di azione che catturano perfettamente lo spirito della serie. Chainsaw Man è uno dei manga più interessanti degli ultimi anni, che sicuramente soddisferà i fan degli shonen manga più tradizionali, ma che allo stesso tempo offre una visione fresca e originale del genere.', 6),
+(24, '20th Century Boys: un\'epica storia di amicizia e salvezza', '<a href=\'serie.php?id=2\'>20th Century Boys</a> è un manga scritto e disegnato da Naoki Urasawa, che ha debuttato nel 1999 sulla rivista Big Comic Spirits. La serie segue la vita di Kenji Endo e dei suoi amici d\'infanzia, che devono affrontare una cospirazione globale che minaccia la distruzione del mondo.La trama di 20th Century Boys è complessa e intrigante, piena di colpi di scena e suspense. Urasawa è un maestro nel creare personaggi realistici e convincenti, che affrontano problemi reali e difficili, ma che riescono a trovare la forza e il coraggio per superarli.La storia si svolge in due periodi differenti, il presente e il futuro, in cui i protagonisti devono unire le forze per sconfiggere il misterioso ', 9),
+(25, 'Berserk: un\'opera oscura e brutale che esplora la natura umana', 'Berserk è un manga scritto e disegnato da Kentaro Miura, che ha debuttato nel 1989 sulla rivista Young Animal. La serie segue la vita di Guts, un mercenario solitario che cerca vendetta contro il suo ex-compagno d\'armi, Griffith.La trama di Berserk è oscura e brutale, piena di violenza e di scene disturbanti. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura umana e sulla sua capacità di affrontare la sofferenza e il dolore.Guts è un personaggio complesso, che lotta contro i suoi demoni interiori e cerca di trovare un senso nella vita, nonostante il suo passato tragico e doloroso. La sua relazione con Griffith è altrettanto complessa, poiché i due personaggi hanno legami profondi e complicati che li legano indissolubilmente.L\'arte di Miura è straordinaria, con disegni dettagliati e intensi che catturano perfettamente lo spirito della serie. Berserk è un\'opera che esplora la natura umana in modo crudo e sincero, mostrando le sue debolezze e le sue forze, senza mai nascondere la brutalità della realtà.In conclusione, Berserk è un manga che merita di essere letto da coloro che cercano storie profonde e coinvolgenti, che non hanno paura di affrontare temi difficili e complessi. Nonostante la sua natura oscura e brutale, Berserk è un\'opera che lascia un segno indelebile nella mente del lettore, grazie alla sua profondità e alla sua intensità.', 11),
+(26, 'Topolino: un\'icona del fumetto per tutte le età', 'Topolino è un personaggio iconico del fumetto, creato nel 1928 da Walt Disney e Ub Iwerks. Il personaggio è diventato famoso in tutto il mondo, grazie alla sua personalità divertente e amichevole, ma anche grazie alla sua capacità di affrontare problemi reali e di insegnare importanti lezioni di vita.La serie di Topolino segue le avventure del topo antropomorfo e dei suoi amici, tra cui Minni, Paperino e Pippo. Le storie spaziano dal comico al drammatico, dal fantasy al realistico, offrendo ai lettori di tutte le età una vasta gamma di emozioni e di esperienze.La personalità di Topolino è uno dei suoi punti di forza. Il personaggio è intelligente, coraggioso e gentile, ma anche capace di essere sarcastico e ironico quando la situazione lo richiede. La sua capacità di adattarsi alle situazioni e di trovare soluzioni creative ai problemi è una fonte d\'ispirazione per i lettori di tutte le età.L\'arte del fumetto di Topolino è altrettanto importante. I disegni sono dettagliati e vivaci, con colori brillanti e una cura particolare per i dettagli. La serie è stata in grado di evolversi nel tempo, passando dalla tecnica del bianco e nero a quella a colori, senza mai perdere il suo fascino e la sua autenticità.In conclusione, Topolino è un\'icona del fumetto che merita di essere letta da tutti, indipendentemente dall\'età. La serie offre una vasta gamma di storie coinvolgenti e divertenti, ma anche importanti lezioni di vita e di valori. Topolino è un personaggio che ha saputo conquistare il cuore dei lettori di tutto il mondo, grazie alla sua personalità unica e al suo fascino senza tempo.', 8);
 
 -- --------------------------------------------------------
 
@@ -183,10 +183,6 @@ CREATE TABLE `commentiarticoli` (
 
 INSERT INTO `commentiarticoli` (`id`, `utente`, `articolo`, `contenuto`, `risponde`, `pubblicazione`) VALUES
 (13, 'lorenzocavagnaro14@gmail.com', 26, 'prova\r\n', NULL, '2023-04-17'),
-(14, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
-(15, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
-(16, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
-(17, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
 (18, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17'),
 (19, 'lorenzocavagnaro14@gmail.com', 26, 'a', NULL, '2023-04-17');
 
@@ -233,7 +229,10 @@ INSERT INTO `img` (`id`, `path`) VALUES
 (3, 'prova.jpg'),
 (6, 'chainsawman-cover.jpg'),
 (7, 'ilcanecheguardalestelle-cover.jpg'),
-(8, 'topolino.jpeg');
+(8, 'topolino.jpeg'),
+(9, 'img-6448bf44493111.08214518.jpeg'),
+(10, 'img-6448ee96e55e67.92386767.png'),
+(11, 'img-6452253d9ca6e7.08125778.png');
 
 -- --------------------------------------------------------
 
@@ -522,7 +521,7 @@ CREATE TABLE `opera` (
 
 INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`) VALUES
 (1, 'Monster', 1995, 2001, 2, NULL),
-(2, '20th Century Boys', 1999, 2006, 0, NULL),
+(2, '20th Century Boys', 1999, 2006, 10, '\'\''),
 (3, 'A Couple of Cuckoos', 2020, NULL, 0, NULL),
 (4, 'A Sign of Affection', 2019, NULL, 0, NULL),
 (5, 'All You Need Is Kill', 2014, 2014, 0, NULL),
@@ -606,7 +605,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 (83, 'Tsukimichi moonlit fantasy', 2015, NULL, 0, NULL),
 (84, 'Undead Unluck', 2020, NULL, 0, NULL),
 (85, 'Witch Watch', 2021, NULL, 0, NULL),
-(86, 'ZOMBIE 100', 2018, NULL, 0, NULL),
+(86, 'ZOMBIE 100', 2018, NULL, 0, 'zombie'),
 (87, 'Fire Punch', 2016, 2018, 0, NULL),
 (88, 'Pluto', 2003, 2009, 0, NULL),
 (89, 'Yawara!', 1986, 1993, 0, NULL),
@@ -651,10 +650,7 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`) VALUES
-('a@a', 'a', NULL, '$2y$10$NXE.lhbk8X3ARnQzlY29de/shire9VehIUra4uzghiRqXlKNXcTpO', 1, 'utente'),
-('giordanino@gmail.com', 'ciao', NULL, '$2y$10$564L21yrEYiiAuRU/VUuIuVWxhNitpR0OW0QFtrFykrFkLPCk7jLO', 1, 'utente'),
-('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 1, 'admin'),
-('semec@gmail.com', 'rapace', NULL, '$2y$10$LU2nfvJSJDQg2Xe746pXd..WAwVH2xASuMYW.jmgBnG14Hq6D6rGC', 1, 'utente');
+('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -874,13 +870,13 @@ ALTER TABLE `edizione`
 -- AUTO_INCREMENT per la tabella `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `opera`
 --
 ALTER TABLE `opera`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- Limiti per le tabelle scaricate
