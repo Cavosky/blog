@@ -39,6 +39,7 @@
               $_SESSION["email"]=$row['email'];
               $_SESSION["username"]=$row['username'];
               $_SESSION["ruolo"]=$row['ruolo'];
+              $_SESSION["id"]=$row['id'];
               header("location:loggato.php");
             }
           }          

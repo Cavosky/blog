@@ -49,7 +49,7 @@
 
                     <div class="offcanvas text-bg-dark offcanvas-end " data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                         <div class="offcanvas-header">
-                            <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"> <?php echo $_SESSION['username']?></h3>
+                            <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"><?php echo $_SESSION['username']?></h3>
                             <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="media/<?php 
                                 $connessione= connessione();
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
@@ -71,7 +71,7 @@
                                             <a class="nav-link text-warning" href="#">Progressi</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-warning" href="#">Link</a>
+                                            <a class="nav-link text-warning" href="user.php?id=<?php echo $_SESSION['id']?>">Vai al profilo</a>
                                         </li>
                                     </ul>
                                 </div>
