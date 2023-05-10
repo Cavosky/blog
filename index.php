@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-dark text-light z-0">
+    <body class="bg-dark text-light z-0" style="height:100vh">
         <!--navbar-->
         <nav class="navbar bg-dark navbar-warning border border-warning-subtle sticky-top z-2 top-0 end-0 w-100 " style="max-height:10vh">
             <div class="container-fluid">     
@@ -72,7 +72,7 @@
          </div>
         <!--fine grid-->
          <!--footer-->
-            <footer class="py-3 my-4 fixed-bottom">
+         <div style="margin-top:auto" ><footer class="py-3" >
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="loggato.php" class="nav-link px-2 text-warning">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-warning">Features</a></li>
@@ -82,6 +82,8 @@
             </ul>
             <p class="text-center text-warning">&copy; 2022 LibreComics, Inc</p>
             </footer>
+        </div>
+            
 
         <!--fine footer-->
     </body>
