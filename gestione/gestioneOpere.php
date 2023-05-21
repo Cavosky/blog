@@ -30,7 +30,7 @@
         while($row=$risultati->fetch_assoc()){
           echo "
             <input type='radio' name='seleziona' onclick='passaggioNome(\"$row[id]\")' value='$row[id]' required >
-            <input style='display:none' id='$row[id]c' value='\"$row[trama]\"' required >
+            <input style='display:none' id='$row[id]c' value=\"'$row[trama]'\" required >
             <p class='w-50' id='$row[id]'>$row[titolo]</p>";
         }                   
         $connessione->close();

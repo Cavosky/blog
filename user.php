@@ -34,19 +34,9 @@
                         echo $row['username'];                                
                         $connessione->close();
                     ?>
-                </h1>                
-            </div>
-            <div class="position-absolute top-50 end-0 pe-5">
-                <div class="form-check form-switch">
-                    <form method="post">
-                       
-                    </form>
-                </div>
-            </div>                
-                <div class="d-flex flex-row">
-                
-                </div>
-            </div>            
+                </h1>
+                <button class="btn bg-primary start-100 position-absolute me-5" onclick="location.href='modificautente.php?>'">Modifica</button>                       
+            </div>              
         </div>
     </body>
 </html>

@@ -87,28 +87,23 @@
                                     }
                                 });
                             });
-                        </script>
-                    </form>
+                        </script>                    
                 </div>
                 <label for="edizioni">Edizioni:</label>
-                <select class="form-select" name="edizioni" aria-label="Default select example" style="width:15vw">
+                <select  class="form-select" name="edizioni" aria-label="Default select example" style="width:15vw">
                     <?php
                         riempiEdizioni();
                     ?>
                 </select>
+                </form>
             </div>
             <div class="position-absolute top-50 mt-5">
                 <h3 class="text-light justify-content-center">Volumi:</h3>
                 <div class="d-flex flex-row pt-2">
-                    <div class='col mx-2'>
-                        <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
-                            <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto' alt='foto opera'>
-                            <div class='card-body'>
-                                <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                        stampavolumi();
+                    ?>
+                    
                 
                 <div class="d-flex flex-row">
                 

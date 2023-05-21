@@ -729,4 +729,71 @@
         }
         $connessione->close();
     }
+
+    if(isset($_REQUEST['cambiodatiutente'])){
+      $connessione=connessione();
+        if(empty($_POST['username'] )){
+          $message="<p class='text-danger'>Inserire informazioni in ogni campo</p>"; 
+          echo $message;
+        }else{
+          $titolo=$_POST['username'];
+          if(($_FILES['file']['error']===4)){
+              $prot=$connessione->prepare("UPDATE utente set username=? where email='$_SESSION[email]'");
+              $prot->bind_param("s",$titolo);
+              $prot->execute(); 
+          }else{
+            $tmp=explode('/',$_FILES['file']['type']);
+            $fileExt=strtolower(end($tmp));
+            if($_FILES['file']['error'] === 0){
+              if($_FILES['file']['size'] < 10*MB){
+                $fileNewName=uniqid('img-',true).".".$fileExt;
+                $filePath='../media/'.$fileNewName;
+                move_uploaded_file($_FILES['file']['tmp_name'],$filePath);
+                $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
+                $prot->bind_param("s",$fileNewName);
+                $prot->execute();
+                $prot=$connessione->prepare("UPDATE  utente SET username=?,profilo=(SELECT id FROM img where path=?) where email='$_SESSION[email]'");
+                $prot->bind_param("ss",$titolo,$fileNewName);
+                $prot->execute();
+              }else{
+                echo "Errore! File troppo pesante";
+              }
+            }else{
+              echo "Errore durante l'upload del file";
+            }            
+          }
+          header("location:loggato.php");
+        }
+        $connessione->close();
+    }
+
+    function stampavolumi(){
+      $connessione=connessione();
+      $risultati=$connessione->query("SELECT * FROM volumi,edizione where opera=$_GET[id]");
+          $i=0;
+          $j=-2;
+          while($volume=$risultati->fetch_assoc()){
+            if($i%3==0 || $i==0){
+              echo "<div class='row mb-3'>";
+            }
+            $query="SELECT path from img where id='$volume[copertina]'";
+            $result=$connessione->query($query);
+            $img = $result->fetch_array()[0];
+              echo "<div class='col mx-2'>
+                        <div class='card bg-warning border hover-overlay' style='max-width: 12vw;'>
+                            <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto'>
+                            <div class='card-body'>
+                                <p class='card-text text-black text-center overflow-hidden'>Volume $volume[numero]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>";   
+              if($j%3==0){
+              echo "</div>";
+            }
+            $i++;
+            $j++;      
+      }
+      $connessione->close();
+    }
 ?>

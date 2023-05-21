@@ -39,7 +39,7 @@
                                 $query="SELECT path from img,utente where utente.profilo=img.id";
                                 $risultati=$connessione->query($query);
                                 $row=$risultati->fetch_assoc();
-                                echo implode($row);                                
+                                echo $row['path'];                                
                                 $connessione->close();
                             ?>" />
 
