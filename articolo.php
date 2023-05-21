@@ -88,7 +88,7 @@
         <?php
             if(!empty($_SESSION['email'])){
                 $connessione=connessione();
-                $query="SELECT path from img,utente where id=profilo and email='$_SESSION[email]'";
+                $query="SELECT path from img,utente where img.id=profilo and email='$_SESSION[email]'";
                 $risultati=$connessione->query($query);
                 while($row=$risultati->fetch_assoc()){
                     echo "<section id='sezioneCommenti'>

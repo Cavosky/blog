@@ -18,7 +18,7 @@
         <?php mettiInput();?>
         <div class="container bg-dark z-1 mt-5 position-relative" style="width:60vw;height:93vh">
             <div class="position-absolute ">
-            <img src=" media/<?php 
+            <img class="rounded mt-2" style='object-position: center;object-fit: cover;max-width: 100% ;height:40vh' src=" media/<?php 
                             $connessione= connessione();
                             $query="SELECT path from img,utente where utente.id=$_GET[id] and img.id=utente.profilo";
                             $risultati=$connessione->query($query);

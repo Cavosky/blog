@@ -167,7 +167,7 @@
                   <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
                             <div class='row g-0'>
                                 <div class='col-md-4'>
-                                    <img src=\"media/$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
+                                    <img src=\"media/$img\" class='img-fluid rounded-start' style='object-position: center;object-fit: cover;max-width: 100% ;height:22vh' alt='...'>
                                 </div>
                                 <div class='col-md-8'>
                                     <div class='card-body bg-warning text-dark '>
@@ -203,7 +203,7 @@
               echo "
                   <div class='col'>
                       <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
-                          <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;max-width: 100% ;height:30vh' alt='foto opera'>
+                          <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;max-width: 100% ;height:35vh' alt='foto opera'>
                           <div class='card-body'>
                               <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                           </div>
@@ -242,7 +242,7 @@
                 echo "
                     <div class='col'>
                       <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 12vw;'>
-                          <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;max-width: 100% ;height:30vh' alt='foto opera'>
+                          <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;max-width: 100% ;height:35vh' alt='foto opera'>
                           <div class='card-body'>
                               <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                           </div>
@@ -365,7 +365,7 @@
                     <div class='card mb-3 bg-warning overflow-hidden' onclick='location.href=\"articolo.php?id=$card[id]\"' style='max-width: 410px;max-height:200px'>
                               <div class='row g-0'>
                                   <div class='col-md-4'>
-                                      <img src=\"media/$img\" class='img-fluid rounded-start' style='max-width: 100% ;height:auto' alt='...'>
+                                      <img src=\"media/$img\" class='img-fluid rounded-start' style='object-position: center;object-fit: cover;max-width: 100% ;height:22vh' alt='...'>
                                   </div>
                                   <div class='col-md-8'>
                                       <div class='card-body bg-warning text-dark '>
@@ -407,7 +407,7 @@
     $query="SELECT * from commentiArticoli where articolo=$_GET[id] order by pubblicazione desc";
     $risultati=$connessione->query($query);    
     while($row=$risultati->fetch_assoc()){
-      $query="SELECT email,username,path from utente,img where email='$row[utente]' and id=profilo";
+      $query="SELECT email,username,path from utente,img where email='$row[utente]' and img.id=profilo";
       $result=$connessione->query($query);
       $arr=$result->fetch_assoc();
       $utente=$arr['username'];
@@ -770,33 +770,20 @@
         $connessione->close();
     }
 
-    function stampavolumi(){
+    if(isset($_POST['stampavolumi'])){
       $connessione=connessione();
-      $risultati=$connessione->query("SELECT * FROM volumi,edizione where opera=$_GET[id]");
-          $i=0;
-          $j=-2;
-          while($volume=$risultati->fetch_assoc()){
-            if($i%3==0 || $i==0){
-              echo "<div class='row mb-3'>";
-            }
-            $query="SELECT path from img where id='$volume[copertina]'";
-            $result=$connessione->query($query);
-            $img = $result->fetch_array()[0];
-              echo "<div class='col mx-2'>
-                        <div class='card bg-warning border hover-overlay' style='max-width: 12vw;'>
-                            <img src='media/$img' class='card-img-top img-fluid' style='max-width: 100% ;height:auto'>
-                            <div class='card-body'>
-                                <p class='card-text text-black text-center overflow-hidden'>Volume $volume[numero]</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>";   
-              if($j%3==0){
-              echo "</div>";
-            }
-            $i++;
-            $j++;      
-      }
+      $risultati=$connessione->query("SELECT * FROM volumi,edizione where opera=$_POST[id] and edizione=$_POST[stampavolumi] and volumi.edizione=edizione.id");
+      while($volume=$risultati->fetch_assoc()){   
+        $query="SELECT path from img where id='$volume[copertina]'";
+        $result=$connessione->query($query);
+        $img = $result->fetch_array()[0];
+          echo "<li class='card'>
+                    <img style='object-position: center;object-fit: cover;max-width: 100% ;height:35vh' src='media/$img'>
+                <div>
+                    <h3 class='card-title'>Volume $volume[numero]</h3>
+                </div>
+                </li>";  
+    }
       $connessione->close();
     }
 ?>

@@ -9,16 +9,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="stile.css">
+        <link rel="stylesheet" href="risorse/serie.css">
         <title>LibreComics</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <script src="serie.js"></script>
     </head>
     <body class="bg-warning text-light z-0">
         <?php mettiInput();?>
-        <div class="container bg-dark z-1 mt-5 position-relative" style="width:60vw;height:93vh">
+        <div class="container bg-dark z-1 mt-5 position-relative" style="width:60vw;height:100vh">
             <div class="position-absolute ">
-            <img src=" media/<?php 
+            <img class="rounded mt-2" style='object-position: center;object-fit: cover;max-width: 100% ;height:40vh' src=" media/<?php 
                             $connessione= connessione();
                             $query="SELECT path from img,opera where opera.id=$_GET[id] and img.id=opera.img";
                             $risultati=$connessione->query($query);
@@ -36,20 +38,20 @@
                     ?>
                 </h1>                
             </div>
-            <div class="position-absolute end-50">
+            <div class="position-absolute start-50">
                 <h3>Trama</h3>
             <p class="text-light">
-                    <?php
+                    <!--<?php
                             $connessione=connessione();
                             $query="SELECT trama from opera where id=$_GET[id]";
                             $risultati=$connessione->query($query);
                             $row=$risultati->fetch_assoc();
                             echo implode($row);                                
                             $connessione->close();
-                        ?>
+                        ?>-->
                 </p>
             </div>
-            <div class="position-absolute top-50 end-0 pe-5">
+            <div class="position-absolute top-50 end-0 pe-5 z-1">
                 <div class="form-check form-switch">
                     <form method="post">
                         <?php
@@ -67,48 +69,20 @@
                                 }                            
                                 $connessione->close();
                             }
-                        ?>
-                        <script>
-                            $(document).ready(()=>{
-                                $("#segui").click(()=>{
-                                    if(!$("#segui").is(':checked')){
-                                        $.ajax({
-                                            url:"connect.php",
-                                            method:"POST",
-                                            data:{smettiSegui:document.getElementById('id').value}
-                                        });
-                                    };
-                                    if($("#segui").is(':checked')){
-                                        $.ajax({
-                                            url:"connect.php",
-                                            method:"POST",
-                                            data:{segui:document.getElementById('id').value}
-                                        });
-                                    }
-                                });
-                            });
-                        </script>                    
+                        ?>                 
                 </div>
                 <label for="edizioni">Edizioni:</label>
-                <select  class="form-select" name="edizioni" aria-label="Default select example" style="width:15vw">
+                <select  class="form-select" name="edizioni" id="edizione"  style="width:15vw">
                     <?php
                         riempiEdizioni();
                     ?>
                 </select>
                 </form>
             </div>
-            <div class="position-absolute top-50 mt-5">
-                <h3 class="text-light justify-content-center">Volumi:</h3>
-                <div class="d-flex flex-row pt-2">
-                    <?php
-                        stampavolumi();
-                    ?>
-                    
-                
-                <div class="d-flex flex-row">
-                
-                </div>
-            </div>            
-        </div>
+        <div class="container position-absolute top-50 py-0 ps-0 pe-4 " style="width:60vw;height:93vh">
+                <h2>Volumi:</h2>
+                <ul class="cards text-dark" id="volumi">
+                </ul>
+            </div>
     </body>
 </html>
