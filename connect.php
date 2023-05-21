@@ -1,11 +1,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <?php 
   session_start();
+
   define('KB', 1024);
   define('MB', 1048576);
   define('GB', 1073741824);
   define('TB', 1099511627776);
 
+  error_reporting(E_ALL);
+  ini_set('display_errors', 'On');
   function connessione(){
     $host_db="localhost";
     $user_db="root";
@@ -747,7 +751,7 @@
             if($_FILES['file']['error'] === 0){
               if($_FILES['file']['size'] < 10*MB){
                 $fileNewName=uniqid('img-',true).".".$fileExt;
-                $filePath='../media/'.$fileNewName;
+                $filePath='media/'.$fileNewName;
                 move_uploaded_file($_FILES['file']['tmp_name'],$filePath);
                 $prot=$connessione->prepare("INSERT into img (path) VALUES (?) ");
                 $prot->bind_param("s",$fileNewName);
@@ -762,7 +766,6 @@
               echo "Errore durante l'upload del file";
             }            
           }
-          header("location:loggato.php");
         }
         $connessione->close();
     }
