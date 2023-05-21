@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 21, 2023 alle 18:58
+-- Creato il: Mag 21, 2023 alle 20:26
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -266,7 +266,16 @@ INSERT INTO `img` (`id`, `path`) VALUES
 (49, 'img-646a4b1d314688.65855786.jpeg'),
 (50, 'img-646a4bec128182.95244445.jpeg'),
 (51, 'img-646a4c45ed6b87.64577648.jpeg'),
-(52, 'img-646a4c6cafbf71.15129424.jpeg');
+(52, 'img-646a4c6cafbf71.15129424.jpeg'),
+(53, 'img-646a607ce667b5.39230880.jpeg'),
+(54, 'img-646a60a1e6d566.84586732.jpeg'),
+(55, 'img-646a60ca1fa703.85375609.jpeg'),
+(56, 'img-646a60d0986c40.13174294.jpeg'),
+(57, 'img-646a60f42f7ff7.03538383.jpeg'),
+(58, 'img-646a6129acbb93.02762906.jpeg'),
+(59, 'img-646a61327c9dc4.54609010.jpeg'),
+(60, 'img-646a616879b182.97314393.jpeg'),
+(61, 'img-646a623a9970a2.12796778.jpeg');
 
 -- --------------------------------------------------------
 
@@ -572,7 +581,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 (16, 'Burn the Witch', 2020, NULL, 22, ''),
 (17, 'Call of the Night', 2019, NULL, 25, '\'\''),
 (18, 'Chainsaw Man', 2018, NULL, 6, '\'Chainsaw goes nrrrrrrrr\'a'),
-(19, 'Claymore', 2001, 2014, 0, NULL),
+(19, 'Claymore', 2001, 2014, 61, '\'\''),
 (20, 'Come Sopravvivere nell\'era Sengoku', 2017, NULL, 0, NULL),
 (21, 'Cosi Carina-Fly me to the moon', 2018, NULL, 0, NULL),
 (22, 'Dandadan', 2021, NULL, 0, NULL),
@@ -598,11 +607,11 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 (42, 'Kaguya-sama:Love is War', 2015, 2022, 51, '\'\''),
 (43, 'Kaiju No.8', 2020, NULL, 0, NULL),
 (44, 'Kamisama Kiss', 2008, 2016, 0, NULL),
-(45, 'Kenshin, Samurai Vagabondo', 1994, 1999, 0, NULL),
+(45, 'Kenshin, Samurai Vagabondo', 1994, 1999, 53, '\'\''),
 (46, 'Komi can\'t communicate', 2018, NULL, 0, NULL),
 (47, 'Land of the Lustrous', 2012, NULL, 0, NULL),
 (48, 'Last Game', 2011, 2016, 0, NULL),
-(49, 'Look Back', 2021, 2021, 0, NULL),
+(49, 'Look Back', 2021, 2021, 60, '\'\''),
 (50, 'Love After World Domination', 2019, 2022, 0, NULL),
 (51, 'Made in Abyss', 2012, NULL, 0, NULL),
 (52, 'Mermaid Prince', 2015, 2016, 0, NULL),
@@ -619,25 +628,25 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 (63, 'Non mi stuzzicare,Takagi', 2013, NULL, 0, NULL),
 (64, 'Non tormentarmi,Nagatoro', 2017, NULL, 0, NULL),
 (65, 'One-Punch Man', 2012, NULL, 0, NULL),
-(66, 'Oshi no Ko-My star', 2020, NULL, 0, NULL),
-(67, 'Platinum End', 2015, 2021, 0, NULL),
+(66, 'Oshi no Ko-My star', 2020, NULL, 59, '\'\''),
+(67, 'Platinum End', 2015, 2021, 58, '\'\''),
 (68, 'Prison School', 2011, 2017, 0, NULL),
 (69, 'Sakamoto Days', 2020, NULL, 0, NULL),
 (70, 'Sankarea', 2009, 2014, 0, NULL),
 (71, 'School Live', 2012, 2019, 0, NULL),
 (72, 'Shadow House', 2018, NULL, 0, NULL),
 (73, 'Shangri-La Frontier', 2020, NULL, 0, NULL),
-(74, 'Soul Eater', 2003, 2013, 0, NULL),
+(74, 'Soul Eater', 2003, 2013, 57, '\'\''),
 (75, 'Spice And Wolf', 2007, 2017, 0, NULL),
 (76, 'Spy X Family', 2019, NULL, 28, '\'\''),
 (77, 'Squalificati- Ranger Reject', 2021, NULL, 0, NULL),
 (78, 'Tatsuki Fujimoto Short Stories 17-21', 2014, 2017, 0, NULL),
 (79, 'Tatsuki Fujimoto Short Stories 22-26', 2018, 2018, 0, NULL),
 (80, 'The Quintessential Quintuplets', 2017, 2020, 0, NULL),
-(81, 'Tokyo Ghoul', 2011, 2014, 0, NULL),
-(82, 'Tokyo Ghoul:re', 2014, 2018, 0, NULL),
+(81, 'Tokyo Ghoul', 2011, 2014, 56, '\'\''),
+(82, 'Tokyo Ghoul:re', 2014, 2018, 55, '\'\''),
 (83, 'Tsukimichi moonlit fantasy', 2015, NULL, 0, NULL),
-(84, 'Undead Unluck', 2020, NULL, 0, NULL),
+(84, 'Undead Unluck', 2020, NULL, 54, '\'\''),
 (85, 'Witch Watch', 2021, NULL, 0, NULL),
 (86, 'ZOMBIE 100', 2018, NULL, 52, '\'zombie\''),
 (87, 'Fire Punch', 2016, 2018, 0, NULL),
@@ -915,7 +924,7 @@ ALTER TABLE `edizione`
 -- AUTO_INCREMENT per la tabella `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT per la tabella `opera`
