@@ -36,7 +36,7 @@
                 <div class="text-end"> 
                     <img class="rounded-circle mx-3" width='50' height='50' alt="avatar" name="icona" src="media/<?php 
                                 $connessione= connessione();
-                                $query="SELECT path from img,utente where utente.profilo=img.id";
+                                $query="SELECT path from img,utente where utente.profilo=img.id and email='$_SESSION[email]'";
                                 $risultati=$connessione->query($query);
                                 $row=$risultati->fetch_assoc();
                                 echo $row['path'];                                
@@ -52,7 +52,7 @@
                             <h3 class="offcanvas-title text-warning" id="staticBackdropLabel"><?php echo $_SESSION['username']?></h3>
                             <img class="rounded-circle " width='75' height='75' alt="avatar" name="icona" src="media/<?php 
                                 $connessione= connessione();
-                                $query="SELECT path from img,utente where utente.profilo=img.id";
+                                $query="SELECT path from img,utente where utente.profilo=img.id and email='$_SESSION[email]'";
                                 $risultati=$connessione->query($query);
                                 $row=$risultati->fetch_assoc();
                                 echo implode($row);                                

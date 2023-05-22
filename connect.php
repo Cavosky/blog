@@ -285,7 +285,7 @@
               echo "
                   <div class='col d-flex justify-content-center'>
                     <div class='card bg-warning border hover-overlay' onclick='location.href=\"serie.php?id=$opera[id]\"' style='max-width: 14vw;'>
-                        <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;max-width: 100% ;height:30vh' alt='foto opera'>
+                        <img src='media/$img' class='card-img-top img-fluid' style='object-position: center;object-fit: cover;width: 10vw ;height:30vh' alt='foto opera'>
                         <div class='card-body'>
                             <p class='card-text text-black overflow-hidden'>$opera[titolo]</p>
                         </div>

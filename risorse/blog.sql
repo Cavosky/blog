@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 21, 2023 alle 20:26
--- Versione del server: 10.4.25-MariaDB
--- Versione PHP: 8.1.10
+-- Creato il: Mag 22, 2023 alle 10:43
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,7 @@ CREATE TABLE `articolo` (
 
 INSERT INTO `articolo` (`id`, `titolo`, `contenuto`, `img`) VALUES
 (11, 'Il potere dei fumetti: come la narrazione visiva influenza la cultura popolare', 'I fumetti hanno una lunga e ricca storia di intrattenimento e narrazione visiva che ha influenzato la cultura popolare in modi sorprendenti. Da Superman e Spider-Man a Batman e Wonder Woman, i personaggi dei fumetti sono diventati icone culturali e hanno ispirato innumerevoli film, programmi televisivi e altri media.Ma il potere dei fumetti non si limita ai personaggi famosi. I fumetti sono stati utilizzati per esplorare questioni sociali e politiche, creando storie che hanno sfidato le norme sociali e portando avanti il discorso su temi come la diversità, l uguaglianza e i diritti umani. Ad esempio, la serie Maus di Art Spiegelman racconta la storia di un sopravvissuto all Olocausto e della sua famiglia attraverso i personaggi di topi e gatti, mentre la serie Y: The Last Man di Brian K. Vaughan immagina un mondo in cui tutti gli uomini sono morti, lasciando le donne ad affrontare le conseguenze.I fumetti sono anche stati utilizzati per introdurre nuove generazioni alla letteratura classica, attraverso adattamenti visivi di classici come I viaggi di Gulliver di Jonathan Swift e La Divina Commedia di Dante Alighieri. I fumetti possono anche essere utilizzati per insegnare agli studenti concetti scientifici complessi, come la fisica e la biologia, attraverso storie coinvolgenti e ben illustrate.Oltre a tutto ciò, i fumetti sono un importante forma di arte visiva, che ha ispirato artisti di ogni genere. I disegni dei fumetti sono stati utilizzati in moda, design e grafica pubblicitaria. Il formato dei fumetti ha anche influenzato la produzione di film e televisione, con il montaggio delle scene che spesso richiama il ritmo di una pagina di fumetti.In definitiva, i fumetti rappresentano una forma di intrattenimento e di narrazione visiva che ha influenzato la cultura popolare in molti modi diversi. La loro influenza si estende ben oltre il mondo dei fumetti, raggiungendo ogni aspetto della cultura popolare.', 44),
-(23, 'Chainsaw Man: un\'avventura folle e sanguinolenta', '<a href=\'serie.php?id=23\'>Chainsaw Man</a>è un manga scritto e disegnato da Tatsuki Fujimoto, che ha debuttato nel 2018 sulla rivista Weekly Shonen Jump. La serie segue le vicende di Denji, un giovane che si trasforma in un essere mezzo umano e mezzo motosega dopo aver sconfitto un demone.La trama di Chainsaw Man è folle e sanguinolenta, piena di azione frenetica, colpi di scena e personaggi bizzarri. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura dell\'essere umano e sulla sua relazione con la morte e la sofferenza.Denji, il protagonista della serie, è un personaggio complesso che si trova spesso in conflitto tra la sua umanità e la sua natura di demone. Mentre combatte per sopravvivere in un mondo popolato da demoni, impara lentamente a comprendere il significato della vita e della morte.L\'arte di Fujimoto è straordinaria, con disegni dettagliati e pieni di azione che catturano perfettamente lo spirito della serie. Chainsaw Man è uno dei manga più interessanti degli ultimi anni, che sicuramente soddisferà i fan degli shonen manga più tradizionali, ma che allo stesso tempo offre una visione fresca e originale del genere.', 6),
+(23, 'Chainsaw Man: un\'avventura folle e sanguinolenta', '<a href=\'serie.php?id=18\'>Chainsaw Man</a> è un manga scritto e disegnato da Tatsuki Fujimoto, che ha debuttato nel 2018 sulla rivista Weekly Shonen Jump. La serie segue le vicende di Denji, un giovane che si trasforma in un essere mezzo umano e mezzo motosega dopo aver sconfitto un demone.La trama di Chainsaw Man è folle e sanguinolenta, piena di azione frenetica, colpi di scena e personaggi bizzarri. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura dell\'essere umano e sulla sua relazione con la morte e la sofferenza.Denji, il protagonista della serie, è un personaggio complesso che si trova spesso in conflitto tra la sua umanità e la sua natura di demone. Mentre combatte per sopravvivere in un mondo popolato da demoni, impara lentamente a comprendere il significato della vita e della morte.L\'arte di Fujimoto è straordinaria, con disegni dettagliati e pieni di azione che catturano perfettamente lo spirito della serie. Chainsaw Man è uno dei manga più interessanti degli ultimi anni, che sicuramente soddisferà i fan degli shonen manga più tradizionali, ma che allo stesso tempo offre una visione fresca e originale del genere.', 6),
 (24, '20th Century Boys: un\'epica storia di amicizia e salvezza', '<a href=\'serie.php?id=2\'>20th Century Boys</a> è un manga scritto e disegnato da Naoki Urasawa, che ha debuttato nel 1999 sulla rivista Big Comic Spirits. La serie segue la vita di Kenji Endo e dei suoi amici d\'infanzia, che devono affrontare una cospirazione globale che minaccia la distruzione del mondo.La trama di 20th Century Boys è complessa e intrigante, piena di colpi di scena e suspense. Urasawa è un maestro nel creare personaggi realistici e convincenti, che affrontano problemi reali e difficili, ma che riescono a trovare la forza e il coraggio per superarli.La storia si svolge in due periodi differenti, il presente e il futuro, in cui i protagonisti devono unire le forze per sconfiggere il misterioso ', 43),
 (25, 'Berserk: un\'opera oscura e brutale che esplora la natura umana', 'Berserk è un manga scritto e disegnato da Kentaro Miura, che ha debuttato nel 1989 sulla rivista Young Animal. La serie segue la vita di Guts, un mercenario solitario che cerca vendetta contro il suo ex-compagno d\'armi, Griffith.La trama di Berserk è oscura e brutale, piena di violenza e di scene disturbanti. Tuttavia, al di sotto della superficie della serie c\'è una profonda riflessione sulla natura umana e sulla sua capacità di affrontare la sofferenza e il dolore.Guts è un personaggio complesso, che lotta contro i suoi demoni interiori e cerca di trovare un senso nella vita, nonostante il suo passato tragico e doloroso. La sua relazione con Griffith è altrettanto complessa, poiché i due personaggi hanno legami profondi e complicati che li legano indissolubilmente.L\'arte di Miura è straordinaria, con disegni dettagliati e intensi che catturano perfettamente lo spirito della serie. Berserk è un\'opera che esplora la natura umana in modo crudo e sincero, mostrando le sue debolezze e le sue forze, senza mai nascondere la brutalità della realtà.In conclusione, Berserk è un manga che merita di essere letto da coloro che cercano storie profonde e coinvolgenti, che non hanno paura di affrontare temi difficili e complessi. Nonostante la sua natura oscura e brutale, Berserk è un\'opera che lascia un segno indelebile nella mente del lettore, grazie alla sua profondità e alla sua intensità.', 45);
 
@@ -275,7 +275,16 @@ INSERT INTO `img` (`id`, `path`) VALUES
 (58, 'img-646a6129acbb93.02762906.jpeg'),
 (59, 'img-646a61327c9dc4.54609010.jpeg'),
 (60, 'img-646a616879b182.97314393.jpeg'),
-(61, 'img-646a623a9970a2.12796778.jpeg');
+(61, 'img-646a623a9970a2.12796778.jpeg'),
+(62, '20th2.jpg'),
+(63, '20th3.jpg'),
+(64, '20th4.jpg'),
+(65, '20th5.jpg'),
+(66, '20thnormal1.webp'),
+(67, 'img-646b1f04114286.82137202.gif'),
+(68, 'img-646b22c8055c75.39070123.jpeg'),
+(69, 'img-646b2377830fd2.98143945.jpeg'),
+(70, 'img-646b2389490874.22461874.png');
 
 -- --------------------------------------------------------
 
@@ -644,7 +653,7 @@ INSERT INTO `opera` (`id`, `titolo`, `anno_inizio`, `anno_fine`, `img`, `trama`)
 (79, 'Tatsuki Fujimoto Short Stories 22-26', 2018, 2018, 0, NULL),
 (80, 'The Quintessential Quintuplets', 2017, 2020, 0, NULL),
 (81, 'Tokyo Ghoul', 2011, 2014, 56, '\'\''),
-(82, 'Tokyo Ghoul:re', 2014, 2018, 55, '\'\''),
+(82, 'Tokyo Ghoul:re', 2014, 2018, 55, '\'\'\'\''),
 (83, 'Tsukimichi moonlit fantasy', 2015, NULL, 0, NULL),
 (84, 'Undead Unluck', 2020, NULL, 54, '\'\''),
 (85, 'Witch Watch', 2021, NULL, 0, NULL),
@@ -695,7 +704,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `username`, `des`, `pw`, `profilo`, `ruolo`, `id`) VALUES
-('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 41, 'admin', 1);
+('lorenzocavagnaro14@gmail.com', 'Cavosky', NULL, '$2y$10$.1r2Ny/Tif44dIbkbfv43.wynIfWmwc92cgQV2zvYAWa0ZPYabb16', 53, 'admin', 1),
+('rg@rg.it', 'rg', NULL, '$2y$10$D4nSyj8JPh6y4RZjD.h/tOvbrpKTiGemUlaR58tuZPDzYVtu3cVOq', 1, 'utente', 2);
 
 -- --------------------------------------------------------
 
@@ -724,7 +734,10 @@ CREATE TABLE `utentesegueopera` (
 --
 
 INSERT INTO `utentesegueopera` (`utente`, `opera`) VALUES
-('lorenzocavagnaro14@gmail.com', 2);
+('lorenzocavagnaro14@gmail.com', 2),
+('lorenzocavagnaro14@gmail.com', 5),
+('lorenzocavagnaro14@gmail.com', 6),
+('lorenzocavagnaro14@gmail.com', 26);
 
 -- --------------------------------------------------------
 
@@ -769,9 +782,19 @@ CREATE TABLE `volumi` (
 --
 
 INSERT INTO `volumi` (`numero`, `nPagine`, `data_di_uscita`, `edizione`, `prezzo`, `copertina`) VALUES
-(1, NULL, '2002-05-01', 1, 7, 3),
+(1, NULL, '2002-05-01', 1, 7, 66),
 (1, NULL, '2021-12-16', 2, 14.9, 19),
-(1, 184, '2022-12-16', 3, 2.95, NULL);
+(1, 184, '2022-12-16', 3, 2.95, NULL),
+(2, NULL, '2021-05-03', 2, 14.9, 62),
+(3, NULL, '2021-05-03', 2, 14.9, 63),
+(4, NULL, '2021-05-03', 2, 14.9, 64),
+(5, NULL, '2021-05-03', 2, 14.9, 65),
+(6, NULL, '2021-05-03', 2, 14.9, 19),
+(7, NULL, '2021-05-03', 2, 14.9, 19),
+(8, NULL, '2021-05-03', 2, 14.9, 19),
+(9, NULL, '2021-05-03', 2, 14.9, 19),
+(10, NULL, '2021-05-03', 2, 14.9, 19),
+(11, NULL, '2021-05-03', 2, 14.9, 19);
 
 --
 -- Indici per le tabelle scaricate
@@ -912,7 +935,7 @@ ALTER TABLE `autore`
 -- AUTO_INCREMENT per la tabella `commentiarticoli`
 --
 ALTER TABLE `commentiarticoli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT per la tabella `edizione`
@@ -924,7 +947,7 @@ ALTER TABLE `edizione`
 -- AUTO_INCREMENT per la tabella `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT per la tabella `opera`
@@ -936,7 +959,7 @@ ALTER TABLE `opera`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Limiti per le tabelle scaricate
